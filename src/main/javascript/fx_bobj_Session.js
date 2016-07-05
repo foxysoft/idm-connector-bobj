@@ -20,8 +20,9 @@ var fx_bobj_Session = (function () {
         /**
          * Connect to the BO CMS (Central Management Server)
          * using the supplied host, port, user and password.
-         * @param {string} iv_params -
-         *        cms_host!!nameserver_port!!user!!password
+         * @param {string} iv_params - <pre>
+         * iv_params := cms_host!!nameserver_port!!user!!password
+         * </pre>
          * @throws {java.lang.Exception}
          */
         logon: function(iv_params)
@@ -34,10 +35,6 @@ var fx_bobj_Session = (function () {
             var lv_port     = lt_params.shift();
             var lv_user     = lt_params.shift();
             var lv_password = lt_params.join("!!");
-
-            importClass(Packages
-                        .com.crystaldecisions.sdk.framework
-                        .CrystalEnterprise);
 
             var lo_session_manager
                     = CrystalEnterprise.getSessionMgr()
@@ -115,6 +112,14 @@ var fx_bobj_Session = (function () {
     }//go_result
     ;
 
+    function class_init()
+    {
+        importClass(Packages
+                    .com.crystaldecisions.sdk.framework
+                    .CrystalEnterprise);
+    }
+
+    class_init();
     return go_result;
 
 })();

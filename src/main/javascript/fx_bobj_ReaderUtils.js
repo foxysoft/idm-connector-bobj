@@ -78,9 +78,6 @@ var fx_bobj_ReaderUtils = (function() {
     } //go_result
     ;
 
-    /**
-     * @private
-     */
     function class_init()
     {
         importClass(Packages

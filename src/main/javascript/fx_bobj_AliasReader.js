@@ -1,4 +1,10 @@
-/** @class */
+/**
+ * @class
+ * @requires fx_JavaUtils
+ * @requires fx_bobj_ReaderUtils
+ * @requires fx_bobj_Session
+ * @requires fx_trace
+ */
 var fx_bobj_AliasReader = (function() {
     /*
      function fx_trace(){}
@@ -11,6 +17,7 @@ var fx_bobj_AliasReader = (function() {
      function importClass(){}
      var Packages;
      */
+
     /**
      * Internal state of function read(). Initialized and cleaned up
      * by function read():
@@ -18,6 +25,7 @@ var fx_bobj_AliasReader = (function() {
      */
     var go_state = null;
 
+    /** @constructor */
     function AliasReaderState(io_info_objects)
     {
         var SCRIPT = "fx_bobj_api=>AliasReaderState: ";
@@ -148,17 +156,17 @@ var fx_bobj_AliasReader = (function() {
                     var lo_alias_id = lo_alias_properties
                             .getString(CePropertyID.SI_ID);
 
-                    lo_result.put("Z_ALIASES_SI_ID", lo_alias_id);
+                    lo_result.put("FX_ALIASES_SI_ID", lo_alias_id);
 
                     var lo_alias_name = lo_alias_properties
                             .getString(CePropertyID.SI_NAME);
 
-                    lo_result.put("Z_ALIASES_SI_NAME", lo_alias_name);
+                    lo_result.put("FX_ALIASES_SI_NAME", lo_alias_name);
 
                     var lo_alias_disabled = lo_alias_properties
                             .getString(CePropertyID.SI_DISABLED);
 
-                    lo_result.put("Z_ALIASES_SI_DISABLED",
+                    lo_result.put("FX_ALIASES_SI_DISABLED",
                                   lo_alias_disabled);
                     break; // ============================= EXIT WHILE
                 }
@@ -212,11 +220,10 @@ var fx_bobj_AliasReader = (function() {
         /**
          * Read all user and group aliases from BOBJ CMS
          *
-         * @return type com.sap.idm.ic.DSEEntry
+         * @return {com.sap.idm.ic.DSEEntry}
          *         Excactly one alias of a user or
          *         user group, transformed into an IDM
-         *         DSE entry.
-         *         Returns null when all data has
+         *         DSE entry, or null when all data has
          *         been read.
          */
         read: function()

@@ -156,7 +156,6 @@ var fx_bobj_CeProperties = (function() {
     }//class_init
 
     class_init();
-
     return go_result;
 
 })();
