@@ -1,5 +1,5 @@
 /**
- * @param io_entry - DSE entry
+ * @param {com.sap.idm.ic.DSEEntry} io_entry - DSE entry
  * @return {string} - empty on success, or error message prefixed
  *         with !ERROR on failure
  */

@@ -23,7 +23,7 @@ var fx_bobj_Session = (function () {
          * @param {string} iv_params - <pre>
          * iv_params := cms_host!!nameserver_port!!user!!password
          * </pre>
-         * @throws {java.lang.Exception}
+         * @throws {java.lang.Exception} - if logon fails
          */
         logon: function(iv_params)
         {
@@ -107,7 +107,84 @@ var fx_bobj_Session = (function () {
                 throw new java.lang.Exception("Not connected");
             }
             return go_info_store;
-        }//getInfoStore
+        },//getInfoStore
+
+        /**
+         * @param {string} iv_name - SI_NAME of InfoObject
+         * @param {string} iv_kind - SI_KIND of InfoObject
+         * @param {?string} iv_additional_props - comma-separated
+         * list of additional attribute names to populate in the
+         * InfoObject collection that will be returned. May be NULL.
+         * @throws {java.lang.Exception} - If there's no active
+         * session, or if no InfoObject exists with SI_NAME=iv_name
+         * and SI_KIND=iv_kind, or if more than one InfoObject matching
+         * these criteria exists.
+         */
+        lookupSingleInfoObject: function(
+            iv_name
+            ,iv_kind
+            ,iv_additional_props
+        )
+        {
+            var SCRIPT = "fx_bobj_Session=>lookupSingleInfoObject: ";
+
+            if(go_info_store == null)
+            {
+                throw new java.lang.Exception("Not connected");
+            }
+
+            var lv_query
+                    = "select"
+                    + " SI_ID"
+                    + ( iv_additional_props != null
+                        ? ("," + iv_additional_props)
+                        : ""
+                      )
+                    + " from CI_SYSTEMOBJECTS"
+                    + " where SI_NAME='" + iv_name+ "'"
+                    + " and SI_KIND='" + iv_kind + "'"
+            ;
+            fx_trace(SCRIPT + "lv_query=" + lv_query);
+
+            // IInfoObjects
+            var lo_info_objects = go_info_store.query(lv_query);
+            fx_trace(SCRIPT + "Result count: " + lo_info_objects.size());
+
+            var lv_message;
+
+            if(lo_info_objects.size() == 1)
+            {
+                lv_message = null; //OK
+            }
+            else if (lo_info_objects.size() == 0)
+            {
+                lv_message
+                    = "InfoObject with name " + iv_name
+                    + " and kind " + iv_kind
+                    + " does not exist"
+                ;
+            }
+            else //if (lo_info_objects.size() > 1)
+            {
+                lv_message
+                    = "Multiple InfoObjects exist with name " + iv_name
+                    + " and kind " + iv_kind
+                    + " (" + lo_info_objects.size() + ")"
+                ;
+            }
+
+            if(lv_message != null)
+            {
+                for (var i=0; i<lo_info_objects.size(); ++i)
+                {
+                    uError(SCRIPT + lo_info_objects.get(i));
+                }
+                throw new java.lang.Exception(lv_message);
+            }
+
+            return lo_info_objects;
+
+        }//lookupSingleInfoObject
 
     }//go_result
     ;
