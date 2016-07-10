@@ -191,10 +191,15 @@ var fx_bobj_Session = (function () {
 
     function class_init()
     {
-        importClass(Packages
-                    .com.crystaldecisions.sdk.framework
-                    .CrystalEnterprise);
-    }
+        // Workaround "Packages is undefined"
+        var lo_packages = (function(){return this["Packages"];}).call(null);
+        if(lo_packages)
+        {
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.framework
+                        .CrystalEnterprise);
+        }//if(lo_packages)
+    }//class_init
 
     class_init();
     return go_result;

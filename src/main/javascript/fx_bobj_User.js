@@ -139,18 +139,22 @@ var fx_bobj_User = (function() {
 
     function class_init()
     {
-        go_date_format = new java.text.SimpleDateFormat(
-            "yyyy-MM-dd'T'hh:mm:ss");
+        // Workaround "Packages is undefined"
+        var lo_packages = (function(){return this["Packages"];}).call(null);
+        if(lo_packages)
+        {
+            go_date_format = new java.text.SimpleDateFormat(
+                "yyyy-MM-dd'T'hh:mm:ss");
 
-        importClass(Packages
-                    .com.crystaldecisions.sdk.occa.infostore
-                    .IInfoObject);
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.occa.infostore
+                        .IInfoObject);
 
-        importClass(Packages
-                    .com.crystaldecisions.sdk.plugin.desktop.user
-                    .IUser
-                   );
-    }
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.plugin.desktop.user
+                        .IUser);
+        }//if(lo_packages)
+    }//class_init
 
     class_init();
     return go_result;

@@ -80,10 +80,15 @@ var fx_bobj_ReaderUtils = (function() {
 
     function class_init()
     {
-        importClass(Packages
-                    .com.crystaldecisions.sdk.occa.infostore
-                    .CePropertyID);
-    }
+        // Workaround "Packages is undefined"
+        var lo_packages = (function(){return this["Packages"];}).call(null);
+        if(lo_packages)
+        {
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.occa.infostore
+                        .CePropertyID);
+        }//if(lo_packages)
+    }//class_init
 
     class_init();
     return go_result;

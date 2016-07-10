@@ -116,43 +116,48 @@ var fx_bobj_CeProperties = (function() {
      */
     function class_init()
     {
-        var SCRIPT = "fx_bobj_CeProperties=>class_init: ";
-        fx_trace(SCRIPT+"Entering");
+        // Workaround "Packages is undefined"
+        var lo_packages = (function(){return this["Packages"];}).call(null);
+        if(lo_packages)
+        {
+            var SCRIPT = "fx_bobj_CeProperties=>class_init: ";
+            fx_trace(SCRIPT+"Entering");
 
-        importClass(Packages
-                    .com.crystaldecisions.sdk.occa.infostore
-                    .CePropertyID);
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.occa.infostore
+                        .CePropertyID);
 
-        go_date_format
-            = new java.text.SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+            go_date_format
+                = new java.text.SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
 
-        go_ce_properties = new java.util.HashMap();
+            go_ce_properties = new java.util.HashMap();
 
-        var lo_class = java.lang.Class.forName(
-            "com.crystaldecisions.sdk.occa.infostore.CePropertyID"
-        );
+            var lo_class = java.lang.Class.forName(
+                "com.crystaldecisions.sdk.occa.infostore.CePropertyID"
+            );
 
-        var  lt_fields = lo_class.getDeclaredFields();
-        for (var i = 0; i < lt_fields.length; ++i) {
-            var lo_field = lt_fields[i];
-            var lv_field_name = lo_field.getName();
-            var lv_field_value = lo_field.get(null);
+            var  lt_fields = lo_class.getDeclaredFields();
+            for (var i = 0; i < lt_fields.length; ++i) {
+                var lo_field = lt_fields[i];
+                var lv_field_name = lo_field.getName();
+                var lv_field_value = lo_field.get(null);
 
-            var lv_modifiers = lo_field.getModifiers();
+                var lv_modifiers = lo_field.getModifiers();
 
-            if (java.lang.reflect.Modifier.isStatic(lv_modifiers)
-                && java.lang.reflect.Modifier.isPublic(lv_modifiers)
-                && java.lang.reflect.Modifier.isFinal(lv_modifiers))
-            {
-                go_ce_properties.put(lv_field_value, lv_field_name);
-            }
-        }//for (var i = 0; i < lt_fields.length; ++i) {
-        fx_trace(SCRIPT
-                 +"go_ce_properties.size()="
-                 +go_ce_properties.size());
+                if (java.lang.reflect.Modifier.isStatic(lv_modifiers)
+                    && java.lang.reflect.Modifier.isPublic(lv_modifiers)
+                    && java.lang.reflect.Modifier.isFinal(lv_modifiers))
+                {
+                    go_ce_properties.put(lv_field_value, lv_field_name);
+                }
+            }//for (var i = 0; i < lt_fields.length; ++i) {
+            fx_trace(SCRIPT
+                     +"go_ce_properties.size()="
+                     +go_ce_properties.size());
 
-        fx_trace(SCRIPT+"Returning");
+            fx_trace(SCRIPT+"Returning");
 
+        }//if(lo_packages)
     }//class_init
 
     class_init();

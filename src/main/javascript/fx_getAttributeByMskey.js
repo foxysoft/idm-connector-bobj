@@ -10,7 +10,7 @@
  * </div>
  * <div>
  * If iv_params contains only one occurence of !!, default_value
- * is considered as <string>not supplied</strong>.
+ * is considered as <strong>not supplied</strong>.
  * </div>
  * @return {string}
  * <div>

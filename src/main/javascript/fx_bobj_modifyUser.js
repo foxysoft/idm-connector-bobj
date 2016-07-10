@@ -213,16 +213,21 @@ var fx_bobj_modifyUser = (function() {
 
     function class_init()
     {
-        importClass(Packages
-                    .com.crystaldecisions.sdk.occa.infostore
-                    .CePropertyID);
-        importClass(Packages
-                    .com.crystaldecisions.sdk.plugin.desktop.user
-                    .IUser);
-        importClass(Packages
-                    .com.crystaldecisions.sdk.plugin.desktop.usergroup
-                    .IUserGroup);
-    }
+        // Workaround "Packages is undefined"
+        var lo_packages = (function(){return this["Packages"];}).call(null);
+        if(lo_packages)
+        {
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.occa.infostore
+                        .CePropertyID);
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.plugin.desktop.user
+                        .IUser);
+            importClass(lo_packages
+                        .com.crystaldecisions.sdk.plugin.desktop.usergroup
+                        .IUserGroup);
+        }//if(lo_packages)
+    }//class_init
 
     class_init();
     return fx_bobj_modifyUserImpl;
