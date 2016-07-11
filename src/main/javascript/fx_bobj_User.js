@@ -119,6 +119,46 @@ var fx_bobj_User = (function() {
 
     /**
      * @private
+     * @param {com.crystaldecisions.sdk.plugin.desktop.user.IUser} user
+     * @param {string} k - attribute name (key)
+     * @param {string} v - attribute value
+     * @throws {java.lang.Exception}
+     */
+    function setPassword(user, k, v)
+    {
+        var SCRIPT = "fx_bobj_User=>setPassword: ";
+        fx_trace(SCRIPT + "Entering k=" + k + ", v=" + v);
+
+        // Works in Java, but yields "undefined is not a function" in JS
+        // user.setNewPassword(parseAttributeValue(v));
+
+        //BEGIN: workaround for missing setNewPassword() in JS
+        /** @type {java.lang.Class[]}*/
+        var lt_arg_types = fx_JavaUtils.newArray(
+            java.lang.Class //no .class suffix in JS
+            , java.lang.String //no .class suffix in JS
+        );
+
+        /**@type {java.lang.Object[]}*/
+        var lt_arg_values = fx_JavaUtils.newArray(
+            java.lang.String //no .class suffix in JS
+            ,parseAttributeValue(v)
+        );
+
+        fx_JavaUtils.callByReflection(
+            user
+            ,"setNewPassword"
+            ,lt_arg_types
+            ,lt_arg_values
+        );
+        //END: workaround
+
+        fx_trace(SCRIPT + "Returning");
+    }//setPassword
+
+
+    /**
+     * @private
      * @param {com.crystaldecisions.sdk.properties.IProperties} props
      * @param {string} k - attribute name (key)
      * @param {string} v - attribute value
@@ -207,9 +247,14 @@ var fx_bobj_User = (function() {
                     fx_trace(SCRIPT+"Skipping attribute "+k);
                     continue; //========================= WITH NEXT ATTR
                 }
-                else if(k == "SI_DISABLED")
+                else if(k.toUpperCase() == "SI_DISABLED")
                 {
                     setAllAliasesDisabled(props, k, v);
+                }
+                else if(k.toUpperCase() == "SI_PASSWORD")
+                {
+                    // Must pass IInfoObject here, not IProperties
+                    setPassword(toModify, k, v);
                 }
                 else
                 {
