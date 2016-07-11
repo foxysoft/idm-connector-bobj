@@ -13,6 +13,152 @@ var fx_bobj_User = (function() {
     /** @type {java.text.SimpleDateFormat} */
     var go_date_format = null;
 
+    /**
+     * @function
+     * @private
+     * @param {string} v - attribute string value
+     * @return {java.lang.Object} - attribute object value
+     * @throws {java.lang.Exception}
+     */
+    function parseAttributeValue(iv_attr_value)
+    {
+        var SCRIPT = "fx_bobj_User=>parseAttributeValue: ";
+        fx_trace(SCRIPT+"Entering iv_attr_value="+iv_attr_value);
+
+        var lv_data;
+        var lo_data;
+        var lv_upper_value = iv_attr_value.toUpperCase();
+
+        if (lv_upper_value.indexOf("{BOOLEAN}") == 0)
+        {
+            lv_data = iv_attr_value.substring("{BOOLEAN}".length);
+            if(lv_data == "1")
+            {
+                lv_data = "true";
+            }
+            else if(lv_data == "0" || lv_data == "")
+            {
+                lv_data = "false";
+            }
+            lo_data = new java.lang.Boolean(java.lang.Boolean.parseBoolean(lv_data));
+        }
+        else if (lv_upper_value.indexOf("{LONG}") == 0)
+        {
+            lv_data = iv_attr_value.substring("{LONG}".length);
+            lo_data = new java.lang.Long(java.lang.Long.parseLong(lv_data));
+        }
+        else if (lv_upper_value.indexOf("{INT}") == 0)
+        {
+            lv_data = iv_attr_value.substring("{INT}".length);
+            lo_data = new java.lang.Integer(java.lang.Integer.parseInt(lv_data));
+        }
+        else if (lv_upper_value.indexOf("{DATE}") == 0)
+        {
+            lv_data = iv_attr_value.substring("{DATE}".length);
+            lo_data = go_date_format.parse(lv_data);
+        }
+        else if (lv_upper_value.indexOf("{STRING}") == 0)
+        {
+            lv_data = iv_attr_value.substring("{STRING}".length);
+            lo_data = lv_data;
+        }
+        else
+        {
+            lv_data = iv_attr_value;
+            lo_data = lv_data;
+        }
+
+        fx_trace(SCRIPT+"Returning "+lo_data);
+        return lo_data;
+
+    }// parseAttributeValue
+
+
+    /**
+     * @private
+     * @param {com.crystaldecisions.sdk.properties.IProperties} props
+     * @param {string} k - attribute name (key)
+     * @param {string} v - attribute value
+     * @throws {java.lang.Exception}
+     */
+    function setAllAliasesDisabled(props, k, v)
+    {
+        var LOC = "fx_bobj_User=>setDisabled: ";
+        fx_trace(LOC+"Entering k="+k+", v="+v);
+
+        /**@type {com.crystaldecisions.sdk.properties.IProperties} */
+        var aliases = props.getProperties("SI_ALIASES");
+
+        // Note that when the property SI_TOTAL does not exist,
+        // this call does not throw any exception, but returns 0 (zero)
+        /** @type {java.lang.Integer.TYPE}*/
+        var numAliases = aliases.getInt("SI_TOTAL");
+        fx_trace(LOC + "numAliases=" + numAliases);
+
+        // The keys in property bag SI_ALIASES are integers in the range
+        // 1 up to and including the value of SI_TOTAL
+        for (var i = 1; i <= numAliases; ++i)
+        {
+            /**@type {com.crystaldecisions.sdk.properties.IProperties} */
+            var oneAlias = aliases.getProperties(new java.lang.Integer(i));
+
+            /**@type {java.lang.String}*/
+            var name = oneAlias.getString("SI_NAME");
+            fx_trace(LOC + "SI_ALIASES[" + i + "]-SI_NAME=" + name);
+
+            /**@type {com.crystaldecisions.sdk.properties.IProperty}*/
+            var p = oneAlias.getProperty("SI_DISABLED");
+            fx_trace(LOC + "SI_ALIASES[" + i + "]-SI_DISABLED=" + p);
+
+            p.setValue(parseAttributeValue(v));
+        }//for (var i = 1; i <= numAliases; ++i) {
+
+        fx_trace(LOC+"Returning");
+
+    }//setAllAliasesDisabled
+
+    /**
+     * @private
+     * @param {com.crystaldecisions.sdk.properties.IProperties} props
+     * @param {string} k - attribute name (key)
+     * @param {string} v - attribute value
+     * @throws {java.lang.Exception}
+     */
+    function setAttributeGeneric(props, k, v)
+    {
+        var SCRIPT = "fx_bobj_User=>setAttributeGeneric: ";
+        fx_trace(SCRIPT+"Entering k="+k+", v="+v);
+
+        /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
+        var p = props.getProperty(k);
+        if (p != null)
+        {
+            if (!p.isContainer())
+            {
+                p.setValue(parseAttributeValue(v));
+
+            } // if (!p.isContainer())
+            else
+            {
+                throw new java.lang.Exception(
+                    "Property "
+                        + k
+                        + " is a container;"
+                        + " can only modify non-container properties");
+            }
+        }// if(p!= null)
+        else
+        {
+            throw new java.lang.Exception(
+                "Property "
+                    + k
+                    + " does not exist");
+        }
+
+        fx_trace(SCRIPT+"Returning");
+
+    }//setAttributeGeneric
+
     var go_result = {
         modifyAttributes: function(io_entry)
         {
@@ -49,86 +195,33 @@ var fx_bobj_User = (function() {
                 /** @type {java.lang.String} */
                 var k = attrNames[i];
 
-                // Ignore attribute name "changetype"
-                // and everything starting with "DUMMY"
+                /** @type {java.lang.String}*/
+                var v = io_entry.get(k);
+
+                // Ignore attribute name "CHANGETYPE" and everything
+                // starting with "DUMMY". Note that IDM does NOT ensure
+                // that the keys in io_entry are uppercase.
                 if(k.toUpperCase() == "CHANGETYPE"
                    || k.toUpperCase().indexOf("DUMMY") == 0)
                 {
                     fx_trace(SCRIPT+"Skipping attribute "+k);
                     continue; //========================= WITH NEXT ATTR
                 }
-
-                /** @type {java.lang.String}*/
-                var v = io_entry.get(k);
-
-                /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-                var p = props.getProperty(k);
-                if (p != null)
+                else if(k == "SI_DISABLED")
                 {
-                    if (!p.isContainer())
-                    {
-                        /** @type {java.lang.String} */
-                        var data;
-
-                        /** @type {java.lang.Object} */
-                        var oData;
-                        if (v.toUpperCase().indexOf("{BOOLEAN}") == 0)
-                        {
-                            // Note use of length property in JS code
-                            // vs. length() method in corresponding Java code
-                            data = v.substring("{boolean}".length);
-                            oData = new java.lang.Boolean(
-                                java.lang.Boolean.parseBoolean(data)
-                            );
-                        } else if (v.toUpperCase().indexOf("{LONG}") == 0)
-                        {
-                            data = v.substring("{long}".length);
-                            oData = new java.lang.Long(
-                                java.lang.Long.parseLong(data)
-                            );
-                        } else if (v.toUpperCase().indexOf("{INT}") == 0)
-                        {
-                            data = v.substring("{int}".length);
-                            oData = new java.lang.Integer(
-                                java.lang.Integer.parseInt(data)
-                            );
-                        } else if (v.toUpperCase().indexOf("{DATE}") == 0)
-                        {
-                            data = v.substring("{date}".length);
-                            oData = go_date_format.parse(data);
-                        } else if (v.toUpperCase().indexOf("{STRING}") == 0)
-                        {
-                            data = v.substring("{string}".length);
-                            oData = data;
-                        } else {
-                            data = v;
-                            oData = data;
-                        }
-                        fx_trace(SCRIPT + "Setting " + k + "=" + oData);
-                        p.setValue(oData);
-
-                        /** @type {java.lang.Boolean.TYPE} */
-                        var isDirty = toModify.isDirty();
-                        fx_trace(SCRIPT + "isDirty=" + isDirty);
-                    } // if (!p.isContainer())
-                    else
-                    {
-                        throw new java.lang.Exception(
-                            "Property "
-                                + k
-                                + " is a container;"
-                                + " can only modify non-container properties");
-                    }
-                }// if(p!= null)
+                    setAllAliasesDisabled(props, k, v);
+                }
                 else
                 {
-                    throw new java.lang.Exception(
-                        "Property "
-                            + k
-                            + " does not exist");
-                }
+                    setAttributeGeneric(props, k, v);
+                }//else
 
-            }// for (int i = 0; i < attrNames.size(); ++i) {
+                /** @type {java.lang.Boolean.TYPE} */
+                var isDirty = toModify.isDirty();
+                fx_trace(SCRIPT + "isDirty=" + isDirty);
+
+            }// for (var i = 0; i < attrNames.size(); ++i) {
+
             fx_trace(SCRIPT + "Commiting " + infoObjects);
             fx_bobj_Session.getInfoStore().commit(infoObjects);
 
