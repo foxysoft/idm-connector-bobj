@@ -368,9 +368,17 @@ var fx_bobj_User = (function() {
     }//setAttributes
 
     var go_result = {
-        modifyAttributes: function(io_entry)
+
+        /**
+         * Modify a BusinessObjects user
+         * @function
+         * @public
+         * @name fx_bobj_User.create
+         * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+         */
+        modify: function(io_entry)
         {
-            var SCRIPT = "fx_bobj_User=>modifyAttributes: ";
+            var SCRIPT = "fx_bobj_User=>modify: ";
             fx_trace(SCRIPT + "Entering io_entry="+io_entry);
             var lv_si_name = io_entry.get("SI_NAME");
             if(lv_si_name == null)
@@ -394,15 +402,32 @@ var fx_bobj_User = (function() {
             fx_bobj_Session.getInfoStore().commit(infoObjects);
 
             fx_trace(SCRIPT + "Returning");
-            return "";
-        },//modifyAttributes
+        },//modify
 
+        /**
+         * Create a BusinessObjects user
+         * @function
+         * @public
+         * @name fx_bobj_User.modify
+         * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+         */
         create: function(io_entry)
         {
             var SCRIPT = "fx_bobj_User=>create: ";
+            fx_trace(SCRIPT + "Entering io_entry="+io_entry);
+
+            var lo_si_name = io_entry.get("SI_NAME");
+            if(lo_si_name == null)
+            {
+                throw new java.lang.Exception(
+                    "Missing mandatory parameter SI_NAME"
+                );
+            }
+
             // ===========================================================
             // Create new user object and populate its attributes
             // ===========================================================
+            /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObjects} */
             var lo_new_user_collection
                     = fx_bobj_Session
                     .getInfoStore()
@@ -424,9 +449,52 @@ var fx_bobj_User = (function() {
             fx_bobj_Session.getInfoStore().commit(lo_new_user_collection);
 
             fx_trace(SCRIPT+"Returning");
-            return "";
 
-        }//create
+        },//create
+
+        /**
+         * Remove (delete) a BusinessObjects user
+         * @function
+         * @public
+         * @name fx_bobj_User.remove
+         * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+         */
+        remove: function(io_entry)
+        {
+            var SCRIPT = "fx_bobj_User=>remove: ";
+            fx_trace(SCRIPT + "Entering io_entry="+io_entry);
+
+            var lo_si_name = io_entry.get("SI_NAME");
+            if(lo_si_name == null)
+            {
+                throw new java.lang.Exception(
+                    "Missing mandatory parameter SI_NAME"
+                );
+            }
+
+            var lo_to_delete_info_objects
+                    = fx_bobj_Session.lookupSingleInfoObject(
+                        lo_si_name
+                        ,IUser.KIND
+                    );
+
+            var lo_to_delete_info_object
+                    = lo_to_delete_info_objects.get(0);
+            fx_trace(SCRIPT
+                     + "Have info object to delete? "
+                     + (lo_to_delete_info_object != null));
+
+            // Must use property syntax to invoke delete() method
+            // of com.crystaldecisions.sdk.occa.infostore.IInfoObjects
+            // as delete is a keyword in JavaScript
+            lo_to_delete_info_objects["delete"](lo_to_delete_info_object);
+
+            fx_trace(SCRIPT+"Before commit");
+            fx_bobj_Session.getInfoStore().commit(lo_to_delete_info_objects);
+
+            fx_trace(SCRIPT+"Returning");
+
+        }//remove
 
     }//go_result
     ;
