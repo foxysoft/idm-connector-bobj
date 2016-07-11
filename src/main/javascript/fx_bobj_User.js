@@ -156,48 +156,216 @@ var fx_bobj_User = (function() {
         fx_trace(SCRIPT + "Returning");
     }//setPassword
 
+    /**
+     * @private
+     * @param {com.crystaldecisions.sdk.plugin.desktop.user.IUser} user
+     * @param {string} k - attribute name (key)
+     * @param {string} v - attribute value
+     * @throws {java.lang.Exception}
+     */
+    function setNamedUser(user, k, v)
+    {
+        var SCRIPT = "fx_bobj_User=>setNamedUser: ";
+        fx_trace(SCRIPT+"Entering k="+k+", v="+v);
+
+        /** @type {java.lang.Integer.TYPE} */
+        var lv_connection = null;
+
+        /** @type {java.lang.Boolean.TYPE} */
+        var lv_si_nameduser = parseAttributeValue(v);
+
+        if(java.lang.Boolean.TRUE.equals(lv_si_nameduser))
+        {
+            lv_connection = IUser.NAMED;
+            fx_trace(SCRIPT
+                     + "Creating named user,"
+                     + " lv_connection="
+                     + lv_connection);
+        }
+        else if(java.lang.Boolean.FALSE.equals(lv_si_nameduser))
+        {
+            lv_connection = IUser.CONCURRENT;
+            fx_trace(SCRIPT
+                     + "Creating concurrent user,"
+                     + " lv_connection="
+                     + lv_connection);
+        }
+        else
+        {
+            throw new java.lang.Exception(
+                "Illegal value "
+                    + lv_si_nameduser
+                    + " for SI_NAMEDUSER"
+                    + " (legal values: true, false)");
+        }
+
+        // Works in Java, but yields "undefined is not a function" in JS
+        // lo_new_user.setConnection(lv_connection);
+
+        //BEGIN: workaround
+        var lt_arg_types = fx_JavaUtils.newArray(
+            java.lang.Class
+            // java.lang.Integer.TYPE is the Java
+            // class of PRIMITIVE type int
+            ,java.lang.Integer.TYPE
+        );
+
+        // ===============================================
+        // Using lt_arg_values of type java.lang.Object[]
+        // would result in java.lang.IllegalArgumentException
+        // on subsequent call to java.lang.Method.invoke()
+        // in fx_JavaUtils.callByReflection, so that cannot
+        // be used.
+        //
+        // The root cause of this is that JS Numeric seems to
+        // always be implicitly converted to java.lang.Double
+        // when passed to Java methods, even when the actual
+        // value is an Integer.
+        // ===============================================
+
+        var lt_arg_values = fx_JavaUtils.newArray(
+            // java.lang.Integer is the Java
+            // class of OBJECT type int
+            // ==> this call creates a java.lang.Integer
+            // array whose sole element is the actual
+            // value of lv_connection
+            java.lang.Integer
+            ,lv_connection
+        );
+
+        fx_JavaUtils.callByReflection(
+            user
+            ,"setConnection"
+            ,lt_arg_types
+            ,lt_arg_values
+        );
+        //END: workaround
+
+        fx_trace(SCRIPT+"Set user's connection");
+    }//setNamedUser
 
     /**
      * @private
      * @param {com.crystaldecisions.sdk.properties.IProperties} props
      * @param {string} k - attribute name (key)
      * @param {string} v - attribute value
+     * @param {boolean} isNew - is props a newly created object
      * @throws {java.lang.Exception}
      */
-    function setAttributeGeneric(props, k, v)
+    function setAttributeGeneric(props, k, v, iv_is_new)
     {
         var SCRIPT = "fx_bobj_User=>setAttributeGeneric: ";
         fx_trace(SCRIPT+"Entering k="+k+", v="+v);
 
-        /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-        var p = props.getProperty(k);
-        if (p != null)
+        if(iv_is_new)
         {
-            if (!p.isContainer())
+            fx_trace(SCRIPT+"Using IProperties.setProperty for new user");
+            props["setProperty(java.lang.Object,java.lang.Object)"](
+                k
+                ,parseAttributeValue(v)
+            );
+        }
+        else
+        {
+            fx_trace(SCRIPT+"Using IProperty.setValue for existing user");
+            /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
+            var p = props.getProperty(k);
+            if (p != null)
             {
-                p.setValue(parseAttributeValue(v));
+                if (!p.isContainer())
+                {
+                    p.setValue(parseAttributeValue(v));
 
-            } // if (!p.isContainer())
+                } // if (!p.isContainer())
+                else
+                {
+                    throw new java.lang.Exception(
+                        "Property "
+                            + k
+                            + " is a container;"
+                            + " can only modify non-container properties");
+                }
+            }// if(p!= null)
             else
             {
                 throw new java.lang.Exception(
                     "Property "
                         + k
-                        + " is a container;"
-                        + " can only modify non-container properties");
+                        + " does not exist");
             }
-        }// if(p!= null)
-        else
-        {
-            throw new java.lang.Exception(
-                "Property "
-                    + k
-                    + " does not exist");
         }
 
         fx_trace(SCRIPT+"Returning");
 
     }//setAttributeGeneric
+
+    /**
+     * @private
+     */
+    function setAttributes(infoObjects, io_entry, iv_is_new)
+    {
+        var SCRIPT = "fx_bobj_User=>setAttributes: ";
+        fx_trace(SCRIPT+"Entering");
+
+        /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
+        var toModify = infoObjects.get(0);
+        fx_trace(SCRIPT + "Modifying " + toModify);
+
+        if(!iv_is_new)
+        {
+            fx_trace(SCRIPT + "Retrieving all properties");
+            toModify.retrievePropertySet(IInfoObject.PropertySet.ALL);
+        }
+
+        /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
+        var props = toModify.properties();
+        fx_trace(SCRIPT + "Have properties? "+(props != null));
+
+        /** @type {java.lang.String[]} */
+        var attrNames = io_entry.keySet().toArray();
+
+        for (var i = 0; i < attrNames.length; ++i) {
+            /** @type {java.lang.String} */
+            var k = attrNames[i];
+
+            /** @type {java.lang.String}*/
+            var v = io_entry.get(k);
+
+            // Ignore attribute name "CHANGETYPE" and everything
+            // starting with "DUMMY". Note that IDM does NOT ensure
+            // that the keys in io_entry are uppercase.
+            if(k.toUpperCase() == "CHANGETYPE"
+               || k.toUpperCase().indexOf("DUMMY") == 0)
+            {
+                fx_trace(SCRIPT+"Skipping attribute "+k);
+                continue; //========================= WITH NEXT ATTR
+            }
+            else if(k.toUpperCase() == "SI_DISABLED")
+            {
+                setAllAliasesDisabled(props, k, v);
+            }
+            else if(k.toUpperCase() == "SI_PASSWORD")
+            {
+                // Must pass IInfoObject here, not IProperties
+                setPassword(toModify, k, v);
+            }
+            else if(k.toUpperCase() == "SI_NAMEDUSER")
+            {
+                // Must pass IInfoObject here, not IProperties
+                setNamedUser(toModify, k, v);
+            }
+            else
+            {
+                setAttributeGeneric(props, k, v, iv_is_new);
+            }//else
+
+            /** @type {java.lang.Boolean.TYPE} */
+            var isDirty = toModify.isDirty();
+            fx_trace(SCRIPT + "isDirty=" + isDirty);
+
+        }// for (var i = 0; i < attrNames.size(); ++i) {
+
+    }//setAttributes
 
     var go_result = {
         modifyAttributes: function(io_entry)
@@ -217,63 +385,51 @@ var fx_bobj_User = (function() {
                 lv_si_name
                 ,IUser.KIND);
 
-            /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-            var toModify = infoObjects.get(0);
-            fx_trace(SCRIPT + "Modifying " + toModify);
+            setAttributes(infoObjects, io_entry, false);
 
-            fx_trace(SCRIPT + "Retrieving all properties");
-            toModify.retrievePropertySet(IInfoObject.PropertySet.ALL);
-
-            /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-            var props = toModify.properties();
-            fx_trace(SCRIPT + "After retrieve: props=" + props);
-
-            /** @type {java.lang.String[]} */
-            var attrNames = io_entry.keySet().toArray();
-
-            for (var i = 0; i < attrNames.length; ++i) {
-                /** @type {java.lang.String} */
-                var k = attrNames[i];
-
-                /** @type {java.lang.String}*/
-                var v = io_entry.get(k);
-
-                // Ignore attribute name "CHANGETYPE" and everything
-                // starting with "DUMMY". Note that IDM does NOT ensure
-                // that the keys in io_entry are uppercase.
-                if(k.toUpperCase() == "CHANGETYPE"
-                   || k.toUpperCase().indexOf("DUMMY") == 0)
-                {
-                    fx_trace(SCRIPT+"Skipping attribute "+k);
-                    continue; //========================= WITH NEXT ATTR
-                }
-                else if(k.toUpperCase() == "SI_DISABLED")
-                {
-                    setAllAliasesDisabled(props, k, v);
-                }
-                else if(k.toUpperCase() == "SI_PASSWORD")
-                {
-                    // Must pass IInfoObject here, not IProperties
-                    setPassword(toModify, k, v);
-                }
-                else
-                {
-                    setAttributeGeneric(props, k, v);
-                }//else
-
-                /** @type {java.lang.Boolean.TYPE} */
-                var isDirty = toModify.isDirty();
-                fx_trace(SCRIPT + "isDirty=" + isDirty);
-
-            }// for (var i = 0; i < attrNames.size(); ++i) {
-
-            fx_trace(SCRIPT + "Commiting " + infoObjects);
+            // ===========================================================
+            // Save modified user object to persistent storage in CMS
+            // ===========================================================
+            fx_trace(SCRIPT + "Before commit");
             fx_bobj_Session.getInfoStore().commit(infoObjects);
 
             fx_trace(SCRIPT + "Returning");
             return "";
-        }//modifyAttributes
-    };
+        },//modifyAttributes
+
+        create: function(io_entry)
+        {
+            var SCRIPT = "fx_bobj_User=>create: ";
+            // ===========================================================
+            // Create new user object and populate its attributes
+            // ===========================================================
+            var lo_new_user_collection
+                    = fx_bobj_Session
+                    .getInfoStore()
+                    .newInfoObjectCollection()
+            ;
+            fx_trace(SCRIPT+"Have new user collection? "
+                     + (lo_new_user_collection != null));
+
+            // Must explicitly choose signature of overloaded method
+            // to avoid ClassCastException: java.lang.String
+            lo_new_user_collection["add(java.lang.String)"](IUser.KIND);
+
+            setAttributes(lo_new_user_collection, io_entry, true);
+
+            // ===========================================================
+            // Save new user object to persistent storage in CMS
+            // ===========================================================
+            fx_trace(SCRIPT+"Before commit");
+            fx_bobj_Session.getInfoStore().commit(lo_new_user_collection);
+
+            fx_trace(SCRIPT+"Returning");
+            return "";
+
+        }//create
+
+    }//go_result
+    ;
 
     function class_init()
     {
