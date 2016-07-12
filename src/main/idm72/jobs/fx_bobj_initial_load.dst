@@ -1,0 +1,1481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mx:EMS xmlns:mx="http://www.maxware.com/EMS">
+  <mx:GUID>6CA1EBB9-7BA5-4066-BBB2-F905D21D8029</mx:GUID>
+  <mx:VERSION>1.0</mx:VERSION>
+  <mx:DSEJobs>
+    <mx:Sequence>
+      <mx:Step Enabled="TRUE" Key="SAP BOBJ 4.2 - Initial Load"/>
+    </mx:Sequence>
+    <mx:Job name="SAP BOBJ 4.2 - Initial Load">
+      <mx:Description/>
+      <mx:Sequence>
+        <mx:Step Enabled="TRUE" Key="FA76E66F-9DDE-4BB5-8DA9-611015DAC868"/>
+        <mx:Step Enabled="TRUE" Key="AA5C2A6D-1A74-41AC-B4FD-7FAD01A146CC"/>
+        <mx:Step Enabled="TRUE" Key="227C5882-3005-46F1-AD5F-016735EE67C7"/>
+        <mx:Step Enabled="TRUE" Key="709E2601-B8CF-4E54-B042-A5883AE38573"/>
+        <mx:Step Enabled="FALSE" Key="F5AB2A97-6FCC-497A-98AD-180927778DEB"/>
+        <mx:Step Enabled="TRUE" Key="F9B86CCE-0B57-41B8-8171-71F78FD24942"/>
+        <mx:Step Enabled="TRUE" Key="37CB6421-80B4-4B9D-BBAC-49CABF0E3089"/>
+        <mx:Step Enabled="TRUE" Key="ECEFBACB-FBEF-4569-BF18-C7523CB92180"/>
+        <mx:Step Enabled="TRUE" Key="00B85685-8417-4BEA-8154-264026B267E8"/>
+        <mx:Step Enabled="TRUE" Key="5D7C2214-CABD-4616-AE85-AA13EAD3A8E1"/>
+        <mx:Step Enabled="FALSE" Key="0A4CA716-6C44-40CE-A846-CB2F3B42A582"/>
+        <mx:Step Enabled="FALSE" Key="67EB4ED0-73AD-4467-A138-FA97751FD86E"/>
+        <mx:Step Enabled="TRUE" Key="3F8B3805-8240-4E03-A5AB-B92BC13737D1"/>
+        <mx:Step Enabled="TRUE" Key="B514B68F-14B8-4855-83A0-3F2A3183EA12"/>
+        <mx:Step Enabled="TRUE" Key="8973DDEB-407E-4B7C-BFB6-754713E240A5"/>
+        <mx:Step Enabled="TRUE" Key="6D00D20D-B160-40E8-B5FE-D8EF73872DA6"/>
+        <mx:Step Enabled="TRUE" Key="EBCE236A-D954-428F-B416-6FEBD9BA63A3"/>
+        <mx:Step Enabled="TRUE" Key="8DBC8EA8-7289-46E4-B45F-A1FA7D5F2C8C"/>
+        <mx:Step Enabled="TRUE" Key="74CC8D53-A009-4506-ADEC-2F0D158EB942"/>
+        <mx:Step Enabled="TRUE" Key="B2F17BF6-8331-4FE6-9A35-2B215DE9B3C9"/>
+        <mx:Step Enabled="TRUE" Key="372FA40C-6780-4F43-A532-50AB56E7D67E"/>
+        <mx:Step Enabled="TRUE" Key="122DE16A-5352-4807-8407-122D718BA47C"/>
+        <mx:Step Enabled="TRUE" Key="AD12C94F-E892-4A34-8035-B23DB13CDA50"/>
+        <mx:Step Enabled="TRUE" Key="3718E533-E38F-455A-A351-C7706EE86965"/>
+        <mx:Step Enabled="TRUE" Key="0314410F-1533-416C-A40A-BE69AAE03B17"/>
+      </mx:Sequence>
+      <mx:Globals/>
+      <mx:Functions>
+        <mx:Function name="fx_trace" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_CeProperties" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_Session" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_logon" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_logoff" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_nextUserEntry" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_EntryReader" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_nextGroupEntry" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_JavaUtils" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_MemberReader" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_ReaderUtils" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_nextMemberEntry" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_AliasReader" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_nextAliasEntry" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_sleep" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_nop" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_stop" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_db_getProcedureCallSyntax" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_db_nolock" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_bobj_getModifyTriggers" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+      </mx:Functions>
+      <mx:Common>
+        <ENGINETYPE>1</ENGINETYPE>
+        <SCRIPTENG>JScript</SCRIPTENG>
+        <EVLOG>1</EVLOG>
+        <ERRLOG>%$ddm.ddmpath%/DSE.log</ERRLOG>
+        <XLRESET>1</XLRESET>
+        <PASSDOC/>
+        <SNMPTRAPLEVEL>0</SNMPTRAPLEVEL>
+        <MAXERROR>0</MAXERROR>
+        <LOGLIMIT>25000</LOGLIMIT>
+        <MCLOGLEVEL>1</MCLOGLEVEL>
+        <RIGHT_TRIM>1</RIGHT_TRIM>
+      </mx:Common>
+      <mx:Pass name="EBCE236A-D954-428F-B416-6FEBD9BA63A3">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Write user to group privilege assignment</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>--SQL file: fx_bobj_load_user_to_group.sql
+$FUNCTION.fx_trace(
+
+with enterprise_groups_cte as (
+select 
+    a.si_name
+    ,a.si_id
+    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    --Exclude groups that have any non-Enterprise aliases,
+    --as BOBJ will treat these as third-party groups and
+    --will not allow assignment/unassignment
+    and not exists (
+        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
+        where c.si_id=a.si_id
+        and c.fx_aliases_si_name not like 'secEnterprise:%'
+    )
+    --Exclude Everyone group, as it is managed internally by BOBJ
+    and not a.si_name = 'Everyone'
+)
+select 
+    a.si_id    as parent_si_id
+    ,a.si_name as parent_si_name
+    ,c.si_id   as child_si_id
+    ,c.si_name as child_si_name
+    
+    from enterprise_groups_cte a
+    inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    inner join fx_%$rep.$NAME%_user c $FUNCTION.fx_db_nolock()$$
+    on b.si_group_members=c.si_id
+    --Exclude users that exists in BOBJ, but not in IDM
+    inner join idmv_entry_simple d $FUNCTION.fx_db_nolock()$$
+    on d.mcmskeyvalue=c.si_name
+    
+    order by a.si_name,c.si_name
+
+)$$</FROMSQL>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>10%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>$FUNCTION.fx_trace(PRIV:GROUP:%$rep.$NAME%:%PARENT_SI_NAME%)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MXMEMBER_MX_PERSON">
+            <mx:value>$FUNCTION.fx_trace({A}&lt;%CHILD_SI_NAME%&gt;)$$</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <PINITIALIZE/>
+        <PTERMINATE/>
+        <DELTAID>sapd%$rep.$NAME%privilege</DELTAID>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>0</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="8973DDEB-407E-4B7C-BFB6-754713E240A5">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Update MX_PERSON with BOBJ account</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>-- SQL file: fx_bobj_load_write_users.sql
+$FUNCTION.fx_trace(
+
+select 
+    c.mcmskeyvalue as MSKEYVALUE
+    ,a.si_name
+    ,a.si_id
+    ,b.fx_aliases_si_name
+    ,b.fx_aliases_si_id
+    ,b.fx_aliases_si_disabled
+    ,a.si_userfullname
+    ,a.si_description
+    ,a.si_email_address
+    from fx_%$rep.$NAME%_user a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    inner join idmv_entry_simple c $FUNCTION.fx_db_nolock()$$
+    on a.si_name=c.mcmskeyvalue
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    order by c.mcmskeyvalue
+
+)$$</FROMSQL>
+        <REPOSITORY>6</REPOSITORY>
+        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <COMPACTDB/>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>$FUNCTION.fx_trace(%MSKEYVALUE%)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PERSON</mx:value>
+          </mx:attr>
+          <mx:attr name="#Foxysoft:">
+            <mx:value>This job only modifies existing persons, but never creates new ones</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="ACCOUNT%$rep.$NAME%">
+            <mx:value>%SI_NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MXREF_MX_PRIVILEGE">
+            <mx:value>{A}{DIRECT_REFERENCE=1}&lt;%$rep.SYSTEM_PRIVILEGE%&gt;|{A}{DIRECT_REFERENCE=1}&lt;PRIV:%$rep.$NAME%:ONLY&gt;</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <DELTAID>sapd%$rep.$NAME%user</DELTAID>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>0</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+      </mx:Pass>
+      <mx:Pass name="8DBC8EA8-7289-46E4-B45F-A1FA7D5F2C8C">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Write group to group assignment</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>-- SQL file: fx_bobj_load_group_to_group_privs.sql
+$FUNCTION.fx_trace(
+
+with enterprise_groups_cte as (
+select 
+    a.si_name
+    ,a.si_id
+    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    --Exclude groups that have any non-Enterprise aliases,
+    --as BOBJ will treat these as third-party groups and
+    --will not allow assignment/unassignment
+    and not exists (
+        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
+        where c.si_id=a.si_id
+        and c.fx_aliases_si_name not like 'secEnterprise:%'
+    )
+    --Exclude Everyone group, as it is managed internally by BOBJ
+    and not a.si_name = 'Everyone'
+)
+select 
+    a.si_id    as parent_si_id
+    ,a.si_name as parent_si_name
+    ,c.si_id   as child_si_id
+    ,c.si_name as child_si_name
+    
+    from enterprise_groups_cte a
+    inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    inner join enterprise_groups_cte c $FUNCTION.fx_db_nolock()$$
+    on b.si_subgroups=c.si_id
+    
+    order by a.si_name,c.si_name
+
+)$$
+</FROMSQL>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>0</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>GROUP:%$rep.$NAME%:%PARENT_SI_NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_GROUP</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MXMEMBER_MX_GROUP">
+            <mx:value>{A}&lt;GROUP:%$rep.$NAME%:%CHILD_SI_NAME%&gt;</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <PINITIALIZE/>
+        <PTERMINATE/>
+        <DELTAID>sapd%$rep.$NAME%groupGroupAssign</DELTAID>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>0</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="6D00D20D-B160-40E8-B5FE-D8EF73872DA6">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Write user to group assignment</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>--SQL file: fx_bobj_load_user_to_group.sql
+$FUNCTION.fx_trace(
+
+with enterprise_groups_cte as (
+select 
+    a.si_name
+    ,a.si_id
+    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    --Exclude groups that have any non-Enterprise aliases,
+    --as BOBJ will treat these as third-party groups and
+    --will not allow assignment/unassignment
+    and not exists (
+        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
+        where c.si_id=a.si_id
+        and c.fx_aliases_si_name not like 'secEnterprise:%'
+    )
+    --Exclude Everyone group, as it is managed internally by BOBJ
+    and not a.si_name = 'Everyone'
+)
+select 
+    a.si_id    as parent_si_id
+    ,a.si_name as parent_si_name
+    ,c.si_id   as child_si_id
+    ,c.si_name as child_si_name
+    
+    from enterprise_groups_cte a
+    inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    inner join fx_%$rep.$NAME%_user c $FUNCTION.fx_db_nolock()$$
+    on b.si_group_members=c.si_id
+    --Exclude users that exists in BOBJ, but not in IDM
+    inner join idmv_entry_simple d $FUNCTION.fx_db_nolock()$$
+    on d.mcmskeyvalue=c.si_name
+    
+    order by a.si_name,c.si_name
+
+)$$</FROMSQL>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>10%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>$FUNCTION.fx_trace(GROUP:%$rep.$NAME%:%PARENT_SI_NAME%)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_GROUP</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MXMEMBER_MX_PERSON">
+            <mx:value>$FUNCTION.fx_trace({A}&lt;%CHILD_SI_NAME%&gt;)$$</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <PINITIALIZE/>
+        <PTERMINATE/>
+        <DELTAID>sapd%$rep.$NAME%userGroupAssign</DELTAID>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>0</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="74CC8D53-A009-4506-ADEC-2F0D158EB942">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Write group to group privilege assignment</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>-- SQL file: fx_bobj_load_group_to_group_privs.sql
+$FUNCTION.fx_trace(
+
+with enterprise_groups_cte as (
+select 
+    a.si_name
+    ,a.si_id
+    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    --Exclude groups that have any non-Enterprise aliases,
+    --as BOBJ will treat these as third-party groups and
+    --will not allow assignment/unassignment
+    and not exists (
+        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
+        where c.si_id=a.si_id
+        and c.fx_aliases_si_name not like 'secEnterprise:%'
+    )
+    --Exclude Everyone group, as it is managed internally by BOBJ
+    and not a.si_name = 'Everyone'
+)
+select 
+    a.si_id    as parent_si_id
+    ,a.si_name as parent_si_name
+    ,c.si_id   as child_si_id
+    ,c.si_name as child_si_name
+    
+    from enterprise_groups_cte a
+    inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    inner join enterprise_groups_cte c $FUNCTION.fx_db_nolock()$$
+    on b.si_subgroups=c.si_id
+    
+    order by a.si_name,c.si_name
+
+)$$</FROMSQL>
+        <REPOSITORY>6</REPOSITORY>
+        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>0</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>$FUNCTION.fx_trace(PRIV:GROUP:%$rep.$NAME%:%PARENT_SI_NAME%)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MXMEMBER_MX_GROUP">
+            <mx:value>{A}&lt;GROUP:%$rep.$NAME%:%CHILD_SI_NAME%&gt;</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <PINITIALIZE/>
+        <PTERMINATE/>
+        <DELTAID/>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>0</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="709E2601-B8CF-4E54-B042-A5883AE38573">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Create BOBJ account privilege</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB/>
+        <FROMSQL/>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>PRIV:%$rep.$NAME%:ONLY</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ADD_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_DEL_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_ADD_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_DEL_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="DESCRIPTION">
+            <mx:value>%description%</mx:value>
+          </mx:attr>
+          <mx:attr name="DISPLAYNAME">
+            <mx:value>PRIV_%$rep.$NAME%_ONLY</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_REPOSITORYNAME">
+            <mx:value>%$rep.$NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_PRIVILEGE_TYPE">
+            <mx:value>%$rep.REPOSITORY_TYPE%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_IS_ACCOUNT">
+            <mx:value>1</mx:value>
+          </mx:attr>
+          <mx:attr name="MXAC_ENTRY">
+            <mx:value>2</mx:value>
+          </mx:attr>
+          <mx:attr name="MXAC_MEMBERS">
+            <mx:value>2</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <COMPACTDB/>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="227C5882-3005-46F1-AD5F-016735EE67C7">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Create BOBJ system privilege</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB/>
+        <FROMSQL/>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>%$rep.SYSTEM_PRIVILEGE%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ADD_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_DEL_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_ADD_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_DEL_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="DISPLAYNAME">
+            <mx:value>PRIV_SYSTEM_%$rep.$NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="DESCRIPTION">
+            <mx:value>System privilege for SAP BusinessObjects repositories</mx:value>
+          </mx:attr>
+          <mx:attr name="MXAC_ENTRY">
+            <mx:value>2</mx:value>
+          </mx:attr>
+          <mx:attr name="MXAC_MEMBERS">
+            <mx:value>2</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_INHERIT">
+            <mx:value>Base</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_REPOSITORYNAME">
+            <mx:value>%$rep.$NAME%</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <COMPACTDB/>
+      </mx:Pass>
+      <mx:Pass name="372FA40C-6780-4F43-A532-50AB56E7D67E">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Enable  triggers to BOBJ group privileges</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <REPOSITORY>6</REPOSITORY>
+        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <COMPACTDB/>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>$FUNCTION.fx_trace(%MSKEYVALUE%)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="ChangeType">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_REQ_PRIV">
+            <mx:value>&lt;PRIV:%$rep.$NAME%:ONLY&gt;</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ADD_MEMBER_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_DEL_MEMBER_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_ADD_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_DEL_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>--SQL file: 2015-11-30_enable_triggers_to_bobj_group_priv.sql
+$FUNCTION.fx_trace(
+select 
+    mcmskeyvalue as MSKEYVALUE
+    from idmv_entry_simple $FUNCTION.fx_db_nolock()$$
+    where mcmskeyvalue like 'PRIV:GROUP:%$rep.$NAME%:%'
+    order by mcmskeyvalue
+)$$</FROMSQL>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="122DE16A-5352-4807-8407-122D718BA47C">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Enable triggers to BOBJ account privilege</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <COMPACTDB/>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>PRIV:%$rep.$NAME%:ONLY</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="ChangeType">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MXAC_MEMBERS">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MXAC_ENTRY">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ADD_MEMBER_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_DEL_MEMBER_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_ADD_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_DEL_TASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="AD12C94F-E892-4A34-8035-B23DB13CDA50">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Enable triggers to BOBJ system privilege</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <REPOSITORY>7</REPOSITORY>
+        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <COMPACTDB/>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>%$rep.SYSTEM_PRIVILEGE%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="ChangeType">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ADD_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_DEL_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_ADD_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_DEL_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK">
+            <mx:value>{D}</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="FA76E66F-9DDE-4BB5-8DA9-611015DAC868">
+        <TYPE>ToODBC</TYPE>
+        <DESCRIPTION>Create account attribute</DESCRIPTION>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>1</IDSTORE>
+        <SQLUPDATE>1</SQLUPDATE>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <REPOSITORY>7</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DeltaKey">
+            <mx:value>No_DeltaKey</mx:value>
+          </mx:attr>
+          <mx:attr name="Item1">
+            <mx:value>$FUNCTION.fx_db_getProcedureCallSyntax(mxi_schema_create_attr_ns!!%$glb.SAP_MASTER_IDS_ID%,'ACCOUNT%$rep.$NAME%','','Account name in repository %$rep.$NAME%',0,1)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="Item2">
+            <mx:value>$FUNCTION.fx_db_getProcedureCallSyntax(mxi_schema_add_attr_to_oc_ns!!%$glb.SAP_MASTER_IDS_ID%,'MX_PERSON','ACCOUNT%$rep.$NAME%',0,1)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="Item3">
+            <mx:value>$FUNCTION.fx_db_getProcedureCallSyntax(mxi_schema_add_attr_to_oc_ns!!%$glb.SAP_MASTER_IDS_ID%,'MX_GROUP','ACCOUNT%$rep.$NAME%',0,1)$$</mx:value>
+          </mx:attr>
+          <mx:attr name="Item4">
+            <mx:value>$FUNCTION.fx_db_getProcedureCallSyntax(mxi_schema_add_attr_to_oc_ns!!%$glb.SAP_MASTER_IDS_ID%,'MX_PRIVILEGE','ACCOUNT%$rep.$NAME%',0,1)$$</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <FROMDB/>
+        <FROMSQL/>
+        <ENTRYSCRIPT/>
+      </mx:Pass>
+      <mx:Pass name="AA5C2A6D-1A74-41AC-B4FD-7FAD01A146CC">
+        <TYPE>ToODBC</TYPE>
+        <DESCRIPTION>Prepare MX_REPOSITORYNAME attribute</DESCRIPTION>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>1</IDSTORE>
+        <SQLUPDATE>1</SQLUPDATE>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <REPOSITORY>7</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DeltaKey">
+            <mx:value>No_DeltaKey</mx:value>
+          </mx:attr>
+          <mx:attr name="Item4">
+            <mx:value>$FUNCTION.fx_db_getProcedureCallSyntax(mxi_schema_add_attr_to_oc_ns!!%$glb.SAP_MASTER_IDS_ID%,'MX_GROUP','MX_REPOSITORYNAME',0,1)$$</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <FROMDB/>
+        <FROMSQL/>
+        <ENTRYSCRIPT/>
+      </mx:Pass>
+      <mx:Pass name="B2F17BF6-8331-4FE6-9A35-2B215DE9B3C9">
+        <TYPE>To Generic</TYPE>
+        <DESCRIPTION>Wait 15 Seconds to avoid provisioning when triggers are set too early</DESCRIPTION>
+        <READFROMPVO>0</READFROMPVO>
+        <DELTAENABLED>0</DELTAENABLED>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>0</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DUMMY">
+            <mx:value>$FUNCTION.fx_sleep(15000)$$</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>1</IDSTORE>
+        <REPOSITORY>7</REPOSITORY>
+        <MAXDELETE>5%</MAXDELETE>
+      </mx:Pass>
+      <mx:Pass name="67EB4ED0-73AD-4467-A138-FA97751FD86E">
+        <TYPE>To Generic</TYPE>
+        <DESCRIPTION>Enable this pass to interrupt the execution of the job at this point.</DESCRIPTION>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <REPOSITORY>7</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <PINITIALIZE>sap_core_stopJobExecution</PINITIALIZE>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DUMMY">
+            <mx:value>$FUNCTION.fx_stop()$$</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
+      </mx:Pass>
+      <mx:Pass name="F5AB2A97-6FCC-497A-98AD-180927778DEB">
+        <TYPE>To Generic</TYPE>
+        <DESCRIPTION>===== BEGIN: READ BOBJ =====</DESCRIPTION>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>1</IDSTORE>
+        <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DUMMY">
+            <mx:value>DUMMY</mx:value>
+          </mx:attr>
+        </mx:Class>
+      </mx:Pass>
+      <mx:Pass name="0A4CA716-6C44-40CE-A846-CB2F3B42A582">
+        <TYPE>To Generic</TYPE>
+        <DESCRIPTION>===== END: READ BOBJ =====</DESCRIPTION>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>1</IDSTORE>
+        <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DUMMY">
+            <mx:value>DUMMY</mx:value>
+          </mx:attr>
+        </mx:Class>
+      </mx:Pass>
+      <mx:Pass name="F9B86CCE-0B57-41B8-8171-71F78FD24942">
+        <TYPE>ToODBC</TYPE>
+        <DESCRIPTION>Drop temporary tables</DESCRIPTION>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>1</IDSTORE>
+        <SQLUPDATE>1</SQLUPDATE>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="DeltaKey">
+            <mx:value>No_DeltaKey</mx:value>
+          </mx:attr>
+          <mx:attr name="Item1">
+            <mx:value>if object_id(N'FX_%$rep.$NAME%_USER') is not null
+    drop table FX_%$rep.$NAME%_USER;</mx:value>
+          </mx:attr>
+          <mx:attr name="Item2">
+            <mx:value>if object_id(N'FX_%$rep.$NAME%_GROUP') is not null
+    drop table FX_%$rep.$NAME%_GROUP;</mx:value>
+          </mx:attr>
+          <mx:attr name="Item3">
+            <mx:value>if object_id(N'FX_%$rep.$NAME%_MEMBER') is not null
+    drop table FX_%$rep.$NAME%_MEMBER;</mx:value>
+          </mx:attr>
+          <mx:attr name="Item4">
+            <mx:value>if object_id(N'FX_%$rep.$NAME%_ALIAS') is not null
+    drop table FX_%$rep.$NAME%_ALIAS;</mx:value>
+          </mx:attr>
+        </mx:Class>
+      </mx:Pass>
+      <mx:Pass name="37CB6421-80B4-4B9D-BBAC-49CABF0E3089">
+        <TYPE>Fromsource Generic</TYPE>
+        <DESCRIPTION>Read BOBJ users</DESCRIPTION>
+        <DELTABLE>1</DELTABLE>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="SI_NAME">
+            <mx:value>NVARCHAR,255,SI_NAME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_ID">
+            <mx:value>INT,,SI_ID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_USERFULLNAME">
+            <mx:value>NVARCHAR,255,SI_USERFULLNAME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_DESCRIPTION">
+            <mx:value>NVARCHAR,255,SI_DESCRIPTION</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_EMAIL_ADDRESS">
+            <mx:value>NVARCHAR,255,SI_EMAIL_ADDRESS</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CREATION_TIME">
+            <mx:value>NVARCHAR,255,SI_CREATION_TIME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_UPDATE_TS">
+            <mx:value>NVARCHAR,255,SI_UPDATE_TS</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_FLAGS">
+            <mx:value>INT,,SI_FLAGS</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_KIND">
+            <mx:value>NVARCHAR,255,SI_KIND</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_OWNER">
+            <mx:value>NVARCHAR,255,SI_OWNER</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_OWNERID">
+            <mx:value>INT,,SI_OWNERID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CUID">
+            <mx:value>NVARCHAR,255,SI_CUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_RUID">
+            <mx:value>NVARCHAR,255,SI_RUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_GUID">
+            <mx:value>NVARCHAR,255,SI_GUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PARENTID">
+            <mx:value>INT,,SI_PARENTID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PARENT_CUID">
+            <mx:value>NVARCHAR,255,SI_PARENT_CUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CHANGEPASSWORD">
+            <mx:value>NVARCHAR,255,SI_CHANGEPASSWORD</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_FORCE_PASSWORD_CHANGE">
+            <mx:value>NVARCHAR,255,SI_FORCE_PASSWORD_CHANGE</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_APPLICATION_OBJECT">
+            <mx:value>NVARCHAR,255,SI_APPLICATION_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CHILDREN">
+            <mx:value>INT,,SI_CHILDREN</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PASSWORDEXPIRE">
+            <mx:value>NVARCHAR,255,SI_PASSWORDEXPIRE</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_HIDDEN_OBJECT">
+            <mx:value>NVARCHAR,255,SI_HIDDEN_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_SYSTEM_OBJECT">
+            <mx:value>NVARCHAR,255,SI_SYSTEM_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PROGID">
+            <mx:value>NVARCHAR,255,SI_PROGID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_INSTANCE_OBJECT">
+            <mx:value>NVARCHAR,255,SI_INSTANCE_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_RUNNABLE_OBJECT">
+            <mx:value>NVARCHAR,255,SI_RUNNABLE_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_NAMEDUSER">
+            <mx:value>NVARCHAR,255,SI_NAMEDUSER</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PARENT_FOLDER">
+            <mx:value>INT,,SI_PARENT_FOLDER</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_SENDABLE">
+            <mx:value>NVARCHAR,255,SI_SENDABLE</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PLUGIN_OBJECT">
+            <mx:value>NVARCHAR,255,SI_PLUGIN_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_COMPONENT">
+            <mx:value>NVARCHAR,255,SI_COMPONENT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_INSTANCE">
+            <mx:value>NVARCHAR,255,SI_INSTANCE</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <DBTABLE>FX_%$rep.$NAME%_USER</DBTABLE>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <SCRIPTOPENPAR>%$rep.LDAP_HOST%!!%$rep.LDAP_PORT%!!%$rep.LDAP_LOGIN%!!%$rep.LDAP_PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTNEXTPAR/>
+        <SCRIPTCLOSEPAR/>
+        <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
+        <SCRIPTNEXT>fx_bobj_nextUserEntry</SCRIPTNEXT>
+        <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
+      </mx:Pass>
+      <mx:Pass name="ECEFBACB-FBEF-4569-BF18-C7523CB92180">
+        <TYPE>Fromsource Generic</TYPE>
+        <DESCRIPTION>Read BOBJ groups</DESCRIPTION>
+        <DELTABLE>1</DELTABLE>
+        <DBTABLE>FX_%$rep.$NAME%_GROUP</DBTABLE>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="SI_NAME">
+            <mx:value>NVARCHAR,255,SI_NAME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_ID">
+            <mx:value>INT,,SI_ID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_DESCRIPTION">
+            <mx:value>NVARCHAR,255,SI_DESCRIPTION</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_USERGROUP_HAS_ENT_CHILDREN">
+            <mx:value>NVARCHAR,255,SI_USERGROUP_HAS_ENT_CHILDREN</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CREATION_TIME">
+            <mx:value>NVARCHAR,255,SI_CREATION_TIME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_UPDATE_TS">
+            <mx:value>NVARCHAR,255,SI_UPDATE_TS</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_FLAGS">
+            <mx:value>INT,,SI_FLAGS</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_KIND">
+            <mx:value>NVARCHAR,255,SI_KIND</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_OWNER">
+            <mx:value>NVARCHAR,255,SI_OWNER</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_OWNERID">
+            <mx:value>INT,,SI_OWNERID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CUID">
+            <mx:value>NVARCHAR,255,SI_CUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_GUID">
+            <mx:value>NVARCHAR,255,SI_GUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_RUID">
+            <mx:value>NVARCHAR,255,SI_RUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PARENTID">
+            <mx:value>INT,,SI_PARENTID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PARENT_CUID">
+            <mx:value>NVARCHAR,255,SI_PARENT_CUID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PARENT_FOLDER">
+            <mx:value>INT,,SI_PARENT_FOLDER</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_APPLICATION_OBJECT">
+            <mx:value>NVARCHAR,255,SI_APPLICATION_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_CHILDREN">
+            <mx:value>INT,,SI_CHILDREN</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_COMPONENT">
+            <mx:value>NVARCHAR,255,SI_COMPONENT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_HIDDEN_OBJECT">
+            <mx:value>NVARCHAR,255,SI_HIDDEN_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_INSTANCE">
+            <mx:value>NVARCHAR,255,SI_INSTANCE</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_INSTANCE_OBJECT">
+            <mx:value>NVARCHAR,255,SI_INSTANCE_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PLUGIN_OBJECT">
+            <mx:value>NVARCHAR,255,SI_PLUGIN_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_PROGID">
+            <mx:value>NVARCHAR,255,SI_PROGID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_RUNNABLE_OBJECT">
+            <mx:value>NVARCHAR,255,SI_RUNNABLE_OBJECT</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_SENDABLE">
+            <mx:value>NVARCHAR,255,SI_SENDABLE</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_SYSTEM_OBJECT">
+            <mx:value>NVARCHAR,255,SI_SYSTEM_OBJECT</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <SCRIPTOPENPAR>%$rep.LDAP_HOST%!!%$rep.LDAP_PORT%!!%$rep.LDAP_LOGIN%!!%$rep.LDAP_PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTNEXTPAR/>
+        <SCRIPTCLOSEPAR/>
+        <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
+        <SCRIPTNEXT>fx_bobj_nextGroupEntry</SCRIPTNEXT>
+        <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
+      </mx:Pass>
+      <mx:Pass name="00B85685-8417-4BEA-8154-264026B267E8">
+        <TYPE>Fromsource Generic</TYPE>
+        <DESCRIPTION>Read BOBJ group members</DESCRIPTION>
+        <DELTABLE>1</DELTABLE>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="SI_NAME">
+            <mx:value>NVARCHAR,255,SI_NAME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_ID">
+            <mx:value>INT,,SI_ID</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_SUBGROUPS">
+            <mx:value>INT,,SI_SUBGROUPS</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_GROUP_MEMBERS">
+            <mx:value>INT,,SI_GROUP_MEMBERS</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <DBTABLE>FX_%$rep.$NAME%_MEMBER</DBTABLE>
+        <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
+        <SCRIPTNEXT>fx_bobj_nextMemberEntry</SCRIPTNEXT>
+        <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
+        <SCRIPTOPENPAR>%$rep.LDAP_HOST%!!%$rep.LDAP_PORT%!!%$rep.LDAP_LOGIN%!!%$rep.LDAP_PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTNEXTPAR/>
+        <SCRIPTCLOSEPAR/>
+      </mx:Pass>
+      <mx:Pass name="5D7C2214-CABD-4616-AE85-AA13EAD3A8E1">
+        <TYPE>Fromsource Generic</TYPE>
+        <DESCRIPTION>Read BOBJ user and group aliases</DESCRIPTION>
+        <DELTABLE>1</DELTABLE>
+        <TODB>%$ddm.identitycenter%</TODB>
+        <DBTABLE>FX_%$rep.$NAME%_ALIAS</DBTABLE>
+        <REPOSITORY>6</REPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="SI_NAME">
+            <mx:value>NVARCHAR,255,SI_NAME</mx:value>
+          </mx:attr>
+          <mx:attr name="SI_ID">
+            <mx:value>INT,,SI_ID</mx:value>
+          </mx:attr>
+          <mx:attr name="FX_ALIASES_SI_ID">
+            <mx:value>NVARCHAR,255,FX_ALIASES_SI_ID</mx:value>
+          </mx:attr>
+          <mx:attr name="FX_ALIASES_SI_NAME">
+            <mx:value>NVARCHAR,255,FX_ALIASES_SI_NAME</mx:value>
+          </mx:attr>
+          <mx:attr name="FX_ALIASES_SI_DISABLED">
+            <mx:value>NVARCHAR,255,FX_ALIASES_SI_DISABLED</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
+        <SCRIPTNEXT>fx_bobj_nextAliasEntry</SCRIPTNEXT>
+        <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
+        <SCRIPTOPENPAR>%$rep.LDAP_HOST%!!%$rep.LDAP_PORT%!!%$rep.LDAP_LOGIN%!!%$rep.LDAP_PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTNEXTPAR/>
+        <SCRIPTCLOSEPAR/>
+      </mx:Pass>
+      <mx:Pass name="3F8B3805-8240-4E03-A5AB-B92BC13737D1">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Write groups</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>-- SQL file: fx_bobj_load_write_groups.sql
+$FUNCTION.fx_trace(
+
+select 
+    a.si_name
+    ,a.si_id
+    ,b.fx_aliases_si_name
+    ,b.fx_aliases_si_id
+    ,b.fx_aliases_si_disabled
+    ,a.si_description
+    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    --Exclude groups that have any non-Enterprise aliases,
+    --as BOBJ will treat these as third-party groups and
+    --will not allow assignment/unassignment
+    and not exists (
+        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
+        where c.si_id=a.si_id
+        and c.fx_aliases_si_name not like 'secEnterprise:%'
+    )
+    order by a.si_name
+
+)$$</FROMSQL>
+        <REPOSITORY>6</REPOSITORY>
+        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <COMPACTDB/>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>GROUP:%$rep.$NAME%:%SI_NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_GROUP</mx:value>
+          </mx:attr>
+          <mx:attr name="DISPLAYNAME">
+            <mx:value>%SI_NAME%-Group (%$rep.$NAME%)</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_REPOSITORYNAME">
+            <mx:value>%$rep.$NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="ACCOUNT%$rep.$NAME%">
+            <mx:value>%SI_NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MXREF_MX_PRIVILEGE">
+            <mx:value>{A}{DIRECT_REFERENCE=1}&lt;PRIV:%$rep.$NAME%:ONLY&gt;|{A}{DIRECT_REFERENCE=1}&lt;%$rep.SYSTEM_PRIVILEGE%&gt;</mx:value>
+          </mx:attr>
+          <mx:attr name="DESCRIPTION">
+            <mx:value>%SI_DESCRIPTION%</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <DELTAID/>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>2</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+        <PASSDOC/>
+      </mx:Pass>
+      <mx:Pass name="B514B68F-14B8-4855-83A0-3F2A3183EA12">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Write group privileges</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>-- SQL file: 2015-11-30_bobj_initial_load_write_groups.sql
+$FUNCTION.fx_trace(
+
+select 
+    a.si_name
+    ,a.si_id
+    ,b.fx_aliases_si_name
+    ,b.fx_aliases_si_id
+    ,b.fx_aliases_si_disabled
+    ,a.si_description
+    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
+    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
+    on a.si_id=b.si_id
+    where b.fx_aliases_si_name like 'secEnterprise:%'
+    --Exclude groups that have any non-Enterprise aliases,
+    --as BOBJ will treat these as third-party groups and
+    --will not allow assignment/unassignment
+    and not exists (
+        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
+        where c.si_id=a.si_id
+        and c.fx_aliases_si_name not like 'secEnterprise:%'
+    )
+    --Exclude Everyone group, as it is managed internally by BOBJ
+    and not a.si_name = 'Everyone'    
+    order by a.si_name
+
+)$$</FROMSQL>
+        <REPOSITORY>6</REPOSITORY>
+        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <COMPACTDB/>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>10%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>PRIV:GROUP:%$rep.$NAME%:%SI_NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ADD_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_DEL_MEMBER_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_ADD_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_VALIDATE_DEL_TASK">
+            <mx:value>-1</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_REPOSITORYNAME">
+            <mx:value>%$rep.$NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="DISPLAYNAME">
+            <mx:value>%SI_NAME%-Group (%$rep.$NAME%)</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_PRIVILEGE_TYPE">
+            <mx:value>GROUP</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_GROUP_INHERITANCE">
+            <mx:value>ONE</mx:value>
+          </mx:attr>
+          <mx:attr name="ACCOUNT%$rep.$NAME%">
+            <mx:value>%SI_NAME%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_IS_ACCOUNT">
+            <mx:value>0</mx:value>
+          </mx:attr>
+          <mx:attr name="#MXAC_ENTRY">
+            <mx:value>2</mx:value>
+          </mx:attr>
+          <mx:attr name="#MXAC_MEMBERS">
+            <mx:value>2</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_INHERIT">
+            <mx:value>Base</mx:value>
+          </mx:attr>
+          <mx:attr name="MXMEMBER_MX_GROUP">
+            <mx:value>{A}&lt;GROUP:%$rep.$NAME%:%SI_NAME%&gt;</mx:value>
+          </mx:attr>
+          <mx:attr name="DESCRIPTION">
+            <mx:value>%SI_DESCRIPTION%</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <DELTAID/>
+        <AUDITLEVEL>0</AUDITLEVEL>
+        <AUTODELETE>2</AUTODELETE>
+        <UPDATEDB>%$ddm.identitycenter%</UPDATEDB>
+      </mx:Pass>
+      <mx:Pass name="3718E533-E38F-455A-A351-C7706EE86965">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Clear modify triggers</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <REPOSITORY>5</REPOSITORY>
+        <SOURCEREPOSITORY>5</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>2</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>%$rep.SYSTEM_PRIVILEGE%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK_ATTR">
+            <mx:value>{R}</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <COMPACTDB/>
+      </mx:Pass>
+      <mx:Pass name="0314410F-1533-416C-A40A-BE69AAE03B17">
+        <TYPE>ToIDStore</TYPE>
+        <DESCRIPTION>Set modify triggers from global constant</DESCRIPTION>
+        <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+        <DELIMITER>|</DELIMITER>
+        <STOREID>%$glb.SAP_MASTER_IDS_ID%</STOREID>
+        <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+        <PROBE>0</PROBE>
+        <USEIDSTORE>0</USEIDSTORE>
+        <IDSTORE>0</IDSTORE>
+        <REPOSITORY>6</REPOSITORY>
+        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <DELTAENABLED>0</DELTAENABLED>
+        <MAXDELETE>5%</MAXDELETE>
+        <SKIP>1</SKIP>
+        <JUSTDELTA>0</JUSTDELTA>
+        <MARKDEL>1</MARKDEL>
+        <CURRTAB>1</CURRTAB>
+        <mx:Class>
+          <mx:attr name="MSKEYVALUE">
+            <mx:value>%$rep.SYSTEM_PRIVILEGE%</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_ENTRYTYPE">
+            <mx:value>MX_PRIVILEGE</mx:value>
+          </mx:attr>
+          <mx:attr name="changetype">
+            <mx:value>modify</mx:value>
+          </mx:attr>
+          <mx:attr name="MX_MODIFYTASK_ATTR">
+            <mx:value>{A}%ATTR_ID%</mx:value>
+          </mx:attr>
+        </mx:Class>
+        <COMPACTDB/>
+        <FROMDB>%$ddm.identitycenter%</FROMDB>
+        <FROMSQL>--SQL file: 2015-11-30_set_custom_modify_triggers_bobj.sql
+$FUNCTION.fx_trace(
+
+select
+    attr_id
+    ,attrname
+    from mxi_attributes $FUNCTION.fx_db_nolock()$$
+    where attrname in ( $FUNCTION.fx_bobj_getModifyTriggers()$$ )
+    and is_id=%$glb.SAP_MASTER_IDS_ID%
+
+)$$</FROMSQL>
+        <ENTRYSCRIPT/>
+      </mx:Pass>
+    </mx:Job>
+  </mx:DSEJobs>
+</mx:EMS>
