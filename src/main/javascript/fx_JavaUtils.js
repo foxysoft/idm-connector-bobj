@@ -166,7 +166,7 @@ var fx_JavaUtils = (function() {
          */
         handleException: function(iv_location, io_exception)
         {
-            var SCRIPT = "fxi_handle_exception: ";
+            var SCRIPT = "fx_JavaUtils=>handleException: ";
             fx_trace(SCRIPT
                      + "Entering iv_location="
                      + iv_location
