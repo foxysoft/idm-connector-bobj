@@ -27,6 +27,14 @@ limitations under the License.
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+<dependencies>
+<dependency>
+  <!-- Required for BASE64 encoding during XSL transform -->
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.10</version>
+</dependency>
+</dependencies>
   <build>
     <plugins>
       <plugin>
@@ -49,7 +57,7 @@ limitations under the License.
           <transformationSets>
             <transformationSet>
               <dir>src/main/xml</dir>
-              <stylesheet>src/main/xsl/test.xsl</stylesheet>
+              <stylesheet>src/main/xsl/fi_global_scripts.xsl</stylesheet>
             </transformationSet>
           </transformationSets>
         </configuration>
