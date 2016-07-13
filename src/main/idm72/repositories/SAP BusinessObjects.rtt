@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<mx:EMS xmlns:mx="http://www.maxware.com/EMS">
+  <mx:GUID>24F081AD-8288-43EE-A7FD-E3EE49D3A83C</mx:GUID>
+  <mx:VERSION>1.0</mx:VERSION>
+  <mx:Description>Repository template for SAP BusinessObjects</mx:Description>
+  <mx:Globals>
+    <!-- Set repository type to LDAP, although BOBJ is actually not. -->
+    <!-- The rationale is that REPOSITORY_TYPE is checked at many    -->
+    <!-- places inside SAP code, and from a provisioning point of    -->
+    <!-- view, BOBJ and LDAP are very similar (membership is stored  -->
+    <!-- at the group etc.).                                         -->
+    <mx:attr name="$REPOSITORY_TYPE">
+      <mx:value>LDAP</mx:value>
+      <mx:prompt>Repository Type</mx:prompt>
+      <mx:description>Repository Type</mx:description>
+      <mx:type>0</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$HOST">
+      <mx:value>bihost</mx:value>
+      <mx:prompt>Host name of CMS</mx:prompt>
+      <mx:description>Host name or IP address of CMS</mx:description>
+      <mx:type>0</mx:type>
+    </mx:attr>
+    <mx:attr name="$PORT">
+      <mx:value>6400</mx:value>
+      <mx:prompt>Name Server Port</mx:prompt>
+      <mx:description/>
+      <mx:type>0</mx:type>
+    </mx:attr>
+    <mx:attr name="$LOGIN">
+      <mx:value>Administrator</mx:value>
+      <mx:prompt>Login user</mx:prompt>
+      <mx:description/>
+      <mx:type>0</mx:type>
+    </mx:attr>
+    <mx:attr name="$PASSWORD">
+      <mx:value/>
+      <mx:prompt>Password</mx:prompt>
+      <mx:description/>
+      <mx:type>4</mx:type>
+    </mx:attr>
+    <!-- BEGIN: References to SAP tasks -->
+    <mx:attr name="$MX_ADD_MEMBER_TASK">
+      <mx:value>2F6ED70C-29CC-0578-BF9A-92957B59BB42</mx:value>
+      <mx:prompt>Add member task</mx:prompt>
+      <mx:description>Add member task</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_DEL_MEMBER_TASK">
+      <mx:value>1243492B-D6D4-CE1B-E2F9-6555C9B2F2A9</mx:value>
+      <mx:prompt>Del member task</mx:prompt>
+      <mx:description>Provision task</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_MODIFYTASK">
+      <mx:value>90A10713-4962-2BC0-F149-629F550D8BAE</mx:value>
+      <mx:prompt>Modify task</mx:prompt>
+      <mx:description>Modify task</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <!-- END: References to SAP tasks -->
+    <mx:attr name="$REPOSITORY_SYNC">
+      <mx:value>SYNC</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description></mx:description>
+      <mx:type>0</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK1_TASK">
+      <mx:value>7D82F230-293E-49F4-AAD1-FEB29B080F64</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>User provisioning</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK2_TASK">
+      <mx:value>18E7AD55-4AEE-4CB9-9E67-24478FE34FF5</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Modify user</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK3_TASK">
+      <mx:value>656F1B05-D37B-4397-AC00-A88504D5BD4A</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Delete user</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK4_TASK">
+      <mx:value>676DE593-524A-45D9-A0D2-B46524CC12AD</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Assign user membership</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK5_TASK">
+      <mx:value>1E1B7BAC-8B33-454A-90BB-6660C2B33CBE</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Revoke user membership</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK6_TASK">
+      <mx:value>AA781DCE-AFB9-435C-A39A-C3E86600DFC1</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Enable user</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK7_TASK">
+      <mx:value>7DB85C23-C349-43CB-A762-28F9C7A0EDE4</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Disable user</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK8_TASK">
+      <mx:value>906A4935-12A0-4CE2-901C-FAC7915FB2AC</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Set user password</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK9_TASK">
+      <!-- Reserved -->
+      <mx:value>-1</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Reserved</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK10_TASK">
+      <mx:value>-1</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Create group</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$MX_HOOK11_TASK">
+      <mx:value>-1</mx:value>
+      <mx:prompt></mx:prompt>
+      <mx:description>Delete group</mx:description>
+      <mx:type>5</mx:type>
+      <mx:hide>1</mx:hide>
+    </mx:attr>
+    <mx:attr name="$SYSTEM_PRIVILEGE">
+      <mx:value>PRIV:SYSTEM:replace with repository name</mx:value>
+      <mx:prompt>System privilege</mx:prompt>
+      <mx:description></mx:description>
+      <mx:type>0</mx:type>
+    </mx:attr>
+  </mx:Globals>
+</mx:EMS>
