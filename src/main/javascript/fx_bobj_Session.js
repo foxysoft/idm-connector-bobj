@@ -15,40 +15,67 @@ var fx_bobj_Session = (function () {
      */
     var go_info_store = null;
 
+    /**
+     * @private
+     * @param {string?} iv_value - any string
+     * @param {string} iv_repo_const_name - repository constant name
+     * @return {string} - if iv_value is defined and not null,
+     * returns iv_value, otherwise returns value of the repository
+     * constant retrieved using uGetConstant().
+     */
+    function getValueOrRepoConst(iv_value, iv_repo_const_name)
+    {
+        return (typeof iv_value != "undefined" && iv_value != null)
+            ? iv_value
+            : uGetConstant("rep."+iv_repo_const_name)
+        ;
+    }
+
     var go_result = {
 
         /**
-         * Connect to the BO CMS (Central Management Server)
-         * using the supplied host, port, user and password.
-         * @param {string} iv_params - <pre>
-         * iv_params := cms_host!!nameserver_port!!user!!password
-         * </pre>
+         * <p>Connect to the BO CMS (Central Management Server)
+         * using the supplied host, port, user and password.</p>
+         * <p>All parameters are optional and will be defaulted
+         * from the respective constants of the current repository
+         * if supplied as null or undefined.</p>
+         * @param {string?} iv_host - CMS host name or IP address
+         * @param {string?} iv_port - Name server port
+         * @param {string?} iv_login - User name for login
+         * @param {string?} iv_password - Password for login
          * @throws {java.lang.Exception} - if logon fails
          */
-        logon: function(iv_params)
+        logon: function(iv_host, iv_port, iv_login, iv_password)
         {
             var SCRIPT = "fx_bobj_Session=>logon: ";
-            fx_trace(SCRIPT+"Entering iv_params="+iv_params);
-            var lt_params = (""+iv_params).split("!!");
+            fx_trace(SCRIPT+"Entering");
 
-            var lv_host     = lt_params.shift();
-            var lv_port     = lt_params.shift();
-            var lv_user     = lt_params.shift();
-            var lv_password = lt_params.join("!!");
+            var lv_host = getValueOrRepoConst(iv_host, "HOST");
+            var lv_port = getValueOrRepoConst(iv_port, "PORT");
+            var lv_login = getValueOrRepoConst(iv_login, "LOGIN");
+            var lv_password = getValueOrRepoConst(iv_password, "PASSWORD");
+
+            var lv_cms = lv_host+":"+lv_port;
+            fx_trace(SCRIPT+"Logging on as "+lv_login+" to "+lv_cms);
 
             var lo_session_manager
                     = CrystalEnterprise.getSessionMgr()
             ;
 
-            var lv_cms = lv_host+":"+lv_port;
-            fx_trace(SCRIPT+"Logging on as "+lv_user+" to "+lv_cms);
+            var lv_start_millis = java.lang.System.currentTimeMillis();
 
             go_session = lo_session_manager.logon(
-                lv_user
+                lv_login
                 , lv_password
                 , lv_cms
                 , "secEnterprise"
             );
+
+            var lv_end_millis = java.lang.System.currentTimeMillis();
+            fx_trace(SCRIPT
+                     + "Logon took "
+                     + ( (lv_end_millis - lv_start_millis) / 1000 )
+                     + " seconds");
 
             go_info_store = go_session.getService("InfoStore");
 
