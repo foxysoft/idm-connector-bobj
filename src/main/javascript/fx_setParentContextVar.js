@@ -48,6 +48,8 @@ function fx_setParentContextVar(iv_params)
                 var lv_parent_audit_id = lv_sql_result;
                 lv_sql_result = null;
 
+                var lo_exception = null;
+
                 var lo_connection
                         = java.sql.DriverManager.getConnection(
                             "%$ddm.identitycenter%"
@@ -56,9 +58,15 @@ function fx_setParentContextVar(iv_params)
                          + "Opened connection"
                          + " lo_connection="+lo_connection);
 
-                // Auto commit is typically on on ORA JDBC;
+                // Auto commit is typically on on ORA and DB2;
                 // turn it off to avoid unwanted side-effects
-                if(lo_connection.getAutoCommit())
+                var lv_auto_commit = lo_connection.getAutoCommit();
+
+                var lv_database_type = "%$ddm.databasetype%";
+
+                if(lv_database_type == "2" // ORA
+                   || lv_database_type == "5" //DB2
+                  )
                 {
                     fx_trace(SCRIPT+"Disabling autocommit");
                     lo_connection.setAutoCommit(false);
@@ -143,9 +151,33 @@ function fx_setParentContextVar(iv_params)
             }
             if(lo_connection != null)
             {
+                // Always commit/rollback explicitly,
+                // even where we're in auto-commit mode
+                try
+                {
+                    if(lo_exception == null)
+                    {
+                        lo_connection.commit();
+                        fx_trace(SCRIPT+"Connection committed");
+                    }
+                    else
+                    {
+                        lo_connection.rollback();
+                        fx_trace(SCRIPT+"Connection rolled back");
+                    }
+                }//try
+                catch(lo_inner_ex)
+                {
+                    uError(SCRIPT+lo_inner_ex);
+                }
+
+                // Restore auto-commit to original state
+                lo_connection.setAutoCommit(lv_auto_commit);
+
                 lo_connection.close();
                 fx_trace(SCRIPT+"Connection closed");
-            }
+
+            }//if(lo_connection != null)
         }// if(lv_sql_result != ""
         //     && lv_sql_result.toUpperCase() != "NULL")
         else
