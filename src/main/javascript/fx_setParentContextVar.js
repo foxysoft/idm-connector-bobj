@@ -1,12 +1,8 @@
 /**
- * Set a context variable for the parent audit of the current audit
- * and returns the value of that context variable.
- * Can only be used in provisioning tasks.
- *
- * This function internally calls stored procedure MXP_XSET_CONTEXT_VAR
- * via JDBC. For the details of calling a stored procedure with
- * output parameters via JDBC on MS SQL Server, see the documentation
- * at https://msdn.microsoft.com/en-us/library/ms378108.aspx
+ * <p>Set a context variable for the parent audit of the current audit
+ * and returns the value of that context variable.</p>
+ * <p>Can only be used in provisioning tasks. This function internally
+ * calls stored procedure MXP_XSET_CONTEXT_VAR via JDBC.</p>
  *
  * @param {string} iv_params - <pre>
  *     iv_params := var_name!!var_value
@@ -59,6 +55,14 @@ function fx_setParentContextVar(iv_params)
                 fx_trace(SCRIPT
                          + "Opened connection"
                          + " lo_connection="+lo_connection);
+
+                // Auto commit is typically on on ORA JDBC;
+                // turn it off to avoid unwanted side-effects
+                if(lo_connection.getAutoCommit())
+                {
+                    fx_trace(SCRIPT+"Disabling autocommit");
+                    lo_connection.setAutoCommit(false);
+                }
 
                 var lo_statement = lo_connection.prepareCall(
                     "{call mxp_xset_context_var(?,?,?,?,?)}"
