@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
   <mx:GUID>6CA1EBB9-7BA5-4066-BBB2-F905D21D8029</mx:GUID>
   <mx:VERSION>1.0</mx:VERSION>
@@ -57,6 +57,7 @@
         <mx:Function name="fx_db_getProcedureCallSyntax" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
         <mx:Function name="fx_db_nolock" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
         <mx:Function name="fx_bobj_getModifyTriggers" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
+        <mx:Function name="fx_db_getDropIfExistsSyntax" Script="JScript" Enabled="TRUE" GlobalScript="TRUE"/>
       </mx:Functions>
       <mx:Common>
         <ENGINETYPE>1</ENGINETYPE>
@@ -122,8 +123,8 @@ select
     order by a.si_name,c.si_name
 
 )$$</FROMSQL>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>10%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -185,8 +186,8 @@ select
     order by c.mcmskeyvalue
 
 )$$</FROMSQL>
-        <REPOSITORY>6</REPOSITORY>
-        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <COMPACTDB/>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
@@ -268,8 +269,8 @@ select
 
 )$$
 </FROMSQL>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>0</MAXDELETE>
         <SKIP>1</SKIP>
@@ -349,8 +350,8 @@ select
     order by a.si_name,c.si_name
 
 )$$</FROMSQL>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>10%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -427,8 +428,8 @@ select
     order by a.si_name,c.si_name
 
 )$$</FROMSQL>
-        <REPOSITORY>6</REPOSITORY>
-        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>0</MAXDELETE>
         <SKIP>1</SKIP>
@@ -469,8 +470,8 @@ select
         <IDSTORE>0</IDSTORE>
         <FROMDB/>
         <FROMSQL/>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -536,8 +537,8 @@ select
         <IDSTORE>0</IDSTORE>
         <FROMDB/>
         <FROMSQL/>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -597,8 +598,8 @@ select
         <PROBE>0</PROBE>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
-        <REPOSITORY>6</REPOSITORY>
-        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <COMPACTDB/>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
@@ -656,8 +657,8 @@ select
         <PROBE>0</PROBE>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <COMPACTDB/>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
@@ -709,8 +710,8 @@ select
         <PROBE>0</PROBE>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
-        <REPOSITORY>7</REPOSITORY>
-        <SOURCEREPOSITORY>7</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <COMPACTDB/>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
@@ -753,7 +754,7 @@ select
         <IDSTORE>1</IDSTORE>
         <SQLUPDATE>1</SQLUPDATE>
         <TODB>%$ddm.identitycenter%</TODB>
-        <REPOSITORY>7</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -788,7 +789,7 @@ select
         <IDSTORE>1</IDSTORE>
         <SQLUPDATE>1</SQLUPDATE>
         <TODB>%$ddm.identitycenter%</TODB>
-        <REPOSITORY>7</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -824,7 +825,7 @@ select
         <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>1</IDSTORE>
-        <REPOSITORY>7</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <MAXDELETE>5%</MAXDELETE>
       </mx:Pass>
       <mx:Pass name="67EB4ED0-73AD-4467-A138-FA97751FD86E">
@@ -832,7 +833,7 @@ select
         <DESCRIPTION>Enable this pass to interrupt the execution of the job at this point.</DESCRIPTION>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
-        <REPOSITORY>7</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -853,7 +854,7 @@ select
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>1</IDSTORE>
         <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -872,7 +873,7 @@ select
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>1</IDSTORE>
         <SCRIPTNEXT>fx_nop</SCRIPTNEXT>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -892,7 +893,7 @@ select
         <IDSTORE>1</IDSTORE>
         <SQLUPDATE>1</SQLUPDATE>
         <TODB>%$ddm.identitycenter%</TODB>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -904,20 +905,16 @@ select
             <mx:value>No_DeltaKey</mx:value>
           </mx:attr>
           <mx:attr name="Item1">
-            <mx:value>if object_id(N'FX_%$rep.$NAME%_USER') is not null
-    drop table FX_%$rep.$NAME%_USER;</mx:value>
+            <mx:value>$FUNCTION.fx_db_getDropIfExistsSyntax(FX_%$rep.$NAME%_USER)$$</mx:value>
           </mx:attr>
           <mx:attr name="Item2">
-            <mx:value>if object_id(N'FX_%$rep.$NAME%_GROUP') is not null
-    drop table FX_%$rep.$NAME%_GROUP;</mx:value>
+            <mx:value>$FUNCTION.fx_db_getDropIfExistsSyntax(FX_%$rep.$NAME%_GROUP)$$</mx:value>
           </mx:attr>
           <mx:attr name="Item3">
-            <mx:value>if object_id(N'FX_%$rep.$NAME%_MEMBER') is not null
-    drop table FX_%$rep.$NAME%_MEMBER;</mx:value>
+            <mx:value>$FUNCTION.fx_db_getDropIfExistsSyntax(FX_%$rep.$NAME%_MEMBER)$$</mx:value>
           </mx:attr>
           <mx:attr name="Item4">
-            <mx:value>if object_id(N'FX_%$rep.$NAME%_ALIAS') is not null
-    drop table FX_%$rep.$NAME%_ALIAS;</mx:value>
+            <mx:value>$FUNCTION.fx_db_getDropIfExistsSyntax(FX_%$rep.$NAME%_ALIAS)$$</mx:value>
           </mx:attr>
         </mx:Class>
       </mx:Pass>
@@ -925,7 +922,7 @@ select
         <TYPE>Fromsource Generic</TYPE>
         <DESCRIPTION>Read BOBJ users</DESCRIPTION>
         <DELTABLE>1</DELTABLE>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -1044,7 +1041,7 @@ select
         <DESCRIPTION>Read BOBJ groups</DESCRIPTION>
         <DELTABLE>1</DELTABLE>
         <DBTABLE>FX_%$rep.$NAME%_GROUP</DBTABLE>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -1147,7 +1144,7 @@ select
         <DESCRIPTION>Read BOBJ group members</DESCRIPTION>
         <DELTABLE>1</DELTABLE>
         <TODB>%$ddm.identitycenter%</TODB>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -1182,7 +1179,7 @@ select
         <DELTABLE>1</DELTABLE>
         <TODB>%$ddm.identitycenter%</TODB>
         <DBTABLE>FX_%$rep.$NAME%_ALIAS</DBTABLE>
-        <REPOSITORY>6</REPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -1249,8 +1246,8 @@ select
     order by a.si_name
 
 )$$</FROMSQL>
-        <REPOSITORY>6</REPOSITORY>
-        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <COMPACTDB/>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
@@ -1325,8 +1322,8 @@ select
     order by a.si_name
 
 )$$</FROMSQL>
-        <REPOSITORY>6</REPOSITORY>
-        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <COMPACTDB/>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>10%</MAXDELETE>
@@ -1405,8 +1402,8 @@ select
         <PROBE>0</PROBE>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
-        <REPOSITORY>5</REPOSITORY>
-        <SOURCEREPOSITORY>5</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
@@ -1439,8 +1436,8 @@ select
         <PROBE>0</PROBE>
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
-        <REPOSITORY>6</REPOSITORY>
-        <SOURCEREPOSITORY>6</SOURCEREPOSITORY>
+        <REPOSITORY>1</REPOSITORY>
+        <SOURCEREPOSITORY>1</SOURCEREPOSITORY>
         <DELTAENABLED>0</DELTAENABLED>
         <MAXDELETE>5%</MAXDELETE>
         <SKIP>1</SKIP>
