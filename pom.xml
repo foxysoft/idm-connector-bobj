@@ -80,7 +80,7 @@ limitations under the License.
         <configuration>
           <transformationSets>
             <transformationSet>
-              <dir>src/main/xml</dir>
+              <dir>src/main/idm72/globalscripts</dir>
               <stylesheet>src/main/xsl/fi_global_scripts.xsl</stylesheet>
             </transformationSet>
             <transformationSet>

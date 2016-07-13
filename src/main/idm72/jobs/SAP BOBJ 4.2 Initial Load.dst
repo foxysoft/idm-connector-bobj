@@ -164,7 +164,7 @@ select
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
         <FROMDB>%$ddm.identitycenter%</FROMDB>
-        <FROMSQL>-- SQL file: fx_bobj_load_write_users.sql
+        <FROMSQL>-- SQL file: fx_bobj_load_users.sql
 $FUNCTION.fx_trace(
 
 select 
@@ -637,7 +637,7 @@ select
           </mx:attr>
         </mx:Class>
         <FROMDB>%$ddm.identitycenter%</FROMDB>
-        <FROMSQL>--SQL file: 2015-11-30_enable_triggers_to_bobj_group_priv.sql
+        <FROMSQL>--SQL file: fx_bobj_load_enable_triggers.sql
 $FUNCTION.fx_trace(
 select 
     mcmskeyvalue as MSKEYVALUE
@@ -1029,7 +1029,7 @@ select
         </mx:Class>
         <DBTABLE>FX_%$rep.$NAME%_USER</DBTABLE>
         <TODB>%$ddm.identitycenter%</TODB>
-        <SCRIPTOPENPAR>%$rep.HOST%!!%$rep.PORT%!!%$rep.LOGIN%!!%$rep.PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTOPENPAR/>
         <SCRIPTNEXTPAR/>
         <SCRIPTCLOSEPAR/>
         <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
@@ -1132,7 +1132,7 @@ select
           </mx:attr>
         </mx:Class>
         <TODB>%$ddm.identitycenter%</TODB>
-        <SCRIPTOPENPAR>%$rep.HOST%!!%$rep.PORT%!!%$rep.LOGIN%!!%$rep.PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTOPENPAR/>
         <SCRIPTNEXTPAR/>
         <SCRIPTCLOSEPAR/>
         <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
@@ -1169,7 +1169,7 @@ select
         <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
         <SCRIPTNEXT>fx_bobj_nextMemberEntry</SCRIPTNEXT>
         <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
-        <SCRIPTOPENPAR>%$rep.HOST%!!%$rep.PORT%!!%$rep.LOGIN%!!%$rep.PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTOPENPAR/>
         <SCRIPTNEXTPAR/>
         <SCRIPTCLOSEPAR/>
       </mx:Pass>
@@ -1206,7 +1206,7 @@ select
         <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
         <SCRIPTNEXT>fx_bobj_nextAliasEntry</SCRIPTNEXT>
         <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
-        <SCRIPTOPENPAR>%$rep.HOST%!!%$rep.PORT%!!%$rep.LOGIN%!!%$rep.PASSWORD%</SCRIPTOPENPAR>
+        <SCRIPTOPENPAR/>
         <SCRIPTNEXTPAR/>
         <SCRIPTCLOSEPAR/>
       </mx:Pass>
@@ -1221,7 +1221,7 @@ select
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
         <FROMDB>%$ddm.identitycenter%</FROMDB>
-        <FROMSQL>-- SQL file: fx_bobj_load_write_groups.sql
+        <FROMSQL>-- SQL file: fx_bobj_load_groups.sql
 $FUNCTION.fx_trace(
 
 select 
@@ -1295,7 +1295,7 @@ select
         <USEIDSTORE>0</USEIDSTORE>
         <IDSTORE>0</IDSTORE>
         <FROMDB>%$ddm.identitycenter%</FROMDB>
-        <FROMSQL>-- SQL file: 2015-11-30_bobj_initial_load_write_groups.sql
+        <FROMSQL>-- SQL file: fx_bobj_load_groups.sql
 $FUNCTION.fx_trace(
 
 select 
@@ -1460,7 +1460,7 @@ select
         </mx:Class>
         <COMPACTDB/>
         <FROMDB>%$ddm.identitycenter%</FROMDB>
-        <FROMSQL>--SQL file: 2015-11-30_set_custom_modify_triggers_bobj.sql
+        <FROMSQL>--SQL file: fx_bobj_load_set_triggers.sql
 $FUNCTION.fx_trace(
 
 select

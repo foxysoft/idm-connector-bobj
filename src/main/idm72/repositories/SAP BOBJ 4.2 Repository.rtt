@@ -2,7 +2,7 @@
 <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
   <mx:GUID>24F081AD-8288-43EE-A7FD-E3EE49D3A83C</mx:GUID>
   <mx:VERSION>1.0</mx:VERSION>
-  <mx:Description>Repository template for SAP BusinessObjects</mx:Description>
+  <mx:Description>Repository template for SAP BusinessObjects 4.2</mx:Description>
   <mx:Globals>
     <!-- Set repository type to LDAP, although BOBJ is actually not. -->
     <!-- The rationale is that REPOSITORY_TYPE is checked at many    -->
