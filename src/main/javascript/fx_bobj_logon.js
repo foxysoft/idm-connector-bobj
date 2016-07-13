@@ -1,16 +1,15 @@
 /**
- * Function wrapper for {@link fx_bobj_Session.logon} which
- * handles any exceptions thrown by the class method.
+ * <div>Connects to the BOBJ Central Management Server (CMS).</div>
  * @param {string?} iv_params - <pre>
  * iv_params := [host[!!port[!!login[!!password]]]]
  * </pre>
  * Parameters will be defaulted from the respective constants
  * of the current repository if not supplied or null.
- * @return {string} - empty on success, or error message prefixed
+ * @return {string} - empty on success or !ERROR-prefixed message
  * with !ERROR in case of exception
  * @requires fx_bobj_Session
  * @requires fx_JavaUtils
- * @see fx_bobj_Session#logon
+ * @see fx_bobj_Session.logon
  */
 function fx_bobj_logon(iv_params)
 {

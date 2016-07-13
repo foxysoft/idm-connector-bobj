@@ -1,3 +1,9 @@
+/**
+ * Get database-specific SQL syntax for dropping a table if it exists.
+ * @param {string} iv_params - table name
+ * @return {string} SQL statement
+ * @requires fx_trace
+ */
 function fx_db_getDropIfExistsSyntax(iv_params)
 {
     var SCRIPT = "fx_db_getDropIfExistsSyntax: ";

@@ -1,9 +1,7 @@
 /**
- * Decrypts iv_ciphertext using internal function uDecrypt
- * and returns cleartext in the default character encoding
- * of the JRE.
+ * Decrypts ciphertext with default algorithm and character encoding.
  * @param {string} iv_ciphertext - encrypted data
- * @param {string} - decrypted text
+ * @return {string} - cleartext
  */
 function fx_decrypt(iv_ciphertext)
 {

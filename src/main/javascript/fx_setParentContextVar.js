@@ -1,9 +1,8 @@
 /**
- * <p>Set a context variable for the parent audit of the current audit
- * and returns the value of that context variable.</p>
- * <p>Can only be used in provisioning tasks. This function internally
- * calls stored procedure MXP_XSET_CONTEXT_VAR via JDBC.</p>
- *
+ * <div>Set context variable in parent of current audit.</div>
+ * <div>Can only be used in provisioning tasks. This function internally
+ * calls stored procedure MXP_XSET_CONTEXT_VAR via JDBC.</div>
+ * @see fx_setContextVar
  * @param {string} iv_params - <pre>
  *     iv_params := var_name!!var_value
  * </pre>

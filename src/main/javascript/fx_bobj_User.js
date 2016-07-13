@@ -410,6 +410,7 @@ var fx_bobj_User = (function() {
          * @public
          * @name fx_bobj_User.modify
          * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+         * @throws {java.lang.Exception}
          */
         create: function(io_entry)
         {
@@ -453,11 +454,12 @@ var fx_bobj_User = (function() {
         },//create
 
         /**
-         * Remove (delete) a BusinessObjects user
+	 * Removes/deletes a BOBJ user.
          * @function
          * @public
          * @name fx_bobj_User.remove
-         * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+	 * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+         * @throws {java.lang.Exception}
          */
         remove: function(io_entry)
         {

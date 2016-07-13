@@ -8,30 +8,27 @@ var fx_bobj_EntryReader = (function() {
     /**
      * Iterator over info object collection returned from the BO CMS
      * in response to a query for all user objects submitted
-     * by function read_entries.
+     * by function read().
      *
      * @type {java.util.Iterator
      *        <com.crystaldecisions.sdk.occa.infostore.IInfoObject>}
      *
-     * Initialized and cleaned up by function read_entries.
+     * Initialized and cleaned up by function read().
      */
     var go_entries_iterator = null;
 
     var go_result = {
 
         /**
-         * Executes SQL query iv_query and returns all
-         * corresponding entries from the CMS as DSE entry.
-         *
-         * @param {java.lang.String} iv_kind -
+	 * Retrieves next BOBJ group, if any, during initial load.
+         * @function
+         * @public
+         * @name fx_bobj_EntryReader.read
+         * @param {string} iv_kind -
          *        Type of object to be retrieved,
          *        e.g. IUser.SI_KIND or IUserGroup.SI_KIND
-         *
-         * @return {com.sap.idm.ic.DSEEntry} -
-         *         InfoObject of kind 'User' or 'UserGroup'
-         *         retrieved from BO CMS and transformed
-         *         into an IDM DSE entry.
-         *         Returns null when all data has been read.
+	 * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
+         * if no more entries of type iv_kind
          */
         read: function(iv_kind)
         {

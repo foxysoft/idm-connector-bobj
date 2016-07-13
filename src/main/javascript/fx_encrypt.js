@@ -1,10 +1,7 @@
 /**
- * @param {string} iv_cleartext
- * @return {string} - iv_cleartext encrypted using internal function
- *         uEncrypt() with the default symmetrical encryption
- *         algorithm, the default encryption key and the default
- *         characer encoding of the JRE, e.g. CP-1252 for Windows
- *         server with German localization.
+ * Encrypts cleartext with default algorithm, key and character encoding.
+ * @param {string} iv_cleartext - cleartext data
+ * @return {string} - ciphertext
  */
 function fx_encrypt(iv_cleartext)
 {

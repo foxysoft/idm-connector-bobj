@@ -1,9 +1,9 @@
 /**
- * <p>Returns all attribute names from global constant FX_BOBJ_MODIFY_TRIGGERS
- * as a comma-separated list, with each element surrounded by
- * single quotes. The result is suitable for use in an SQL IN-list.</p>
- * <p>If the global constant is empty, the following attributes will be
- * returned by default:</p>
+ * <div>Returns all attribute names with BOBJ modify triggers.</div>
+ * <div>Returns the content of <strong>global constant 
+ * FX_BOBJ_MODIFY_TRIGGERS</strong> as a comma-separated list, with 
+ * each element surrounded by single quotes. If FX_BOBJ_MODIFY_TRIGGERS
+ * is empty, returns these attribute names by default:</div>
  * <table>
  * <tr><td>MXREF_MX_GROUP</td></tr>
  * <tr><td>MXMEMBER_MX_GROUP</td></tr>

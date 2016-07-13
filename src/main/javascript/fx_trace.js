@@ -1,7 +1,7 @@
 /**
- * Writes a warning message for debugging purposes to the job log
- * if global constant FX_TRACE is set to 1.
- * 
+ * <div>Writes message to log if global constant FX_TRACE is 1.</div>
+ * <div>The severity of the message is <strong>WARNING</strong>, so
+ * it shows up in the log without any additional tweaks.</div>
  * @param {string} iv_message - trace message
  * @return {string} iv_message
  */

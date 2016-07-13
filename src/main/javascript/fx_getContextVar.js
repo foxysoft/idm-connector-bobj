@@ -1,9 +1,10 @@
 /**
+ * Get context variable using uGetContextVar()
  * @param {string} iv_params - <pre>
  *     iv_params := var_name[!!default_value]
  * </pre>
- * @return {string} - value of context variable named var_name,
- *         or default_value if no such context variable exists
+ * @return {string} - value of context variable or default value
+ *         if variable doesn't exist 
  * @requires fx_trace
  */
 function fx_getContextVar(iv_params)

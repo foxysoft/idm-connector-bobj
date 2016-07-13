@@ -1,6 +1,8 @@
 /**
+ * Retrieves next BOBJ group, if any, during initial load.
+ * @see fx_bobj_EntryReader.read
+ * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null if no more aliases
  * @requires fx_bobj_EntryReader
- * @see fx_bobjEntryReader#read
  */
 function fx_bobj_nextGroupEntry()
 {

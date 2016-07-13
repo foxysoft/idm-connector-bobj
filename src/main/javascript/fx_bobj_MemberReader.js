@@ -7,17 +7,6 @@
  */
 var fx_bobj_MemberReader = (function() {
 
-    /*
-     function importClass(){}
-     var Packages;
-     function fx_trace(){}
-     var fx_bobj_CeProperties;
-     var CePropertyID;
-     function fx_bobj_Session(){}
-     var IUserGroup;
-     var fx_JavaUtils;
-     */
-
     /**
      * Internal state of read(). Initialized and cleaned up by read().
      * @type {MemberReaderState}
@@ -123,15 +112,13 @@ var fx_bobj_MemberReader = (function() {
 
     var go_result = {
         /**
-         * Reads users and subgroups of all groups
-         * from the BO CMS. Users that have neither
-         * users nor subgroups will not be returned.
-         *
-         * @return {com.sap.idm.ic.DSEEntry} -
-         *         Exactly one membership relation
-         *         between a user group and one of its
-         *         members.
-         */
+	 * Retrieves next BOBJ group member, if any, during initial load.
+         * @function
+         * @public
+         * @name fx_bobj_MemberReader.read
+	 * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
+         *          if no more members
+	 */
         read: function()
         {
             var SCRIPT = "fx_bobj_MemberReader=>read: ";

@@ -1,7 +1,7 @@
 /**
- * Modify a BOBJ group by adding/removing user members
- * @see {@link fx_bobj_Group.modifyMembers}
- * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+ * Modifies a BOBJ group by adding/removing user members
+ * @see fx_bobj_Group.modifyMembers
+ * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
  * @return {string} - empty on success or skips entry on failure
  * @requires fx_bobj_Group
  * @requires fx_JavaUtils

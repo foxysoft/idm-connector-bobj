@@ -1,7 +1,8 @@
 /**
- * Creates a BOBJ user and skips current entry on failure.
- * @param {com.sap.idm.ic.DSEEntry} io_entry - DSE entry
- * @return {string} - empty on success
+ * Creates a new BOBJ user.
+ * @see fx_bobj_User.create
+ * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+ * @return {string} - empty on success or skips entry on failure
  * @requires fx_bobj_User
  * @requires fx_JavaUtils
  */

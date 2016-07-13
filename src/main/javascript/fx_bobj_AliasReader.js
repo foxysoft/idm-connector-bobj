@@ -6,18 +6,6 @@
  * @requires fx_trace
  */
 var fx_bobj_AliasReader = (function() {
-    /*
-     function fx_trace(){}
-     var fx_JavaUtils;
-     var fx_bobj_ReaderUtils;
-     var fx_bobj_Session;
-     var CePropertyID;
-     var IUser;
-     var IUserGroup;
-     function importClass(){}
-     var Packages;
-     */
-
     /**
      * Internal state of function read(). Initialized and cleaned up
      * by function read():
@@ -218,13 +206,12 @@ var fx_bobj_AliasReader = (function() {
 
     var go_result = {
         /**
-         * Read all user and group aliases from BOBJ CMS
-         *
-         * @return {com.sap.idm.ic.DSEEntry}
-         *         Excactly one alias of a user or
-         *         user group, transformed into an IDM
-         *         DSE entry, or null when all data has
-         *         been read.
+         * Reads all user and group aliases from BOBJ CMS
+         * @function
+         * @public
+         * @name fx_bobj_AliasReader.read
+         * @return {com.sap.idm.ic.DSEEntry} - IDM entry or null if
+         *         no more aliases
          */
         read: function()
         {

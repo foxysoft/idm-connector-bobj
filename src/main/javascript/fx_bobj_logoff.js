@@ -1,7 +1,9 @@
 /**
+ * Disconnects from the BOBJ Central Management Server (CMS).
+ * @returns {string} - empty on success or !ERROR-prefixed message
  * @requires fx_bobj_Session
  * @requires fx_JavaUtils
- * @see fx_bobj_Session#logoff
+ * @see fx_bobj_Session.logoff
  */
 function fx_bobj_logoff()
 {

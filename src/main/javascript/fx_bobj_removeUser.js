@@ -1,7 +1,8 @@
 /**
- * Remove (delete) a BOBJ user or skip current entry on error
- * @param {com.sap.idm.ic.DSEEntry} - IDM entry
- * @return {string} - empty on success
+ * Removes/deletes a BOBJ user.
+ * @see fx_bobj_User.remove
+ * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+ * @return {string} - empty on success or skips entry on failure
  * @requires fx_bobj_User
  * @requires fx_JavaUtils
  */

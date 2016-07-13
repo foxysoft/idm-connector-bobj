@@ -1,6 +1,7 @@
 /**
- * @return {string} - the SQL query hint "with (nolock)", surrounded by
- * space, if running on MSSQL, otherwise an empty string.
+ * Get database-specific SQL query hint for transaction isolation level.
+ * @return {string} - On MSS, returns <pre>with (nolock)</pre>, surrounded by
+ * space. On other databases, returns empty string.
  */
 function fx_db_nolock()
 {

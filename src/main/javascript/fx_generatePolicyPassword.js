@@ -1,15 +1,25 @@
 /**
- * Generates a new password compliant to password policy
- * of the SAP master identity store.
+ * <div>Generate random password compliant with IDM's password policy.</div>
+ * <div>This function uses a subset of the password policy defined for
+ * identity store SAP_MASTER_IDS_ID, specifically minimum length, maximum 
+ * length, mixed case and mixed letters and numbers.</div>
+ * <div>Use the following global constants for additional customizing:</div>
+ * <table>
+ * <tr><th>Constant</th><th>Description</th></tr>
+ * <tr><td>FX_PASSWORD_EXCLUDE_CHARS</td>
+ *     <td>Characters that must never occur in passwords</td>
+ * </tr>
+ * <tr><td>FX_PASSWORD_INCLUDE_SPECIALS</td>
+ *     <td>Special characters to include in passwords.
+ *         If non-empty, at least one of these special
+ *         characters will occur in every password.</td>
+ * </tr>
+ * </table>
  * @function
- * @return {string} - generated password
- *         or error message prefixed with !ERROR
+ * @return {string} - cleartext password or !ERROR-prefixed message
  * @requires fx_trace
  * @requires fx_db_nolock
  * @requires fx_JavaUtils
- * @requires Global constant FX_PASSWORD_EXCLUDE_CHARS
- * @requires Global constant FX_PASSWORD_INCLUDE_SPECIALS
- * @requires Global constant SAP_MASTER_IDS_ID
  */
 var fx_generatePolicyPassword = (function() {
 

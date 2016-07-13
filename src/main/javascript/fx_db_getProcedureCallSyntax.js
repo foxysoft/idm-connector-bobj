@@ -1,4 +1,5 @@
 /**
+ * Get database-specific SQL syntax for dropping a table if it exists.
  * Get the database-specific SQL syntax for calling a stored procedure.
  * @param {string} iv_params - <pre>
  * iv_params      := procedure_name[!!procedure_args]
@@ -10,8 +11,7 @@
  * procedure_args is a comma-separated list of arguments to pass
  * to the stored procedure. This list may be empty.
  * Char-like arguments need to be surrounded by single quotes.
- * @return {string} - procedure call syntax
- * @requires fx_trace
+ * @return {string} SQL statement
  */
 function fx_db_getProcedureCallSyntax(iv_params)
 {

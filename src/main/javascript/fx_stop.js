@@ -1,6 +1,5 @@
 /**
- * Stops executing the job after it has processed the current entry
- * by calling internal function uStop().
+ * Stop current job after it has processed the current entry.
  * @param {string} iv_message - Supposed to be written to the job log,
  *        but seems to be ignored by uStop() in SAP IDM 7.2
  * @return {string} iv_message
