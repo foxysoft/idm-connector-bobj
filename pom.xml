@@ -23,7 +23,17 @@ limitations under the License.
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>idm-bobj-connector</name>
-  <url>http://www.foxysoft.de</url>
+  <inceptionYear>2016</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <organization>
+    <name>Foxysoft GmbH</name>
+    <url>http://foxsoft.de</url>
+  </organization>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
