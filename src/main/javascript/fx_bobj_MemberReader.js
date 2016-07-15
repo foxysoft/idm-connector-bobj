@@ -126,13 +126,13 @@ var fx_bobj_MemberReader = (function() {
 
     var go_result = {
         /**
-	 * Retrieves next BOBJ group member, if any, during initial load.
+         * Retrieves next BOBJ group member, if any, during initial load.
          * @function
          * @public
          * @name fx_bobj_MemberReader.read
-	 * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
+         * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
          *          if no more members
-	 */
+         */
         read: function()
         {
             var SCRIPT = "fx_bobj_MemberReader=>read: ";
