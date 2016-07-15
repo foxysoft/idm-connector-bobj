@@ -18,22 +18,17 @@
 var fx_bobj_CeProperties = (function() {
 
     /**
-     * Maps CE property IDs to CE property names.
-     * Initialized by function init_ce_properties,
-     * never cleaned up.
+     * Maps CE property IDs to CE property names. The keys in this
+     * map are property IDs, the values property names.
+     * Initialized by class_init(), never cleaned up.
      *
-     * @type {java.util.HashMap} - property bag with
-     * Keys:   Property ID   (java.lang.Integer)
-     * Values: Property Name (java.lang.String)
+     * @type {java.util.HashMap<java.lang.Integer,java.lang.String>} - 
      */
     var go_ce_properties = null;
 
     /**
-     * Used to convert java.util.Date instances
-     * to Strings using ISO8601 format.
-     *
-     * Initialized by function fxi_bobj_ce_properties_impl,
-     * never cleaned up. Used by function get_formatted_value.
+     * Used to convert java.util.Date instances to ISO8601 date strings.
+     * Initialized by class_init(), never cleaned up.
      *
      * @type {java.text.SimpleDateFormat}
      */
@@ -48,6 +43,9 @@ var fx_bobj_CeProperties = (function() {
          * a container, i.e. a property bag that contains
          * other properties in turn.
          *
+         * @function
+         * @public
+         * @name fx_bobj_CeProperties.isExportable
          * @param {com.crystaldecisions.sdk.properties.IProperties} io_props
          * @param {java.lang.Object} io_key
          * @return {boolean} true if io_key is exportable, false otherwise
@@ -78,6 +76,9 @@ var fx_bobj_CeProperties = (function() {
          * Uses global variable go_date_format
          * Uses com.crystaldecisions.sdk.occa.infostore.CePropertyID
          *
+         * @function
+         * @public
+         * @name fx_bobj_CeProperties.getFormattedValue
          * @param {com.crystaldecisions.sdk.properties.IProperties} io_props
          * @param {java.lang.Object} io_key
          * @return {java.lang.String} property value corresponding to io_key
@@ -111,13 +112,16 @@ var fx_bobj_CeProperties = (function() {
 
         /**
          * Get property name from property ID.
-         * @param {java.lang.Object} - iv_property_id
+         * @function
+         * @public
+         * @name fx_bobj_CeProperties.getName
+         * @param {java.lang.Integer} iv_property_id - property ID
          * @return {java.lang.String} - property name
          */
         getName: function(iv_property_id)
         {
             return go_ce_properties.get(iv_property_id);
-        }//get
+        }//getName
 
     }//go_result
     ;
