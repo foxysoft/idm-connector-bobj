@@ -30,28 +30,28 @@ limitations under the License.
   <fileSets>
     <fileSet>
       <directory>src/main/idm72/repositories</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory/>
       <includes>
         <include>*</include>
       </includes>
     </fileSet>
     <fileSet>
       <directory>src/main/idm72/jobs</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory/>
       <includes>
         <include>*</include>
       </includes>
     </fileSet>
     <fileSet>
       <directory>src/main/idm72/tasks</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory/>
       <includes>
         <include>*</include>
       </includes>
     </fileSet>
     <fileSet>
       <directory>${fx.genGlobalScriptsStage2Dir}</directory>
-      <outputDirectory>/</outputDirectory>
+      <outputDirectory/>
       <includes>
         <include>*.mcc</include>
       </includes>
