@@ -50,7 +50,7 @@ limitations under the License.
       </includes>
     </fileSet>
     <fileSet>
-      <directory>${project.build.directory}</directory>
+      <directory>${fx.genGlobalScriptsStage2Dir}</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>*.mcc</include>
