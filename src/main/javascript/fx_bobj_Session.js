@@ -12,7 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @class */
+/** 
+ * Connect/disconnect to BOBJ CMS and access InfoStore service
+ * @class 
+ */
 var fx_bobj_Session = (function () {
     /**
      * Session object from which service referenes can be obtained.
@@ -48,16 +51,19 @@ var fx_bobj_Session = (function () {
     var go_result = {
 
         /**
-         * <p>Connect to the BO CMS (Central Management Server)
-         * using the supplied host, port, user and password.</p>
-         * <p>All parameters are optional and will be defaulted
+         * <div>Logon to BOBJ CMS (Central Management Server).</div>
+         * <div>All parameters are optional and will be defaulted
          * from the respective constants of the current repository
-         * if supplied as null or undefined.</p>
-         * @param {string?} iv_host - CMS host name or IP address
-         * @param {string?} iv_port - Name server port
-         * @param {string?} iv_login - User name for login
-         * @param {string?} iv_password - Password for login
-         * @throws {java.lang.Exception} - if logon fails
+         * if supplied as null or undefined.</div>
+         * @function
+         * @public
+         * @name fx_bobj_Session.logon
+         *
+         * @param {string} [iv_host] - CMS host name or IP address
+         * @param {string} [iv_port] - Name server port
+         * @param {string} [iv_login] - User name for login
+         * @param {string} [iv_password] - Password for login
+         * @throws {java.lang.Exception} - in case of errors
          */
         logon: function(iv_host, iv_port, iv_login, iv_password)
         {
@@ -97,8 +103,13 @@ var fx_bobj_Session = (function () {
         },//logon
 
         /**
-         * Disconnect from the BO CMS if any active session exists.
-         * Does nothing otherwise.
+         * <div>Log off from BOBJ CMS (Central Management Server).</div>
+         * <div>If no active session exists when this method is called,
+         * it just returns silently without any error.</div>
+         * @function
+         * @public
+         * @name fx_bobj_Session.logoff
+         * @throws {java.lang.Exception} - in case of errors
          */
         logoff: function()
         {
@@ -139,6 +150,9 @@ var fx_bobj_Session = (function () {
 
         /**
          * Get the current session's info store, if any.
+         * @function
+         * @public
+         * @name fx_bobj_Session.getInfoStore
          * @throws {java.lang.Exception} - if there's no active session
          */
         getInfoStore: function()
@@ -151,9 +165,14 @@ var fx_bobj_Session = (function () {
         },//getInfoStore
 
         /**
+         * Retrieve InfoObject by name and kind from InfoStore service.
+         * @function
+         * @public
+         * @name fx_bobj_Session.lookupSingleInfoObject
+         *
          * @param {string} iv_name - SI_NAME of InfoObject
          * @param {string} iv_kind - SI_KIND of InfoObject
-         * @param {?string} iv_additional_props - comma-separated
+         * @param {string} [iv_additional_props] - comma-separated
          * list of additional attribute names to populate in the
          * InfoObject collection that will be returned. May be NULL.
          * @throws {java.lang.Exception} - If there's no active

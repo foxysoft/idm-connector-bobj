@@ -13,6 +13,7 @@
 // limitations under the License.
 
 /**
+ * Utility functions for working with BOBJ (Crystal Enterprise) properties
  * @class
  */
 var fx_bobj_CeProperties = (function() {
@@ -37,18 +38,18 @@ var fx_bobj_CeProperties = (function() {
     var go_result = {
 
         /**
-         * Checks whether a CE property is exportable or not,
-         * i.e. whether it is property whose name is documented
-         * via SDK class CePropertyID and whether it is not
-         * a container, i.e. a property bag that contains
-         * other properties in turn.
-         *
+         * <div>Check if property can be read into IDM during initial load.</div>
+         * <div>This check returns true if the property is documented
+         * as a public constant in SDK class 
+         * com.crystaldecisions.sdk.occa.infostore.CePropertyID and
+         * if it is not a property bag.</div>
          * @function
          * @public
          * @name fx_bobj_CeProperties.isExportable
          * @param {com.crystaldecisions.sdk.properties.IProperties} io_props
-         * @param {java.lang.Object} io_key
-         * @return {boolean} true if io_key is exportable, false otherwise
+         *        - property bag
+         * @param {java.lang.Object} io_key - property key
+         * @return {boolean} true if property is exportable, false otherwise
          */
         isExportable: function(io_props, io_key)
         {
@@ -67,22 +68,18 @@ var fx_bobj_CeProperties = (function() {
         },// isExportable
 
         /**
-         * Returns the property value for the key io_key.
-         * If io_key corresponds to one of the CE properties
+         * <div>Get formatted string value of a property.</div>
+         * <div>If io_key corresponds to one of the CE properties
          * whose values are known to have type java.util.Date,
          * this method will convert the Date into an ISO8601
-         * string representation of that java.util.Date object.
-         *
-         * Uses global variable go_date_format
-         * Uses com.crystaldecisions.sdk.occa.infostore.CePropertyID
-         *
+         * string representation of that java.util.Date object.</div>
          * @function
          * @public
          * @name fx_bobj_CeProperties.getFormattedValue
          * @param {com.crystaldecisions.sdk.properties.IProperties} io_props
-         * @param {java.lang.Object} io_key
-         * @return {java.lang.String} property value corresponding to io_key
-         *         or null
+         *        - property bag
+         * @param {java.lang.Object} io_key - property key
+         * @return {java.lang.String?} string value of property or null
          */
         getFormattedValue: function(io_props, io_key)
         {
@@ -111,7 +108,7 @@ var fx_bobj_CeProperties = (function() {
 
 
         /**
-         * Get property name from property ID.
+         * Convert numeric property ID to char-like property name.
          * @function
          * @public
          * @name fx_bobj_CeProperties.getName

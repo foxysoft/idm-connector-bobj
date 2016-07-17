@@ -13,6 +13,7 @@
 // limitations under the License.
 
 /**
+ * Read all available BOBJ entries of a given type during initial load.
  * @class
  * @requires fx_bobj_trace
  * @requires fx_bobj_Session
@@ -34,15 +35,17 @@ var fx_bobj_EntryReader = (function() {
     var go_result = {
 
         /**
-	 * Retrieves next BOBJ group, if any, during initial load.
+         * Retrieve next BOBJ entry, if any.
          * @function
          * @public
          * @name fx_bobj_EntryReader.read
+         * @see fx_bobj_nextUserEntry
+         * @see fx_bobj_nextGroupEntry
          * @param {string} iv_kind -
-         *        Type of object to be retrieved,
+         *        Type of BOBJ entry to be retrieved,
          *        e.g. IUser.SI_KIND or IUserGroup.SI_KIND
-	 * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
-         * if no more entries of type iv_kind
+         * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null
+         *          if no more entries of type iv_kind
          */
         read: function(iv_kind)
         {

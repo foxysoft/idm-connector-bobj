@@ -13,6 +13,7 @@
 // limitations under the License.
 
 /**
+ * Data manipulation functions for BOBJ groups
  * @class
  * @requires fx_trace
  * @requires fx_bobj_Session
@@ -22,19 +23,19 @@ var fx_bobj_Group = (function() {
 
     var go_result = {
         /**
-         * @function
+         * Add/remove user members to a BOBJ group.
          * @public
+         * @function
          * @name fx_bobj_Group.modifyGroupMembers
-         * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry<pre>
-         * IO_ENTRY :=
-         * <table>
-         * <tr><th>Key</th><th>Value</th></tr>
-         * <tr><td>SI_NAME</td><td>Name of group to assign to</td></tr>
-         * <tr><td>SI_GROUP_MEMBERS</td><td>USER_MEMBERS_DELTA</td></tr>
-         * </table>
-         * USER_MEMBERS_DELTA := [OPERATOR]SI_NAME[|[OPERATOR]SI_NAME]...
-         * SI_NAME := Name of user
-         * OPERATOR := {A}|{D}
+         * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+         * <pre>IO_ENTRY := {
+         * SI_NAME:             Group name (<strong>mandatory</strong>)
+         * SI_GROUP_MEMBERS:    DELTA_STRING
+         * }
+         *
+         * DELTA_STRING := [OPERATOR]SI_NAME[|[OPERATOR]SI_NAME]...
+         * SI_NAME      := Name of user
+         * OPERATOR     := {A}|{D}
          * </pre>
          * As usual, {A} means "add member", {D} means "remove member".
          * The default is {A}.

@@ -12,28 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @class */
+/** 
+ * Common functions for {@link fx_bobj_MemberReader} 
+ * and {@link fx_bobj_AliasReader}
+ * @class 
+ */
 var fx_bobj_ReaderUtils = (function() {
 
     var go_result = {
         /**
-         * Create a new DSE entry with properties SI_ID and SI_NAME obtained
-         * from io_info_object, and an additional third property whose name
-         * is supplied in io_key and whose value is supplied in io_value.
-         * If io_key is null, no additional property is added.
+         * <div>Convert BOBJ InfoObject to SAP IDM entry in memory.</div>
+         * <div>Properties SI_ID and SI_NAME are obtained from the supplied
+         * io_info_object. An additional third property name and value
+         * can optionally be supplied in io_key and io_value, respectively.
+         * If io_key is non-null, the third property will be added to the new
+         * IDM entry. Otherwise, no additional property is added.
+         * @function
+         * @public
+         * @name fx_bobj_ReaderUtils.infoObjectToDseEntry
          *
          * @param {com.crystaldecisions.sdk.occa.infostore.IInfoObject}
          *        io_info_object - BOBJ info object to obtain SI_ID
          *        and SI_NAME from
          *
-         * @param {string} io_key - Property name, e.g. SI_GROUP_MEMBERS
+         * @param {string?} io_key - Property name, e.g. SI_GROUP_MEMBERS
          *        or SI_SUBGROUPS. May be null.
          *
-         * @param {java.lang.Object} io_value - Propery value, e.g.
-         *        numeric ID of group member (typcially a java.lang.Double)
+         * @param {java.lang.Object?} io_value - Property value, e.g.
+         *        numeric ID of group member (typcially a java.lang.Double).
+         *        May be null.
          *
-         *
-         * @return {com.sap.idm.ic.DSEEntry} - Newly created DSE entry
+         * @return {com.sap.idm.ic.DSEEntry} - New SAP IDM entry
          */
         infoObjectToDseEntry: function(
             io_info_object

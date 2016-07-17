@@ -12,17 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @class */
+/** 
+ * Data manipulation functions for BOBJ users
+ * @class 
+ */
 var fx_bobj_User = (function() {
-
-    /*
-     var fx_bobj_Session;
-     var IUser;
-     var IInfoObject;
-     function fx_trace(){}
-     function importClass(){}
-     var Packages;
-     */
 
     /** @type {java.text.SimpleDateFormat} */
     var go_date_format = null;
@@ -384,11 +378,12 @@ var fx_bobj_User = (function() {
     var go_result = {
 
         /**
-         * Modify a BusinessObjects user
+         * Modify an existing BOBJ user.
          * @function
          * @public
-         * @name fx_bobj_User.create
-         * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+         * @name fx_bobj_User.modify
+         * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry; see
+         * {@link fx_bobj_User.create} for parameter details
          */
         modify: function(io_entry)
         {
@@ -419,11 +414,30 @@ var fx_bobj_User = (function() {
         },//modify
 
         /**
-         * Create a BusinessObjects user
+         * Create a new BOBJ user.
          * @function
          * @public
-         * @name fx_bobj_User.modify
-         * @param {com.sap.idm.ic.DSEEntry} - IDM entry
+         * @name fx_bobj_User.create
+         * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+         * <pre>IO_ENTRY ::= {
+         * SI_NAME:             User login ID (<strong>mandatory</strong>)
+         * &lt;PROPERTY_NAME&gt;:     &lt;VALUE_SPEC&gt;
+         * ...
+         * }
+         *
+         * &lt;PROPERTY_NAME&gt; ::= Name of CE property with elementary type,
+         *                     e.g. SI_DESCRIPTION
+         * &lt;VALUE_SPEC&gt;    ::= [&lt;TYPE_SPEC&gt;]&lt;VALUE&gt;
+         * &lt;TYPE_SPEC&gt;     ::= {&lt;TYPE&gt;}
+         * &lt;TYPE&gt;          ::= STRING|DATE|INT|LONG|BOOLEAN
+         * &lt;VALUE&gt;         ::= any string
+         * </pre>
+         * <p>If &lt;TYPE_SPEC&gt; is omitted, the default is {STRING}.</p>
+         * <div>Example:</div>
+         * <pre>IO_ENTRY ::= {
+         * SI_NAME:             Administrator
+         * SI_DESCRIPTION:      {STRING}BusinessObjects Administrator
+         * }</pre>
          * @throws {java.lang.Exception}
          */
         create: function(io_entry)
@@ -468,11 +482,14 @@ var fx_bobj_User = (function() {
         },//create
 
         /**
-	 * Removes/deletes a BOBJ user.
+	 * Remove/delete an existing BOBJ user.
          * @function
          * @public
          * @name fx_bobj_User.remove
 	 * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+         * <pre>IO_ENTRY ::= {
+         * SI_NAME:             User login ID (<strong>mandatory</strong>)
+         * }
          * @throws {java.lang.Exception}
          */
         remove: function(io_entry)

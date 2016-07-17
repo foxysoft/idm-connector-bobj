@@ -13,6 +13,7 @@
 // limitations under the License.
 
 /**
+ * Read all available BOBJ user and group aliases during initial load.
  * @class
  * @requires fx_JavaUtils
  * @requires fx_bobj_ReaderUtils
@@ -220,12 +221,13 @@ var fx_bobj_AliasReader = (function() {
 
     var go_result = {
         /**
-         * Reads all user and group aliases from BOBJ CMS
+         * Retrieve next BOBJ user or group alias, if any.
          * @function
          * @public
          * @name fx_bobj_AliasReader.read
-         * @return {com.sap.idm.ic.DSEEntry} - IDM entry or null if
-         *         no more aliases
+         * @see fx_bobj_nextAliasEntry
+         * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry 
+         *          or null if no more aliases
          */
         read: function()
         {

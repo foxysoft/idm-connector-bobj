@@ -12,32 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** @class */
+/** 
+ * Utility functions for scripting the Java language from JavaScript
+ * @class 
+ * @requires fx_trace
+ */
 var fx_JavaUtils = (function() {
 
     var go_result = {
         /**
-         * Invoke a Java method by means of reflection
-         *
-         * @param {java.lang.Object} io_object -
-         *        Java object instance to invoke method on
+         * Invoke a Java method by means of reflection.
+         * @function
+         * @public
+         * @name fx_JavaUtils.callByReflection
+         * @param {?java.lang.Object} io_object -
+         *        Java object instance to invoke method on.
+         *        May be null.
          *
          * @param {string} iv_method_name -
          *        Method name, such as "getUsers"
          *
-         * @param {java.lang.Class[]=} it_arg_types -
+         * @param {java.lang.Class[]} [it_arg_types] -
          *        Java array of classes represeting the argument
          *        types of method iv_method_name. If iv_method_name
-         *        doesn't have any parameters, you can either omit
-         *        this parameter completely, or supply null.
+         *        doesn't have any parameters, you can omit this or
+         *        supply null.
          *
-         * @param {java.lang.Object[]=} it_arg_values -
+         * @param {java.lang.Object[]} [it_arg_values] -
          *        Java array of objects representing the argument
          *        values of method iv_method_name. If iv_method_name
-         *        doesn't have any parameter, you can either omit
-         *        this parameter completely, or supply null.
+         *        doesn't have any parameter, you can omit this or
+         *        supply null.
          *
-         * @return {java.lang.Object} -
+         * @return {?java.lang.Object} -
          *         Return value of iv_method_name,
          *         or null for void methods.
          *
@@ -112,22 +119,25 @@ var fx_JavaUtils = (function() {
         },// callByReflection
 
         /**
-         * Create a one-dimensional Java array of type io_array_type
-         * and populate it with the elements of it_elements.
-         *
-         * Example: to create a Java array of two Java Strings
-         * "this" and "that", use:
-         *
-         * fx_JavaUtils.newArray(
+         * <div>Create a new Java array.</div>
+         * <div>This will create a one-dimensional Java array of type 
+         * io_array_type and populate it with the elements of it_elements.</div>
+         * <p>Example: to create a Java array of two Java Strings
+         * "this" and "that", use:</p>
+         * <pre>
+         * var lt_this_and_that = fx_JavaUtils.newArray(
          *     java.lang.String.class
          *     , "this"
          *     , "that"
-         * )
-         *
+         * );
+         * </pre>
+         * @function
+         * @public
+         * @name fx_JavaUtils.newArray
          * @param {java.lang.Class} io_array_type -
          *        Class (or type) of all arrays elements
          *
-         * @param {...java.lang.Object?} io_array_element -
+         * @param {...java.lang.Object} [io_array_element] -
          *        Zero or more elements that the new array should be
          *        populated with. The number of actual parameters supplied
          *        for io_array_element will be the length of the new array.
@@ -161,22 +171,21 @@ var fx_JavaUtils = (function() {
         },//newArray
 
         /**
-         * Handles any JavaScript Error or Java exception
-         * by emitting an error message via uError,
-         * and then returning that error message.
+         * <div>Handle any Java exception or JavaScript error.</div>
+         * This function will write details about io_exception, such
+         * as stack trace, if available, or message to the job log
+         * using uError. It will return that detail message as string,
+         * prefixed with !ERROR.
+         * @function
+         * @public
+         * @name fx_JavaUtils.handleException
+         * @param {string} iv_location - Function or location name
+         *        where the error occurred
          *
-         * @param iv_location
-         *        type JS String or java.lang.String
-         *        Function/location where the error occurred
+         * @param {java.lang.Exception|Error} io_exception - Java exception
+         *        or JavaScript Error
          *
-         * @param io_exception
-         *        type JS Error or java.lang.Exception
-         *
-         * @return type JS string
-         *         Error message prefixed with !ERROR
-         *         and containing the message text,
-         *         plus stack trace, if any, of io_exception
-         * @requires Global script {@link fx_trace}
+         * @return {string} - Error message prefixed with !ERROR
          */
         handleException: function(iv_location, io_exception)
         {
