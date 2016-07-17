@@ -15,7 +15,7 @@ from the Internet by default, so your build machine will need to be connected to
      cd idm-connector-bobj
      mvn package
 ## Install
-Please refer to INSTALL.txt for detailed installation instructions.
+Please refer to [INSTALL.txt](INSTALL.md) for detailed installation instructions.
 ## Features
 * Initial load existing BusinessObjects&trade; users, groups and aliases into SAP&reg; IDM
 * Create/update/delete Enterprise users
