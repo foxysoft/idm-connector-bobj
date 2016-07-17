@@ -28,17 +28,28 @@ var fx_bobj_Group = (function() {
          * @function
          * @name fx_bobj_Group.modifyGroupMembers
          * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
-         * <pre>IO_ENTRY := {
+         * <pre>IO_ENTRY ::= {
          * SI_NAME:             Group name (<strong>mandatory</strong>)
-         * SI_GROUP_MEMBERS:    DELTA_STRING
+         * SI_GROUP_MEMBERS:    &lt;DELTA_STRING&gt;
          * }
          *
-         * DELTA_STRING := [OPERATOR]SI_NAME[|[OPERATOR]SI_NAME]...
-         * SI_NAME      := Name of user
-         * OPERATOR     := {A}|{D}
+         * &lt;DELTA_STRING&gt;  ::= [&lt;OPERATOR_SPEC&gt;]&lt;USER_ID&gt;
+         *                     [|[&lt;OPERATOR_SPEC&gt;]&lt;USER_ID&gt;]...
+         * &lt;USER_ID&gt;       ::= User login ID (=SI_NAME of user)
+         * &lt;OPERATOR_SPEC&gt; ::= {&lt;OPERATOR&gt;}
+         * &lt;OPERATOR&gt;      ::= A|D
          * </pre>
-         * As usual, {A} means "add member", {D} means "remove member".
-         * The default is {A}.
+         * <p>As usual, {A} means "add member", {D} means "remove member".
+         * If &lt;OPERATOR_SPEC&lt; is omitted, the default is {A}.</p>
+         * <div>Example:</div>
+         * <pre>
+         * IO_ENTRY ::= {
+         * SI_NAME: Cryptographic Officers
+         * SI_GROUP_MEMBERS: {D}JOHNDOE|{A}JANEDOE
+         * </pre>
+         * will remove the user whose login ID (SI_NAME) is JOHNDOE
+         * from group Cryptographic Officers, and add user JANEDOE
+         * to that group.
          * @throws {java.lang.Exception}
          */
         modifyMembers: function(io_entry)
