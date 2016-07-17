@@ -40,7 +40,7 @@ var fx_bobj_Group = (function() {
          * &lt;OPERATOR&gt;      ::= A|D
          * </pre>
          * <p>As usual, {A} means "add member", {D} means "remove member".
-         * If &lt;OPERATOR_SPEC&lt; is omitted, the default is {A}.</p>
+         * If &lt;OPERATOR_SPEC&gt; is omitted, the default is {A}.</p>
          * <div>Example:</div>
          * <pre>
          * IO_ENTRY ::= {
