@@ -26,6 +26,12 @@ limitations under the License.
     <file>
       <source>LICENSE.txt</source>
     </file>
+    <file>
+      <source>README.txt</source>
+    </file>
+    <file>
+      <source>INSTALL.txt</source>
+    </file>
   </files>
   <fileSets>
     <fileSet>

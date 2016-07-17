@@ -7,7 +7,7 @@ This is an add-on for [SAP&reg; Identity Management (IDM)](http://go.sap.com/pro
 It is free and open source software available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt).  
 Commercial consulting, implementation services and support are available from [Foxysoft GmbH](http://foxysoft.de) in Germany.
 ## Build
-You need [Git](https://git-scm.com/) and [Maven 3.0](https://maven.apache.org/) to build the connector. Maven downloads dependencies
+You need [Git](https://git-scm.com/) and [Maven 3.x](https://maven.apache.org/) to build the connector. Maven downloads dependencies
 from the Internet by default, so your build machine will need to be connected to the Internet.
 
 
