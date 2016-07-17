@@ -63,9 +63,14 @@ function fx_setParentContextVar(iv_params)
 
                 var lo_exception = null;
 
+                // Don't use string interpolation for ddm.identiycenter,
+                // as it could contain double quotes and thus result
+                // in JavaScript code injection
+                var lv_jdbc_url = uGetConstant("ddm.identitycenter");
+
                 var lo_connection
                         = java.sql.DriverManager.getConnection(
-                            "%$ddm.identitycenter%"
+                            lv_jdbc_url
                         );
                 fx_trace(SCRIPT
                          + "Opened connection"
