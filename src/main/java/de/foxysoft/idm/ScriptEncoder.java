@@ -14,7 +14,6 @@ package de.foxysoft.idm;
 // limitations under the License.
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,9 +22,18 @@ import java.io.OutputStream;
 
 import org.apache.commons.codec.binary.Base64;
 
+/**
+ * <div>Helper class to support Maven build of BOBJ connector.</div>
+ * <div>You should consider this class <strong>private</strong>. It's interface can
+ * change at any time without notice.</div>
+ */
 public class ScriptEncoder {
+	private static boolean g_traceEnabled = false;
+	
 	public static void trc(String m) {
-		System.err.println(m);
+		if(g_traceEnabled) {
+			System.err.println(m);
+		}
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -33,6 +41,7 @@ public class ScriptEncoder {
 			System.err.println("Usage: ScriptEncoder inputDir outputDir");
 			return;
 		}
+		g_traceEnabled = System.getProperty("fx.trace") == "1";
 		File fInputDir = new File(args[0]);
 		trc("fInputDir=" + fInputDir);
 

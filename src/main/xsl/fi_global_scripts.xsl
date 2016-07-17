@@ -48,10 +48,12 @@ limitations under the License.
     <xsl:variable
         name="lv_b64_uri"
         select="concat($lv_base_uri, '.b64')"/>
+    <!-- Uncomment for debugging
     <xsl:message>
       <xsl:text>lv_base_uri=</xsl:text>
       <xsl:value-of select="$lv_base_uri"/>
     </xsl:message>
+    -->
     <GLOBALSCRIPT>
       <MCSCRIPTSTATUS>0</MCSCRIPTSTATUS>
       <MXENABLED>1</MXENABLED>
