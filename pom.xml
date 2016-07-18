@@ -92,6 +92,13 @@ limitations under the License.
           </execution>
         </executions>
         <configuration>
+          <!-- Force creation is required because neither the      -->
+          <!-- transformation fi_global_scripts.xsl nor its input  -->
+          <!-- SAP BOBJ 4.2 Global Scripts.mcc ever change,        -->
+          <!-- but the output still needs to be generated because  -->
+          <!-- the implicit input files from src/main/javascript   -->
+          <!-- may have changed.                                   -->
+          <forceCreation>true</forceCreation>
           <transformationSets>
             <transformationSet>
               <dir>src/main/idm72/globalscripts</dir>
@@ -135,7 +142,7 @@ limitations under the License.
       <!-- Avoid creation of JAR file -->
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-	<version>3.0.2</version>
+        <version>3.0.2</version>
         <executions>
           <execution>
             <id>default-jar</id>
