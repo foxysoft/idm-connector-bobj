@@ -42,7 +42,9 @@ var fx_bobj_Session = (function () {
      */
     function getValueOrRepoConst(iv_value, iv_repo_const_name)
     {
-        return (typeof iv_value != "undefined" && iv_value != null)
+        return (typeof iv_value != "undefined"
+		&& iv_value != null
+		&& iv_value != "")
             ? iv_value
             : uGetConstant("rep."+iv_repo_const_name)
         ;

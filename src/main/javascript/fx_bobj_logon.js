@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -30,7 +30,9 @@ function fx_bobj_logon(iv_params)
     var SCRIPT = "fx_bobj_logon: ";
     var lv_result = "";
 
-    if(iv_params != null && typeof iv_params != "undefined")
+    if(typeof iv_params != "undefined"
+       && iv_params != null
+       && iv_params != "")
     {
         var lt_params = (""+iv_params).split("!!");
         var lv_host     = lt_params.length > 0 ? lt_params[0] : null;
