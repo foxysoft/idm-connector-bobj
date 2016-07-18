@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** 
+/**
  * Data manipulation functions for BOBJ users
- * @class 
+ * @class
  */
 var fx_bobj_User = (function() {
 
@@ -24,8 +24,8 @@ var fx_bobj_User = (function() {
     /**
      * @function
      * @private
-     * @param {string} v - attribute string value
-     * @return {java.lang.Object} - attribute object value
+     * @param {string} iv_attr_value - attribute string value
+     * @return {java.lang.Object} - attribute value as Java object
      * @throws {java.lang.Exception}
      */
     function parseAttributeValue(iv_attr_value)
@@ -84,58 +84,64 @@ var fx_bobj_User = (function() {
 
     /**
      * @private
-     * @param {com.crystaldecisions.sdk.properties.IProperties} props
-     * @param {string} k - attribute name (key)
-     * @param {string} v - attribute value
+     * @param {com.crystaldecisions.sdk.properties.IProperties}
+     *        io_properties
+     * @param {string} iv_key - attribute name (key)
+     * @param {string} iv_value - attribute value
      * @throws {java.lang.Exception}
      */
-    function setAllAliasesDisabled(props, k, v)
+    function setAllAliasesDisabled(io_properties, iv_key, iv_value)
     {
-        var LOC = "fx_bobj_User=>setDisabled: ";
-        fx_trace(LOC+"Entering k="+k+", v="+v);
+        var SCRIPT = "fx_bobj_User=>setAllAliasesDisabled: ";
+        fx_trace(SCRIPT+"Entering iv_key="+iv_key+", iv_value="+iv_value);
 
         /**@type {com.crystaldecisions.sdk.properties.IProperties} */
-        var aliases = props.getProperties("SI_ALIASES");
+        var lo_aliases = io_properties.getProperties("SI_ALIASES");
 
         // Note that when the property SI_TOTAL does not exist,
         // this call does not throw any exception, but returns 0 (zero)
         /** @type {java.lang.Integer.TYPE}*/
-        var numAliases = aliases.getInt("SI_TOTAL");
-        fx_trace(LOC + "numAliases=" + numAliases);
+        var lv_num_aliases = lo_aliases.getInt("SI_TOTAL");
+        fx_trace(SCRIPT + "lv_num_aliases=" + lv_num_aliases);
 
-        // The keys in property bag SI_ALIASES are integers in the range
-        // 1 up to and including the value of SI_TOTAL
-        for (var i = 1; i <= numAliases; ++i)
+        // The keys in property bag SI_ALIASES are integers
+        // ranging from 1 up to and including the value of SI_TOTAL
+        for (var i = 1; i <= lv_num_aliases; ++i)
         {
             /**@type {com.crystaldecisions.sdk.properties.IProperties} */
-            var oneAlias = aliases.getProperties(new java.lang.Integer(i));
+            var lo_one_alias = lo_aliases.getProperties(
+                new java.lang.Integer(i));
 
             /**@type {java.lang.String}*/
-            var name = oneAlias.getString("SI_NAME");
-            fx_trace(LOC + "SI_ALIASES[" + i + "]-SI_NAME=" + name);
+            var lo_name = lo_one_alias.getString("SI_NAME");
+            fx_trace(SCRIPT + "SI_ALIASES[" + i + "]-SI_NAME=" + lo_name);
 
             /**@type {com.crystaldecisions.sdk.properties.IProperty}*/
-            var p = oneAlias.getProperty("SI_DISABLED");
-            fx_trace(LOC + "SI_ALIASES[" + i + "]-SI_DISABLED=" + p);
+            var lo_property = lo_one_alias.getProperty("SI_DISABLED");
+            fx_trace(SCRIPT
+                     + "SI_ALIASES[" + i + "]-SI_DISABLED="
+                     + lo_property);
 
-            p.setValue(parseAttributeValue(v));
-        }//for (var i = 1; i <= numAliases; ++i) {
+            lo_property.setValue(parseAttributeValue(iv_value));
+        }//for (var i = 1; i <= lv_num_aliases; ++i) {
 
-        fx_trace(LOC+"Returning");
+        fx_trace(SCRIPT+"Returning");
 
     }//setAllAliasesDisabled
 
     /**
      * @private
-     * @param {com.crystaldecisions.sdk.plugin.desktop.user.IUser} user
-     * @param {string} k - attribute name (key)
-     * @param {string} v - attribute value
+     * @param {com.crystaldecisions.sdk.plugin.desktop.user.IUser} io_user
+     * @param {string} iv_key - attribute name (key)
+     * @param {string} iv_value - attribute value
      * @throws {java.lang.Exception}
      */
-    function setPassword(user, k, v)
+    function setPassword(io_user, iv_key, iv_value)
     {
         var SCRIPT = "fx_bobj_User=>setPassword: ";
-        fx_trace(SCRIPT + "Entering k=" + k + ", v=" + v);
+        fx_trace(SCRIPT
+                 + "Entering iv_key=" + iv_key
+                 + ", iv_value=" + iv_value);
 
         // Works in Java, but yields "undefined is not a function" in JS
         // user.setNewPassword(parseAttributeValue(v));
@@ -150,11 +156,11 @@ var fx_bobj_User = (function() {
         /**@type {java.lang.Object[]}*/
         var lt_arg_values = fx_JavaUtils.newArray(
             java.lang.String //no .class suffix in JS
-            ,parseAttributeValue(v)
+            ,parseAttributeValue(iv_value)
         );
 
         fx_JavaUtils.callByReflection(
-            user
+            io_user
             ,"setNewPassword"
             ,lt_arg_types
             ,lt_arg_values
@@ -166,23 +172,23 @@ var fx_bobj_User = (function() {
 
     /**
      * @private
-     * @param {com.crystaldecisions.sdk.plugin.desktop.user.IUser} user
-     * @param {string} k - attribute name (key)
-     * @param {string} v - attribute value
+     * @param {com.crystaldecisions.sdk.plugin.desktop.user.IUser} io_user
+     * @param {string} iv_key - attribute name (key)
+     * @param {string} iv_value - attribute value
      * @throws {java.lang.Exception}
      */
-    function setNamedUser(user, k, v)
+    function setNamedUser(io_user, iv_key, iv_value)
     {
         var SCRIPT = "fx_bobj_User=>setNamedUser: ";
-        fx_trace(SCRIPT+"Entering k="+k+", v="+v);
+        fx_trace(SCRIPT+"Entering iv_key="+iv_key+", iv_value="+iv_value);
 
         /** @type {java.lang.Integer.TYPE} */
         var lv_connection = null;
 
         /** @type {java.lang.Boolean.TYPE} */
-        var lv_si_nameduser = parseAttributeValue(v);
+        var lo_si_nameduser = parseAttributeValue(iv_value);
 
-        if(java.lang.Boolean.TRUE.equals(lv_si_nameduser))
+        if(java.lang.Boolean.TRUE.equals(lo_si_nameduser))
         {
             lv_connection = IUser.NAMED;
             fx_trace(SCRIPT
@@ -190,21 +196,13 @@ var fx_bobj_User = (function() {
                      + " lv_connection="
                      + lv_connection);
         }
-        else if(java.lang.Boolean.FALSE.equals(lv_si_nameduser))
+        else
         {
             lv_connection = IUser.CONCURRENT;
             fx_trace(SCRIPT
                      + "Creating concurrent user,"
                      + " lv_connection="
                      + lv_connection);
-        }
-        else
-        {
-            throw new java.lang.Exception(
-                "Illegal value "
-                    + lv_si_nameduser
-                    + " for SI_NAMEDUSER"
-                    + " (legal values: true, false)");
         }
 
         // Works in Java, but yields "undefined is not a function" in JS
@@ -242,7 +240,7 @@ var fx_bobj_User = (function() {
         );
 
         fx_JavaUtils.callByReflection(
-            user
+            io_user
             ,"setConnection"
             ,lt_arg_types
             ,lt_arg_values
@@ -254,53 +252,61 @@ var fx_bobj_User = (function() {
 
     /**
      * @private
-     * @param {com.crystaldecisions.sdk.properties.IProperties} props
-     * @param {string} k - attribute name (key)
-     * @param {string} v - attribute value
-     * @param {boolean} isNew - is props a newly created object
+     * @param {com.crystaldecisions.sdk.properties.IProperties}
+     *        io_properties
+     * @param {string} iv_key - attribute name (key)
+     * @param {string} iv_value - attribute value
+     * @param {boolean} iv_is_new - is io_properties a new object
      * @throws {java.lang.Exception}
      */
-    function setAttributeGeneric(props, k, v, iv_is_new)
+    function setAttributeGeneric(io_properties, iv_key, iv_value, iv_is_new)
     {
         var SCRIPT = "fx_bobj_User=>setAttributeGeneric: ";
-        fx_trace(SCRIPT+"Entering k="+k+", v="+v);
+        fx_trace(SCRIPT
+                 + "Entering iv_key=" + iv_key
+                 + ", iv_value=" + iv_value
+                 + "iv_is_new=" + iv_is_new);
 
-        if(iv_is_new)
-        {
-            fx_trace(SCRIPT+"Using IProperties.setProperty for new user");
-            props["setProperty(java.lang.Object,java.lang.Object)"](
-                k
-                ,parseAttributeValue(v)
-            );
-        }
-        else
+        if(!iv_is_new)
         {
             fx_trace(SCRIPT+"Using IProperty.setValue for existing user");
-            /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-            var p = props.getProperty(k);
-            if (p != null)
-            {
-                if (!p.isContainer())
-                {
-                    p.setValue(parseAttributeValue(v));
 
-                } // if (!p.isContainer())
+            /**
+             * @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject}
+             */
+            var lo_property = io_properties.getProperty(iv_key);
+            if (lo_property != null)
+            {
+                if (!lo_property.isContainer())
+                {
+                    lo_property.setValue(parseAttributeValue(iv_value));
+
+                } // if (!lo_property.isContainer())
                 else
                 {
                     throw new java.lang.Exception(
                         "Property "
-                            + k
+                            + iv_key
                             + " is a container;"
                             + " can only modify non-container properties");
                 }
-            }// if(p!= null)
+            }// if(lo_property != null)
             else
             {
                 throw new java.lang.Exception(
                     "Property "
-                        + k
+                        + iv_key
                         + " does not exist");
             }
+        }//if(!iv_is_new)
+        else
+        {
+            fx_trace(SCRIPT+"Using IProperties.setProperty for new user");
+
+            io_properties["setProperty(java.lang.Object,java.lang.Object)"](
+                iv_key
+                ,parseAttributeValue(iv_value)
+            );
         }
 
         fx_trace(SCRIPT+"Returning");
@@ -309,69 +315,78 @@ var fx_bobj_User = (function() {
 
     /**
      * @private
+     * @param {com.crystaldecisions.sdk.occa.infostore.IInfoObjects}
+     *        io_info_objects - InfoObject collection
+     * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+     * @param {boolean} iv_is_new
      */
-    function setAttributes(infoObjects, io_entry, iv_is_new)
+    function setAttributes(io_info_objects, io_entry, iv_is_new)
     {
         var SCRIPT = "fx_bobj_User=>setAttributes: ";
         fx_trace(SCRIPT+"Entering");
 
         /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-        var toModify = infoObjects.get(0);
-        fx_trace(SCRIPT + "Modifying " + toModify);
+        var lo_to_modify = io_info_objects.get(0);
+        fx_trace(SCRIPT + "Modifying " + lo_to_modify);
 
         if(!iv_is_new)
         {
             fx_trace(SCRIPT + "Retrieving all properties");
-            toModify.retrievePropertySet(IInfoObject.PropertySet.ALL);
+            lo_to_modify.retrievePropertySet(IInfoObject.PropertySet.ALL);
         }
 
         /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObject} */
-        var props = toModify.properties();
-        fx_trace(SCRIPT + "Have properties? "+(props != null));
+        var lo_properties = lo_to_modify.properties();
+        fx_trace(SCRIPT + "Have properties? "+(lo_properties != null));
 
         /** @type {java.lang.String[]} */
-        var attrNames = io_entry.keySet().toArray();
+        var lt_attr_names = io_entry.keySet().toArray();
 
-        for (var i = 0; i < attrNames.length; ++i) {
+        for (var i = 0; i < lt_attr_names.length; ++i) {
             /** @type {java.lang.String} */
-            var k = attrNames[i];
+            var lo_key = lt_attr_names[i];
 
             /** @type {java.lang.String}*/
-            var v = io_entry.get(k);
+            var lo_value = io_entry.get(lo_key);
 
             // Ignore attribute name "CHANGETYPE" and everything
             // starting with "DUMMY". Note that IDM does NOT ensure
             // that the keys in io_entry are uppercase.
-            if(k.toUpperCase() == "CHANGETYPE"
-               || k.toUpperCase().indexOf("DUMMY") == 0)
+            if(lo_key.toUpperCase() == "CHANGETYPE"
+               || lo_key.toUpperCase().indexOf("DUMMY") == 0)
             {
-                fx_trace(SCRIPT+"Skipping attribute "+k);
+                fx_trace(SCRIPT+"Skipping attribute "+lo_key);
                 continue; //========================= WITH NEXT ATTR
             }
-            else if(k.toUpperCase() == "SI_DISABLED")
+            else if(lo_key.toUpperCase() == "SI_DISABLED")
             {
-                setAllAliasesDisabled(props, k, v);
+                setAllAliasesDisabled(lo_properties, lo_key, lo_value);
             }
-            else if(k.toUpperCase() == "SI_PASSWORD")
+            else if(lo_key.toUpperCase() == "SI_PASSWORD")
             {
                 // Must pass IInfoObject here, not IProperties
-                setPassword(toModify, k, v);
+                setPassword(lo_to_modify, lo_key, lo_value);
             }
-            else if(k.toUpperCase() == "SI_NAMEDUSER")
+            else if(lo_key.toUpperCase() == "SI_NAMEDUSER")
             {
                 // Must pass IInfoObject here, not IProperties
-                setNamedUser(toModify, k, v);
+                setNamedUser(lo_to_modify, lo_key, lo_value);
             }
             else
             {
-                setAttributeGeneric(props, k, v, iv_is_new);
+                setAttributeGeneric(
+                    lo_to_modify
+                    ,lo_key
+                    ,lo_value
+                    ,iv_is_new
+                );
             }//else
 
             /** @type {java.lang.Boolean.TYPE} */
-            var isDirty = toModify.isDirty();
-            fx_trace(SCRIPT + "isDirty=" + isDirty);
+            var lv_is_dirty = lo_to_modify.isDirty();
+            fx_trace(SCRIPT + "lv_is_dirty=" + lv_is_dirty);
 
-        }// for (var i = 0; i < attrNames.size(); ++i) {
+        }// for (var i = 0; i < lt_attr_names.size(); ++i) {
 
     }//setAttributes
 
@@ -456,7 +471,9 @@ var fx_bobj_User = (function() {
             // ===========================================================
             // Create new user object and populate its attributes
             // ===========================================================
-            /** @type {com.crystaldecisions.sdk.occa.infostore.IInfoObjects} */
+            /**
+             * @type {com.crystaldecisions.sdk.occa.infostore.IInfoObjects}
+             */
             var lo_new_user_collection
                     = fx_bobj_Session
                     .getInfoStore()
@@ -482,11 +499,11 @@ var fx_bobj_User = (function() {
         },//create
 
         /**
-	 * Remove/delete an existing BOBJ user.
+         * Remove/delete an existing BOBJ user.
          * @function
          * @public
          * @name fx_bobj_User.remove
-	 * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
+         * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
          * <pre>IO_ENTRY ::= {
          * SI_NAME:             User login ID (<strong>mandatory</strong>)
          * }
@@ -505,25 +522,25 @@ var fx_bobj_User = (function() {
                 );
             }
 
-            var lo_to_delete_info_objects
+            var lo_info_objects
                     = fx_bobj_Session.lookupSingleInfoObject(
                         lo_si_name
                         ,IUser.KIND
                     );
 
-            var lo_to_delete_info_object
-                    = lo_to_delete_info_objects.get(0);
+            var lo_to_delete
+                    = lo_info_objects.get(0);
             fx_trace(SCRIPT
                      + "Have info object to delete? "
-                     + (lo_to_delete_info_object != null));
+                     + (lo_to_delete != null));
 
             // Must use property syntax to invoke delete() method
             // of com.crystaldecisions.sdk.occa.infostore.IInfoObjects
             // as delete is a keyword in JavaScript
-            lo_to_delete_info_objects["delete"](lo_to_delete_info_object);
+            lo_info_objects["delete"](lo_to_delete);
 
             fx_trace(SCRIPT+"Before commit");
-            fx_bobj_Session.getInfoStore().commit(lo_to_delete_info_objects);
+            fx_bobj_Session.getInfoStore().commit(lo_info_objects);
 
             fx_trace(SCRIPT+"Returning");
 
