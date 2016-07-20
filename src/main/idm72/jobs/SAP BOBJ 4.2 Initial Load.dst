@@ -1259,6 +1259,8 @@ select
         where c.si_id=a.si_id
         and c.fx_aliases_si_name not like 'secEnterprise:%'
     )
+    --Exclude Everyone group, as it is managed internally by BOBJ
+    and not a.si_name = 'Everyone'    
     order by a.si_name
 
 )$$</FROMSQL>
