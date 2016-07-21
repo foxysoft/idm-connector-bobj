@@ -22,17 +22,7 @@ e.g. C:\IDM_BOBJ_LIBS:
  
 For the purposes of this connector, you don't need any other content included in the SDK installation.
 ## Add SDK JARs to IDM Classpath
-Our preferred approach is to add a new Java extension directory containing the SDK JAR files
-to the SAP IDM dispatcher's classpath. Other approaches may work as well.
-
-In SAP IDM, add the following Java option to your dispatcher(s):
-
-       -Djava.ext.dirs=C:\IDM_BOBJ_LIBS
-
-If you're already using other extension directories, we recommend to append C:\IDM_BOBJ_LIBS after all directories you currently have
-there. Use ; (semicolon) on Windows or : (colon) on Unix/Linux to separate entries from each other.
-
-After this change, restart your SAP IDM dispatcher(s).
+In the Identity Center Designtime 7.2 (MMC), use **Tools -> Options -> Java -> Classpath extension -> Add...** to add all SDK JAR files listed above. After saving your changes, regenerate dispatcher scripts and restart all dispatchers. If you need to do this without MMC, edit property DSECLASSPATH in the dispatcher service property files.
 ## Install Connector
 1. Copy idm-connector-bobj-&lt;VERSION&gt;.zip to the SAP IDM runtime and unzip its contents into a new directory, e.g. C:\IDM_BOBJ_INSTALL
 1. Import file **SAP BOBJ 4.2 Global Scripts.mcc** into SAP IDM's global scripts.
