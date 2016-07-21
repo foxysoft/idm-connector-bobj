@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## [1.0.1]
+## [1.0.1] - 2016-07-21
 ### Fixed
 - Exclude Everyone group from initial load
 - Fix INSTALL instructions for dispatcher classpath
