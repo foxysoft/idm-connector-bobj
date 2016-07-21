@@ -22,18 +22,14 @@ limitations under the License.
   <formats>
     <format>zip</format>
   </formats>
-  <files>
-    <file>
-      <source>LICENSE.txt</source>
-    </file>
-    <file>
-      <source>README.txt</source>
-    </file>
-    <file>
-      <source>INSTALL.txt</source>
-    </file>
-  </files>
   <fileSets>
+    <fileSet>
+      <directory/>
+      <outputDirectory/>
+      <includes>
+        <include>*.txt</include>
+      </includes>
+    </fileSet>
     <fileSet>
       <directory>src/main/idm72/repositories</directory>
       <outputDirectory/>
@@ -59,7 +55,7 @@ limitations under the License.
       <directory>${fx.genGlobalScriptsStage2Dir}</directory>
       <outputDirectory/>
       <includes>
-        <include>*.mcc</include>
+        <include>*</include>
       </includes>
     </fileSet>
   </fileSets>
