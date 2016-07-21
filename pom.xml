@@ -21,7 +21,7 @@ limitations under the License.
   <groupId>de.foxysoft.idm</groupId>
   <artifactId>idm-bobj-connector</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <name>idm-bobj-connector</name>
   <inceptionYear>2016</inceptionYear>
   <licenses>
