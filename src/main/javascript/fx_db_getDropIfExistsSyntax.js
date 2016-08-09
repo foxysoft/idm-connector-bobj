@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -55,6 +55,29 @@ function fx_db_getDropIfExistsSyntax(iv_params)
             + "    END IF;"
             + " "
             + "END;"
+        ;
+    }
+    else if(lv_database_type == "5") //DB2
+    {
+        // Don't use the DB2 catalog to check for table existence,
+        // as the catalog is platform dependent: at least DB/2 for LUW
+        // and z/OS have a different catalog structure.
+        // Use an empty handler for SQLSTATE 42704 (An undefined object
+        // or constraint name was detected) instead. This should be the
+        // most portable approach.
+        lv_result
+            = "BEGIN"
+            + " "
+            +" DECLARE CONTINUE HANDLER FOR SQLSTATE '42704'"
+            + "    BEGIN"
+            + "    END;"
+            + " "
+            + "EXECUTE IMMEDIATE 'DROP TABLE "+lv_table_name+ "';"
+            + " "
+            + "END"
+        // As semicolon is the default statement terminator INSIDE
+        // DB2 SQL PL, there must be no terminating semicolon
+        // at the end of overall anonymous block
         ;
     }
     else
