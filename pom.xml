@@ -116,7 +116,7 @@ limitations under the License.
           <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>[9.7,)</version>
+            <version>9.7.0-7</version>
           </dependency>
         </dependencies>
       </plugin>

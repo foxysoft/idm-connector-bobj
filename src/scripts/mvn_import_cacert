@@ -1,0 +1,444 @@
+#!/usr/bin/perl
+# Copyright 2016 Foxysoft GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+use strict;
+use warnings;
+
+use Env qw(PATH);
+use IPC::Open2;
+use IO::Handle;
+use File::Find;
+use File::Spec::Functions;
+use File::Temp qw(tempfile);
+use Getopt::Long;
+
+# Default list of directories when no --dirs was supplied
+my @GT_LOCAL_CA_CERTIFICATE_DIRS
+  = ( '/etc/pki/ca-trust/extracted/'      # Cygwin/Windows
+      ,'/usr/share/ca-certificates'       # Debian
+      ,'/usr/local/share/ca-certificates' # Debian
+    );
+
+# Value of command line option --dirs
+my @gt_dirs;
+
+# Result value of find_local_ca_certificate_by_subject_key_id
+my $gv_local_ca_certificate;
+
+# Value of command line option --verbose
+my $gv_verbose;
+
+sub trc {
+  if ($gv_verbose) {
+    print { *STDERR } $_[0]."\n";
+  }
+}
+
+sub check_program_exists {
+  my($iv_program)=@_;
+  trc("Entering check_program_exists(\$iv_program=$iv_program)");
+
+  open(my $lh_out, '-|', "which $iv_program 2>/dev/null")
+    or die "Can't check existence of $iv_program: $!\n";
+
+  my $lv_out = do { local $/; <$lh_out> };
+  if ($lv_out) {
+    trc("$iv_program exists");
+  } else {
+    die "This program requires $iv_program\n\n"
+      ."$iv_program could not be found in your path ($ENV{PATH})\n\n"
+        ."Please install $iv_program, then run this program again.\n";
+  }
+
+  trc("Returning from check_program_exists");
+}
+
+sub find_local_ca_certificate_by_subject_key_id {
+  my($ir_dirs,$iv_authority_key_id) = @_;
+  trc("Entering find_local_ca_certificate_by_subject_key_id("
+      ."\$ir_dirs=$ir_dirs,"
+      ." \$iv_authority_key_id=$iv_authority_key_id)");
+
+  # Don't complain about non-existing directories
+  no warnings 'File::Find';
+  find({ wanted => sub {
+           visit_local_ca_certificate($iv_authority_key_id) }
+       }
+       , @{ $ir_dirs });
+
+  trc("Returning from find_local_ca_certificate_by_subject_key_id");
+}
+
+sub visit_local_ca_certificate {
+  my($iv_authority_key_id) = @_;
+  trc("Entering visit_local_ca_certificate("
+      ."\$iv_authority_key_id=$iv_authority_key_id)");
+
+  # Process only if matching local certificate not found yet,
+  # and current file is a file (not directory) and has
+  # .crt or .pem extension
+  if (!$gv_local_ca_certificate && -f && /\.(crt|pem)$/i) {
+
+    $gv_local_ca_certificate
+      = get_encoded_certificate_by_key_id($File::Find::name
+                                          , $iv_authority_key_id);
+  }
+
+  trc("Returning from visit_local_ca_certificate");
+}
+
+sub get_remote_ca_certificate {
+  my ($iv_hostname_port)=@_;
+  trc("Entering get_remote_ca_certificate("
+      ."\$iv_hostname_port=$iv_hostname_port)");
+
+  if (not $iv_hostname_port =~ /:\d+$/) {
+    $iv_hostname_port = $iv_hostname_port.':443';
+    trc("Added default port to hostname: $iv_hostname_port");
+  }
+
+  open(my $lh_chld_out
+       ,'-|'
+       ,"openssl"
+       ." s_client"
+       ." -showcerts"
+       ." -connect $iv_hostname_port"
+       ." </dev/null"
+      )
+    or die "Failed to connect to $iv_hostname_port: $!\n";
+
+  # Slurp child STDOUT
+  my $lv_chld_out = do {local $/ ; <$lh_chld_out>};
+
+  close($lh_chld_out) or warn "Failed to close openssl STDOUT: $!\n";
+
+  # Find last encoded certificate in child's output
+  $lv_chld_out =~ /(-----BEGIN\ CERTIFICATE-----\n
+                     (([A-Za-z0-9+\/=]+)\n)+
+                     -----END\ CERTIFICATE-----\n)
+                   (?!.*-----BEGIN\ CERTIFICATE-----\n)/sx
+                     or die "No certificate found in openssl output\n";
+
+  my $lv_last_encoded_certificate = $1;
+
+  trc("Returning $lv_last_encoded_certificate"
+      ." from get_remote_ca_certificate");
+  return scalar $lv_last_encoded_certificate;
+}
+
+sub decode_certificate {
+  my($iv_encoded_certificate) = @_;
+  trc("Entering decode_certificate("
+      ."\$iv_encoded_certificate="
+      ."@{[ length $iv_encoded_certificate ]} chars)");
+
+  my($lv_pid,$lh_chld_out, $lh_chld_in);
+  $lv_pid = open2($lh_chld_out
+                  ,$lh_chld_in
+                  ,'openssl'
+                  ,'x509'
+                  ,'-text'
+                  ,'-noout');
+
+  print { $lh_chld_in } $iv_encoded_certificate;
+  $lh_chld_in->flush();
+
+  $lh_chld_in->close()
+    or warn "Decode X.509 certificate: closing STDIN failed: $!\n";
+
+  my $lv_decoded_certificate = do { local $/ ; <$lh_chld_out> };
+
+  $lh_chld_out->close()
+    or warn "Decode X.509 certificate: closing STDOUT failed: $!\n";
+
+  waitpid( $lv_pid, 0 );
+
+  trc("Returning @{[ length $lv_decoded_certificate ]} chars"
+      ." from decode_certificate");
+  return scalar $lv_decoded_certificate;
+}
+
+sub get_authority_key_id {
+  my ($iv_decoded_certificate) = @_;
+  trc("Entering get_authority_key_id("
+      ."\$iv_decoded_certificate="
+      ."@{[ length $iv_decoded_certificate ]} chars)");
+
+  $iv_decoded_certificate
+    =~ /X509v3\ Authority\ Key\ Identifier:
+        \s+keyid:([A-F0-9]{2}(:[A-F0-9]{2}){19})/sx
+          or die "X509v3 Authority Key Identifier"
+            ." not found in\n$iv_decoded_certificate\n";
+
+  my $lv_key_id = $1;
+
+  trc("Returning $lv_key_id from get_authority_key_id");
+  return scalar $lv_key_id;
+}
+
+sub get_subject_key_id {
+  my ($iv_decoded_certificate) = @_;
+  trc("Entering get_subject_key_id("
+      ."\$iv_decoded_certificate="
+      ."@{[length $iv_decoded_certificate]} chars)");
+
+  $iv_decoded_certificate
+    =~ /X509v3\ Subject\ Key\ Identifier:
+        \s+([A-F0-9]{2}(:[A-F0-9]{2}){19})/sx
+          or trc("X509v3 Subject Key Identifier"
+                 ." not found in\n$iv_decoded_certificate\n");
+
+  my $lv_key_id = $1;
+
+  trc("Returning $lv_key_id from get_subject_key_id");
+  return scalar $lv_key_id;
+}
+
+sub get_encoded_certificate_by_key_id {
+  my($iv_cert_filename,$iv_key_id) = @_;
+  trc("Entering get_encoded_certificate_by_key_id("
+      ."\$iv_cert_filename=$iv_cert_filename"
+      .",\$iv_key_id=$iv_key_id");
+
+  open(my $lh_cert_file, '<', $iv_cert_filename)
+    or die "Can't open $iv_cert_filename: $!\n";
+
+  my $lv_all_encoded_certificates = do { local $/ ; <$lh_cert_file> };
+
+  close($lh_cert_file)
+    or warn "Failed to close $iv_cert_filename: $!\n";
+
+  while ($lv_all_encoded_certificates
+         =~ /(-----BEGIN\ CERTIFICATE-----\n
+               (([A-Za-z0-9+\/=]+)\n)+
+               -----END\ CERTIFICATE-----\n)/sxg) {
+
+    my $lv_one_encoded_certificate = $1;
+
+    if ($iv_key_id eq
+        get_subject_key_id(decode_certificate($lv_one_encoded_certificate))) {
+
+      trc("Returning $lv_one_encoded_certificate"
+          ." from get_encoded_certificate_by_key_id");
+      return scalar $lv_one_encoded_certificate;
+    }
+  }                             # while
+
+  trc("Returning undef from get_encoded_certificate_by_key_id");
+  return undef;
+}
+
+sub get_jre_dir_used_by_mvn {
+  trc("Entering get_jre_dir_used_by_mvn()");
+
+  open(my $lh_mvn_out, '-|', "mvn -v")
+    or die "Can't execute Maven: $!\n";
+
+  my $lv_jre_dir;
+  while (my $lv_mvn_out = <$lh_mvn_out>) {
+    $lv_mvn_out =~ /Java home: ([^\r\n]+)/
+      && ( $lv_jre_dir = $1 );
+  }
+
+  close($lh_mvn_out)
+    or warn "Can't close Maven STDOUT\n";
+
+  trc("Returning $lv_jre_dir from get_jre_dir_used_by_mvn");
+  return scalar $lv_jre_dir;
+}
+
+sub import_encoded_certificate_into_jre {
+  my ($iv_jre_dir, $iv_encoded_certificate, $iv_alias) = @_;
+  trc("Entering import_encoded_certificate_into_jre(\$iv_jre_dir=$iv_jre_dir"
+      .",\$iv_encoded_certificate=$iv_encoded_certificate"
+      .",\$iv_alias=$iv_alias)");
+
+  my $lv_keytool = catfile($iv_jre_dir, 'bin', 'keytool');
+  my $lv_keystore = catfile($iv_jre_dir, 'lib', 'security', 'cacerts');
+
+  # Need to generate temp file in current dir instead of system temp dir
+  # because Windows Java keytool doesn't understand Unix directory paths
+  my ($lh_cacert, $lv_cacert_filename) = tempfile(UNLINK => 1, DIR=>'.');
+
+  trc("\$lv_cacert_filename=$lv_cacert_filename");
+
+  print {$lh_cacert} $iv_encoded_certificate
+    or die "Can't write to $lv_cacert_filename: $!\n";
+
+  close($lh_cacert) or warn("Can't close $lv_cacert_filename\n");
+
+  # Redirect keytool STDERR to STDOUT, because it will output
+  # the prompt "Enter keystore password:" on STDERR. This conflicts
+  # with our -v switch, specifically when users redirect STDERR
+  # to a file in order to produce a trace file. Without the redirect
+  # below, users wouldn't see the prompt any more.
+  if (system("'$lv_keytool' -import"
+             ." -keystore '$lv_keystore'"
+             ." -alias '$iv_alias'"
+             ." -file '$lv_cacert_filename'"
+             ." 2>&1") != 0) {
+
+    my $msg;
+    if ($? == -1) {
+      $msg = "Failed to execute keytool: $!\n";
+    } elsif ($? & 127) {
+      $msg = sprintf("keytool died with signal %d, %s coredump\n"
+                     , ($? & 127)
+                     , ($? & 128) ? 'with' : 'without');
+    } else {
+      $msg = sprintf("keytool exited with value %d\n", $? >> 8);
+    }
+    warn $msg;
+  }
+
+  trc("Returning from import_encoded_certificate_into_jre");
+}
+
+sub usage {
+  return <<"END_USAGE";
+Usage: $0 [OPTION]... HOSTNAME[:PORT]
+
+Import trusted CA certificate from local storage into Java runtime
+so that HOSTNAME's SSL/TLS server certificate can be validated
+
+Options:
+    -d, --dirs       Directories to search for local CA certificates.
+                     The default is to search a list of directories
+                     used by package ca-certificates in Debian, SLES,
+                     RHEL or Cygwin/Windows.
+
+    -v, --verbose    Turn on debugging messages on STDERR
+
+    -h, --help       Display this help message and exit
+
+END_USAGE
+}
+
+sub parse_options {
+  my $lv_options_ok;
+  my @lt_options_warnings;
+
+  do {
+    local $SIG{__WARN__} = sub {
+      push @lt_options_warnings, $_[0];
+    };
+
+    $lv_options_ok = GetOptions( 'verbose'  => \$gv_verbose
+                                 ,'help'    => sub { print usage(); exit 0; }
+                                 ,'dirs=s@' => \@gt_dirs
+                               );
+  };
+
+  foreach my $lv_options_warning (@lt_options_warnings) {
+    warn $lv_options_warning;
+  }
+
+  if (@lt_options_warnings or not $lv_options_ok) {
+    warn usage();
+    die "Illegal command line options\n";
+  }
+}
+
+sub get_alias_for_certificate {
+  my($iv_decoded_certificate) = @_;
+  trc("Entering get_alias_for_certificate(\$iv_decoded_certficiate="
+      ."@{[ length $iv_decoded_certificate ]} chars)");
+
+  my $lv_last_subject_name_component;
+
+  if ($iv_decoded_certificate
+      =~ /Subject:[^\r\n]*
+          [A-Z]+=([^\r\n]+)
+          (?![A-Z]+=([^\r\n])+)/sx) {
+    $lv_last_subject_name_component = $1;
+    trc("Last subject name component: $lv_last_subject_name_component");
+
+    # Lower-case CN from certificate
+    $lv_last_subject_name_component = lc $lv_last_subject_name_component;
+
+    # Replace all non-word characters with underscore
+    $lv_last_subject_name_component =~ s/\W/_/g;
+  } else {
+    my($sec,$min,$hour,$mday,$mon,$year)=(localtime)[0..5];
+    my $lv_timestamp=sprintf("%d-%02d-%02dT%02d-%02d-%02d"
+                             ,$year + 1900
+                             ,$mon + 1
+                             ,$mday
+                             ,$hour
+                             ,$min
+                             ,$sec);
+    trc("No subject CN found, using timestamp $lv_timestamp");
+    $lv_last_subject_name_component=$lv_timestamp;
+  }
+
+  my $lv_result = "mvn_import_cacert:".$lv_last_subject_name_component;
+
+  trc("Returning $lv_result from get_alias_for_certificate");
+  return scalar $lv_result;
+}
+
+sub main {
+  my $iv_hostname_port = @_ ? shift : '';
+  trc("Entering main(\$iv_hostname_port=$iv_hostname_port)");
+
+  if (!$iv_hostname_port) {
+    warn usage();
+    die "Missing hostname\n";
+  }
+
+  # Verify existence of required external programs
+  check_program_exists('mvn');
+  check_program_exists('openssl');
+
+  my $lv_encoded_remote_ca_certificate
+    = get_remote_ca_certificate($iv_hostname_port);
+
+  my $lv_decoded_remote_ca_certificate
+    = decode_certificate($lv_encoded_remote_ca_certificate);
+
+  trc("Decoded remote CA certificate: $lv_decoded_remote_ca_certificate");
+
+  my $lv_authority_key_id
+    = get_authority_key_id($lv_decoded_remote_ca_certificate);
+
+  my $lr_dirs;
+
+  if (@gt_dirs) {
+    trc("Searching user-supplied directories: @gt_dirs");
+    $lr_dirs = \@gt_dirs;
+  } else {
+    trc("Searching default directories: @GT_LOCAL_CA_CERTIFICATE_DIRS");
+    $lr_dirs = \@GT_LOCAL_CA_CERTIFICATE_DIRS;
+  }
+
+  find_local_ca_certificate_by_subject_key_id($lr_dirs
+                                              , $lv_authority_key_id);
+
+  die "Could not find local CA certificate"
+    ." with subject key ID $lv_authority_key_id"
+      . " in directories @{ $lr_dirs }\n"
+        unless $gv_local_ca_certificate;
+
+  my $lv_alias
+    = get_alias_for_certificate(decode_certificate($gv_local_ca_certificate));
+
+  import_encoded_certificate_into_jre(get_jre_dir_used_by_mvn()
+                                      , $gv_local_ca_certificate
+                                      , $lv_alias);
+  trc("Returning from main");
+}
+
+parse_options();
+main(@ARGV);
