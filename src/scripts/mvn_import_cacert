@@ -26,9 +26,7 @@ use Getopt::Long;
 
 # Default list of directories when no --dirs was supplied
 my @GT_LOCAL_CA_CERTIFICATE_DIRS
-  = ( '/etc/pki/ca-trust/extracted/'      # Cygwin/Windows
-      ,'/usr/share/ca-certificates'       # Debian
-      ,'/usr/local/share/ca-certificates' # Debian
+  = ( '/etc/ssl/certs'  # works on Cygwin,Debian and SLES at a minimum
     );
 
 # Value of command line option --dirs
@@ -66,15 +64,20 @@ sub check_program_exists {
 }
 
 sub find_local_ca_certificate_by_subject_key_id {
-  my($ir_dirs,$iv_authority_key_id) = @_;
+  my($ir_dirs,$iv_subject_key_id) = @_;
   trc("Entering find_local_ca_certificate_by_subject_key_id("
       ."\$ir_dirs=$ir_dirs,"
-      ." \$iv_authority_key_id=$iv_authority_key_id)");
+      ." \$iv_subject_key_id=$iv_subject_key_id)");
 
   # Don't complain about non-existing directories
   no warnings 'File::Find';
   find({ wanted => sub {
-           visit_local_ca_certificate($iv_authority_key_id) }
+           visit_local_ca_certificate($iv_subject_key_id) }
+         # Must enable following symlinks explicitly,
+         # otherwise Perl on Cygwin won't do it and hence
+         # never succeed because /etc/ssl/certs typically
+         # contains symlinks only
+         ,follow_fast => 1
        }
        , @{ $ir_dirs });
 
@@ -82,9 +85,10 @@ sub find_local_ca_certificate_by_subject_key_id {
 }
 
 sub visit_local_ca_certificate {
-  my($iv_authority_key_id) = @_;
+  my($iv_subject_key_id) = @_;
   trc("Entering visit_local_ca_certificate("
-      ."\$iv_authority_key_id=$iv_authority_key_id)");
+      ."\$iv_subject_key_id=$iv_subject_key_id)");
+  trc("\$File::Find::name=$File::Find::name");
 
   # Process only if matching local certificate not found yet,
   # and current file is a file (not directory) and has
@@ -92,8 +96,8 @@ sub visit_local_ca_certificate {
   if (!$gv_local_ca_certificate && -f && /\.(crt|pem)$/i) {
 
     $gv_local_ca_certificate
-      = get_encoded_certificate_by_key_id($File::Find::name
-                                          , $iv_authority_key_id);
+      = filter_encoded_certificates_by_subject_key_id($File::Find::name
+                                                      , $iv_subject_key_id);
   }
 
   trc("Returning from visit_local_ca_certificate");
@@ -206,11 +210,11 @@ sub get_subject_key_id {
   return scalar $lv_key_id;
 }
 
-sub get_encoded_certificate_by_key_id {
-  my($iv_cert_filename,$iv_key_id) = @_;
-  trc("Entering get_encoded_certificate_by_key_id("
+sub filter_encoded_certificates_by_subject_key_id {
+  my($iv_cert_filename,$iv_subject_key_id) = @_;
+  trc("Entering filter_encoded_certificates_by_subject_key_id("
       ."\$iv_cert_filename=$iv_cert_filename"
-      .",\$iv_key_id=$iv_key_id");
+      .",\$iv_subject_key_id=$iv_subject_key_id");
 
   open(my $lh_cert_file, '<', $iv_cert_filename)
     or die "Can't open $iv_cert_filename: $!\n";
@@ -227,16 +231,16 @@ sub get_encoded_certificate_by_key_id {
 
     my $lv_one_encoded_certificate = $1;
 
-    if ($iv_key_id eq
+    if ($iv_subject_key_id eq
         get_subject_key_id(decode_certificate($lv_one_encoded_certificate))) {
 
       trc("Returning $lv_one_encoded_certificate"
-          ." from get_encoded_certificate_by_key_id");
+          ." from filter_encoded_certificates_by_subject_key_id");
       return scalar $lv_one_encoded_certificate;
     }
   }                             # while
 
-  trc("Returning undef from get_encoded_certificate_by_key_id");
+  trc("Returning undef from filter_encoded_certificates_by_subject_key_id");
   return undef;
 }
 
@@ -313,15 +317,35 @@ Usage: $0 [OPTION]... HOSTNAME[:PORT]
 Import trusted CA certificate from local storage into Java runtime
 so that HOSTNAME's SSL/TLS server certificate can be validated
 
+Arguments:
+    HOSTNAME         Hostname of Maven repository
+    PORT             HTTPS port of Maven repository. Default: 443
+
 Options:
     -d, --dirs       Directories to search for local CA certificates.
-                     The default is to search a list of directories
-                     used by package ca-certificates in Debian, SLES,
-                     RHEL or Cygwin/Windows.
+                     Default: /etc/ssl/certs
+                     This option can be specified multiple times, e.g.
+                     -d /usr/share/ca-certificates -d /etc/pki
 
     -v, --verbose    Turn on debugging messages on STDERR
 
     -h, --help       Display this help message and exit
+
+Examples:
+    mvn_import_cacert oss.sonatype.org
+
+        Retrieve SSL certificate chain from oss.sonatype.org:443.
+        Look up corresponding root CA certficate in the default
+        local directory /etc/ssl/certs and import it into the
+        jre/lib/security/cacerts keystore of the Java runtime.
+
+    mvn_import_cacert private.mycompany.internal:8443 \\
+        -d /usr/local/share/ca-certificates
+
+        Same for a private Intranet Maven repository using
+        a non-standard HTTPS port. Looks for a matching root
+        CA certificate underneath /usr/local/share/ca-certificates
+        instead of the default directory.
 
 END_USAGE
 }
