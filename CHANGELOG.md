@@ -3,6 +3,8 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Rename artifact and project to idm-connector-bobj
 
 ## [1.0.1] - 2016-07-21
 ### Fixed
