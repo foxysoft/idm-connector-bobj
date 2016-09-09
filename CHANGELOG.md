@@ -3,7 +3,9 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+## [1.0.2] - 2016-09-09
 ### Fixed
+- Fix SQLSTATE=42704 in DB2 initial load
 - Rename artifact and project to idm-connector-bobj
 
 ## [1.0.1] - 2016-07-21
@@ -15,5 +17,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First public release
 
-[Unreleased]: ../../compare/1.0.0...HEAD
+[Unreleased]: ../../compare/1.0.2...HEAD
 [1.0.1]: ../../compare/1.0.0...1.0.1
+[1.0.2]: ../../compare/1.0.1...1.0.2

@@ -5,6 +5,13 @@ project adheres to Semantic Versioning.
 
 Unreleased
 
+1.0.2 - 2016-09-09
+
+Fixed
+
+  • Fix SQLSTATE=42704 in DB2 initial load
+  • Rename artifact and project to idm-connector-bobj
+
 1.0.1 - 2016-07-21
 
 Fixed
