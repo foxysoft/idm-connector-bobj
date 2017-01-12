@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -18,12 +18,14 @@
  */
 var fx_bobj_CeProperties = (function() {
 
+    var fx_trace;
+
     /**
      * Maps CE property IDs to CE property names. The keys in this
      * map are property IDs, the values property names.
      * Initialized by class_init(), never cleaned up.
      *
-     * @type {java.util.HashMap<java.lang.Integer,java.lang.String>} - 
+     * @type {java.util.HashMap<java.lang.Integer,java.lang.String>} -
      */
     var go_ce_properties = null;
 
@@ -40,7 +42,7 @@ var fx_bobj_CeProperties = (function() {
         /**
          * <div>Check if property can be read into IDM during initial load.</div>
          * <div>This check returns true if the property is documented
-         * as a public constant in SDK class 
+         * as a public constant in SDK class
          * com.crystaldecisions.sdk.occa.infostore.CePropertyID and
          * if it is not a property bag.</div>
          * @function
@@ -131,6 +133,9 @@ var fx_bobj_CeProperties = (function() {
      */
     function class_init()
     {
+        // Workaround "fx_trace is undefined"
+        fx_trace = (function(){ var f = this["fx_trace"]; return f ? f : uWarning;}).call(null);
+
         // Workaround "Packages is undefined"
         var lo_packages = (function(){return this["Packages"];}).call(null);
         if(lo_packages)
@@ -150,6 +155,8 @@ var fx_bobj_CeProperties = (function() {
             var lo_class = java.lang.Class.forName(
                 "com.crystaldecisions.sdk.occa.infostore.CePropertyID"
             );
+            fx_trace(SCRIPT+"lo_class="+lo_class);
+
 
             var  lt_fields = lo_class.getDeclaredFields();
             for (var i = 0; i < lt_fields.length; ++i) {
@@ -173,6 +180,9 @@ var fx_bobj_CeProperties = (function() {
             fx_trace(SCRIPT+"Returning");
 
         }//if(lo_packages)
+        else {
+            fx_trace("Packages not found in global namespace");
+        }
     }//class_init
 
     class_init();

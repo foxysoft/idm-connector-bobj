@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -14,8 +14,8 @@
 
 /**
  * <div>Returns all attribute names with BOBJ modify triggers.</div>
- * <div>Returns the content of <strong>global constant 
- * FX_BOBJ_MODIFY_TRIGGERS</strong> as a comma-separated list, with 
+ * <div>Returns the content of <strong>package constant
+ * FX_BOBJ_MODIFY_TRIGGERS</strong> as a comma-separated list, with
  * each element surrounded by single quotes. If FX_BOBJ_MODIFY_TRIGGERS
  * is empty, returns these attribute names by default:</div>
  * <table>
@@ -34,12 +34,20 @@ function fx_bobj_getModifyTriggers()
     var SCRIPT = "fx_bobj_getModifyTriggers: ";
     fx_trace(SCRIPT+"Entering");
 
-    var lv_triggers = uGetConstant("glb.FX_BOBJ_MODIFY_TRIGGERS");
+    var lv_triggers = uGetConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
+
+    // Workaround: In SAP IDM 8.0 (at least SP0), uGetConstant()
+    // returns the string value "-undefined-" if a package constant
+    // does not exist
+    if(lv_triggers == "-undefined-")
+    {
+        lv_triggers = "";
+    }
 
     if(lv_triggers == "")
     {
         fx_trace(SCRIPT
-                 + "Global constant FX_BOBJ_MODIFY_TRIGGERS is empty,"
+                 + "Package constant FX_BOBJ_MODIFY_TRIGGERS is empty,"
                  + " using default triggers");
         lv_triggers
             = "MXREF_MX_GROUP"
@@ -54,7 +62,7 @@ function fx_bobj_getModifyTriggers()
     else
     {
         fx_trace(SCRIPT
-                 +"Global constant FX_BOBJ_MODIFY_TRIGGERS is "
+                 +"Package constant FX_BOBJ_MODIFY_TRIGGERS is "
                  + lv_triggers);
     }
 

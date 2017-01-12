@@ -15,9 +15,9 @@
 /**
  * <div>Generate random password compliant with IDM's password policy.</div>
  * <div>This function uses a subset of the password policy defined for
- * identity store SAP_MASTER_IDS_ID, specifically minimum length, maximum 
+ * the current identity store, specifically minimum length, maximum 
  * length, mixed case and mixed letters and numbers.</div>
- * <div>Use the following global constants for additional customizing:</div>
+ * <div>Use the following package constants for additional customizing:</div>
  * <table>
  * <tr><th>Constant</th><th>Description</th></tr>
  * <tr><td>FX_PASSWORD_EXCLUDE_CHARS</td>
@@ -34,6 +34,7 @@
  * @requires fx_trace
  * @requires fx_db_nolock
  * @requires fx_JavaUtils
+ * @requires fx_IDSID
  */
 var fx_generatePolicyPassword = (function() {
 
@@ -60,7 +61,7 @@ var fx_generatePolicyPassword = (function() {
 
         // Include special characters as per configuration
         gv_include_specials
-            = uGetConstant("glb.FX_PASSWORD_INCLUDE_SPECIALS");
+            = uGetConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");
         fx_trace(SCRIPT+"gv_include_specials="+gv_include_specials);
 
         var lv_sql = "select"
@@ -69,7 +70,7 @@ var fx_generatePolicyPassword = (function() {
                 + "    ,MixedChar"
                 + "    ,CharNumb "
                 + "    from mxi_attributes" + fx_db_nolock()
-                + "    where is_id=%$glb.SAP_MASTER_IDS_ID%"
+                + "    where is_id=" + fx_IDSID()
                 + "    and attrname='MX_PASSWORD'"
         ;
         fx_trace(SCRIPT+"lv_sql="+lv_sql);
@@ -245,11 +246,11 @@ var fx_generatePolicyPassword = (function() {
             ;
             fx_trace(SCRIPT+"lo_random="+lo_random);
 
-            // Exclude characters and digits as per global constant
+            // Exclude characters and digits as per package constant
             var lv_exclude_chars
-                    = uGetConstant("glb.FX_PASSWORD_EXCLUDE_CHARS");
+                    = uGetConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");
 
-            // Exclude characters and digits as per global constant
+            // Exclude characters and digits as per package constant
             var i;
             for(i=0; i < lv_exclude_chars.length;++i)
             {
@@ -302,7 +303,7 @@ var fx_generatePolicyPassword = (function() {
                 // If none specified, passwords will
                 // NOT include special chars
                 fx_trace(SCRIPT
-                         + "Global constant FX_PASSWORD_INCLUDE_SPECIALS"
+                         + "Package constant FX_PASSWORD_INCLUDE_SPECIALS"
                          + " is empty => passwords will not include"
                          + " any special characters");
             }
