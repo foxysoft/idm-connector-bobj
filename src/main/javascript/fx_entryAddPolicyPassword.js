@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_generatePolicyPassword */
 /**
  * Add random generated password to entry as FX_POLICY_PASSWORD
  * @see fx_generatePolicyPassword
@@ -30,7 +31,7 @@ function fx_entryAddPolicyPassword(io_entry)
     else
     {
         //Skip entry as failed - this call doesn't return
-        uSkip(1,2,lv_message);
+        uSkip(1,2,lv_policy_password);
     }
 
     return io_entry;

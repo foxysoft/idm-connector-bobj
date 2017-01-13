@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace, fx_getConstant */
+
 /**
  * <div>Returns all attribute names with BOBJ modify triggers.</div>
  * <div>Returns the content of <strong>package constant
@@ -28,21 +30,14 @@
  * <tr><td>MX_ENCRYPTED_PASSWORD</td></tr>
  * </table>
  * @requires fx_trace
+ * @requires fx_getConstant
  */
 function fx_bobj_getModifyTriggers()
 {
     var SCRIPT = "fx_bobj_getModifyTriggers: ";
     fx_trace(SCRIPT+"Entering");
 
-    var lv_triggers = uGetConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
-
-    // Workaround: In SAP IDM 8.0 (at least SP0), uGetConstant()
-    // returns the string value "-undefined-" if a package constant
-    // does not exist
-    if(lv_triggers == "-undefined-")
-    {
-        lv_triggers = "";
-    }
+    var lv_triggers = fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
 
     if(lv_triggers == "")
     {

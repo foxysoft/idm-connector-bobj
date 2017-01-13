@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace, fx_db_nolock, fx_JavaUtils, fx_IDSID, fx_getConstant */
 /**
  * <div>Generate random password compliant with IDM's password policy.</div>
  * <div>This function uses a subset of the password policy defined for
- * the current identity store, specifically minimum length, maximum 
+ * the current identity store, specifically minimum length, maximum
  * length, mixed case and mixed letters and numbers.</div>
  * <div>Use the following package constants for additional customizing:</div>
  * <table>
@@ -35,6 +36,7 @@
  * @requires fx_db_nolock
  * @requires fx_JavaUtils
  * @requires fx_IDSID
+ * @requires fx_getConstant
  */
 var fx_generatePolicyPassword = (function() {
 
@@ -61,7 +63,7 @@ var fx_generatePolicyPassword = (function() {
 
         // Include special characters as per configuration
         gv_include_specials
-            = uGetConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");
+            = fx_getConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");
         fx_trace(SCRIPT+"gv_include_specials="+gv_include_specials);
 
         var lv_sql = "select"
@@ -248,7 +250,7 @@ var fx_generatePolicyPassword = (function() {
 
             // Exclude characters and digits as per package constant
             var lv_exclude_chars
-                    = uGetConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");
+                    = fx_getConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");
 
             // Exclude characters and digits as per package constant
             var i;
