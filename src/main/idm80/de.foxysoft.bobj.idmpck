@@ -1,21 +1,5 @@
 <?xml version="1.0"?>
-<!--
-Copyright 2016 Foxysoft GmbH
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
-<IDM EXPORTED_ON="2017-01-13 16:20:06.17" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
+<IDM EXPORTED_ON="2017-01-15 18:15:33.813" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
   <PACKAGES>
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
@@ -23,7 +7,7 @@ limitations under the License.
       <MCDISPLAYNAME>de.foxysoft.bobj</MCDISPLAYNAME>
       <MCLASTMODIFIED>1484040676167</MCLASTMODIFIED>
       <MCMAJORVERSION>0</MCMAJORVERSION>
-      <MCMINORVERSION>2</MCMINORVERSION>
+      <MCMINORVERSION>3</MCMINORVERSION>
       <MCPACKAGELEVEL>1528</MCPACKAGELEVEL>
       <MCPACKAGETYPE>0</MCPACKAGETYPE>
       <MCQUALIFIEDNAME>de.foxysoft.bobj</MCQUALIFIEDNAME>
@@ -3270,6 +3254,38 @@ function fx_bobj_removeUser(io_entry)&#13;
           <MCENABLED>1</MCENABLED>
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
           <MCPROTECTED>0</MCPROTECTED>
+          <MCSCRIPTDEFINITION>// Copyright 2017 Foxysoft GmbH&#13;
+//&#13;
+// Licensed under the Apache License, Version 2.0 (the "License");&#13;
+// you may not use this file except in compliance with the License.&#13;
+// You may obtain a copy of the License at&#13;
+//&#13;
+//    http://www.apache.org/licenses/LICENSE-2.0&#13;
+//&#13;
+// Unless required by applicable law or agreed to in writing, software&#13;
+// distributed under the License is distributed on an "AS IS" BASIS,&#13;
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#13;
+// See the License for the specific language governing permissions and&#13;
+// limitations under the License.&#13;
+&#13;
+/**&#13;
+ * &lt;div&gt;Automatically logoff after next commit.&lt;/div&gt;&#13;
+ * @requires fx_bobj_Session&#13;
+ * @see fx_bobj_Session.setAutoLogoff&#13;
+ */&#13;
+function fx_bobj_setAutoLogoff()&#13;
+{&#13;
+    fx_bobj_Session.setAutoLogoff(true);&#13;
+}&#13;
+</MCSCRIPTDEFINITION>
+          <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
+          <MCSCRIPTNAME>fx_bobj_setAutoLogoff</MCSCRIPTNAME>
+          <MCSCRIPTSTATUS>0</MCSCRIPTSTATUS>
+        </SCRIPT>
+        <SCRIPT>
+          <MCENABLED>1</MCENABLED>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCPROTECTED>0</MCPROTECTED>
           <MCSCRIPTDEFINITION>// Copyright 2016 Foxysoft GmbH&#13;
 //&#13;
 // Licensed under the Apache License, Version 2.0 (the "License");&#13;
@@ -3582,7 +3598,7 @@ function fx_entryAddPolicyPassword(io_entry)&#13;
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
           <MCPROTECTED>0</MCPROTECTED>
           <MCSCRIPTDEFINITION>// Copyright 2016 Foxysoft GmbH&#13;
-// &#13;
+//&#13;
 // Licensed under the Apache License, Version 2.0 (the "License");&#13;
 // you may not use this file except in compliance with the License.&#13;
 // You may obtain a copy of the License at&#13;
@@ -3595,10 +3611,11 @@ function fx_entryAddPolicyPassword(io_entry)&#13;
 // See the License for the specific language governing permissions and&#13;
 // limitations under the License.&#13;
 &#13;
+/* global fx_trace, fx_db_nolock, fx_JavaUtils, fx_IDSID, fx_getConstant */&#13;
 /**&#13;
  * &lt;div&gt;Generate random password compliant with IDM's password policy.&lt;/div&gt;&#13;
  * &lt;div&gt;This function uses a subset of the password policy defined for&#13;
- * the current identity store, specifically minimum length, maximum &#13;
+ * the current identity store, specifically minimum length, maximum&#13;
  * length, mixed case and mixed letters and numbers.&lt;/div&gt;&#13;
  * &lt;div&gt;Use the following package constants for additional customizing:&lt;/div&gt;&#13;
  * &lt;table&gt;&#13;
@@ -3618,6 +3635,7 @@ function fx_entryAddPolicyPassword(io_entry)&#13;
  * @requires fx_db_nolock&#13;
  * @requires fx_JavaUtils&#13;
  * @requires fx_IDSID&#13;
+ * @requires fx_getConstant&#13;
  */&#13;
 var fx_generatePolicyPassword = (function() {&#13;
 &#13;
@@ -3644,7 +3662,7 @@ var fx_generatePolicyPassword = (function() {&#13;
 &#13;
         // Include special characters as per configuration&#13;
         gv_include_specials&#13;
-            = uGetConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");&#13;
+            = fx_getConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");&#13;
         fx_trace(SCRIPT+"gv_include_specials="+gv_include_specials);&#13;
 &#13;
         var lv_sql = "select"&#13;
@@ -3831,7 +3849,7 @@ var fx_generatePolicyPassword = (function() {&#13;
 &#13;
             // Exclude characters and digits as per package constant&#13;
             var lv_exclude_chars&#13;
-                    = uGetConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");&#13;
+                    = fx_getConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");&#13;
 &#13;
             // Exclude characters and digits as per package constant&#13;
             var i;&#13;
@@ -4220,118 +4238,118 @@ function fx_getContextVar(iv_params)&#13;
           <MCENABLED>1</MCENABLED>
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
           <MCPROTECTED>0</MCPROTECTED>
-          <MCSCRIPTDEFINITION>// Copyright 2017 Foxysoft GmbH
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-/**
- * &lt;div&gt;Get SAP IDM schema version.&lt;/div&gt;
- * @return {number} - schema version
- * @requires fx_trace
- */
-var fx_getSchemaVersion = (function() {
-    var SCRIPT = "fx_getSchemaVersion: ";
-    var gv_schema_version = -1;
-
-    function fx_getSchemaVersionImpl() {
-        fx_trace(SCRIPT+"Entering");
-
-        var lv_result = gv_schema_version;
-
-        if(lv_result != -1)
-        {
-            fx_trace(SCRIPT+"Result from cache");
-        }
-        else
-        {
-            fx_trace(SCRIPT+"Result from database");
-            try
-            {
-                var lo_exception = null;
-
-                // Don't use string interpolation for ddm.identiycenter,
-                // as it could contain double quotes and thus result
-                // in JavaScript code injection
-                var lv_jdbc_url = uGetConstant("ddm.identitycenter");
-
-                var lo_connection
-                        = java.sql.DriverManager.getConnection(
-                            lv_jdbc_url
-                        );
-                fx_trace(SCRIPT
-                         + "Opened connection"
-                         + " lo_connection="+lo_connection);
-
-                var lo_statement = lo_connection.prepareCall(
-                    "{call mc_schemaversion(?)}"
-                );
-                fx_trace(SCRIPT
-                         + "Prepared callable statement"
-                         + " lo_statement="+lo_statement);
-
-                lo_statement.registerOutParameter(
-                    "Schemaversion"
-                    ,java.sql.Types.INTEGER
-                );
-                fx_trace(SCRIPT
-                         + "Registered OUT parameter"
-                         + " @Schemaversion as datatype INT");
-
-                lo_statement.execute();
-                fx_trace(SCRIPT
-                         + "Executed callable statement"
-                         + " lo_statement="
-                         + lo_statement);
-
-                lv_result = lo_statement.getInt("Schemaversion");
-
-                // Cache result for subsequent invocations
-                gv_schema_version = lv_result;
-            }//try
-            catch(lo_exception)
-            {
-                var lo_string_writer
-                        = new java.io.StringWriter();
-
-                var lo_print_writer
-                        = new java.io.PrintWriter(lo_string_writer);
-
-                lo_exception.printStackTrace(lo_print_writer);
-
-                var lv_stacktrace = lo_string_writer.toString();
-                uError(SCRIPT+lv_stacktrace);
-            }
-
-            if(lo_statement != null)
-            {
-                lo_statement.close();
-                fx_trace(SCRIPT+"Statement closed");
-            }
-            if(lo_connection != null)
-            {
-                lo_connection.close();
-                fx_trace(SCRIPT+"Connection closed");
-            }//if(lo_connection != null)
-        }//else
-
-        fx_trace(SCRIPT+"Returning "+lv_result);
-        return lv_result;
-
-    }//fx_getSchemaVersionImpl
-
-    return fx_getSchemaVersionImpl;
-
-})();
+          <MCSCRIPTDEFINITION>// Copyright 2017 Foxysoft GmbH&#13;
+//&#13;
+// Licensed under the Apache License, Version 2.0 (the "License");&#13;
+// you may not use this file except in compliance with the License.&#13;
+// You may obtain a copy of the License at&#13;
+//&#13;
+//    http://www.apache.org/licenses/LICENSE-2.0&#13;
+//&#13;
+// Unless required by applicable law or agreed to in writing, software&#13;
+// distributed under the License is distributed on an "AS IS" BASIS,&#13;
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#13;
+// See the License for the specific language governing permissions and&#13;
+// limitations under the License.&#13;
+&#13;
+/**&#13;
+ * &lt;div&gt;Get SAP IDM schema version.&lt;/div&gt;&#13;
+ * @return {number} - schema version&#13;
+ * @requires fx_trace&#13;
+ */&#13;
+var fx_getSchemaVersion = (function() {&#13;
+    var SCRIPT = "fx_getSchemaVersion: ";&#13;
+    var gv_schema_version = -1;&#13;
+&#13;
+    function fx_getSchemaVersionImpl() {&#13;
+        fx_trace(SCRIPT+"Entering");&#13;
+&#13;
+        var lv_result = gv_schema_version;&#13;
+&#13;
+        if(lv_result != -1)&#13;
+        {&#13;
+            fx_trace(SCRIPT+"Result from cache");&#13;
+        }&#13;
+        else&#13;
+        {&#13;
+            fx_trace(SCRIPT+"Result from database");&#13;
+            try&#13;
+            {&#13;
+                var lo_exception = null;&#13;
+&#13;
+                // Don't use string interpolation for ddm.identiycenter,&#13;
+                // as it could contain double quotes and thus result&#13;
+                // in JavaScript code injection&#13;
+                var lv_jdbc_url = uGetConstant("ddm.identitycenter");&#13;
+&#13;
+                var lo_connection&#13;
+                        = java.sql.DriverManager.getConnection(&#13;
+                            lv_jdbc_url&#13;
+                        );&#13;
+                fx_trace(SCRIPT&#13;
+                         + "Opened connection"&#13;
+                         + " lo_connection="+lo_connection);&#13;
+&#13;
+                var lo_statement = lo_connection.prepareCall(&#13;
+                    "{call mc_schemaversion(?)}"&#13;
+                );&#13;
+                fx_trace(SCRIPT&#13;
+                         + "Prepared callable statement"&#13;
+                         + " lo_statement="+lo_statement);&#13;
+&#13;
+                lo_statement.registerOutParameter(&#13;
+                    "Schemaversion"&#13;
+                    ,java.sql.Types.INTEGER&#13;
+                );&#13;
+                fx_trace(SCRIPT&#13;
+                         + "Registered OUT parameter"&#13;
+                         + " @Schemaversion as datatype INT");&#13;
+&#13;
+                lo_statement.execute();&#13;
+                fx_trace(SCRIPT&#13;
+                         + "Executed callable statement"&#13;
+                         + " lo_statement="&#13;
+                         + lo_statement);&#13;
+&#13;
+                lv_result = lo_statement.getInt("Schemaversion");&#13;
+&#13;
+                // Cache result for subsequent invocations&#13;
+                gv_schema_version = lv_result;&#13;
+            }//try&#13;
+            catch(lo_exception)&#13;
+            {&#13;
+                var lo_string_writer&#13;
+                        = new java.io.StringWriter();&#13;
+&#13;
+                var lo_print_writer&#13;
+                        = new java.io.PrintWriter(lo_string_writer);&#13;
+&#13;
+                lo_exception.printStackTrace(lo_print_writer);&#13;
+&#13;
+                var lv_stacktrace = lo_string_writer.toString();&#13;
+                uError(SCRIPT+lv_stacktrace);&#13;
+            }&#13;
+&#13;
+            if(lo_statement != null)&#13;
+            {&#13;
+                lo_statement.close();&#13;
+                fx_trace(SCRIPT+"Statement closed");&#13;
+            }&#13;
+            if(lo_connection != null)&#13;
+            {&#13;
+                lo_connection.close();&#13;
+                fx_trace(SCRIPT+"Connection closed");&#13;
+            }//if(lo_connection != null)&#13;
+        }//else&#13;
+&#13;
+        fx_trace(SCRIPT+"Returning "+lv_result);&#13;
+        return lv_result;&#13;
+&#13;
+    }//fx_getSchemaVersionImpl&#13;
+&#13;
+    return fx_getSchemaVersionImpl;&#13;
+&#13;
+})();&#13;
 </MCSCRIPTDEFINITION>
           <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
           <MCSCRIPTNAME>fx_getSchemaVersion</MCSCRIPTNAME>
@@ -4795,7 +4813,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484317306160</CHANGED_DATE>
+          <CHANGED_DATE>1484503527830</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -4840,7 +4858,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyUser</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>%ACCOUNT%$rep.$NAME%%</mx:value>
@@ -4861,16 +4881,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_bobj_User"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                   </mx:Functions>
                 </mx:Job>
               </mx:DSEJobs>
@@ -4897,7 +4907,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484312008867</CHANGED_DATE>
+          <CHANGED_DATE>1484502308393</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -4942,7 +4952,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyUser</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>%ACCOUNT%$rep.$NAME%%</mx:value>
@@ -4969,16 +4981,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_bobj_User"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                   </mx:Functions>
                 </mx:Job>
               </mx:DSEJobs>
@@ -5005,7 +5007,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484316575203</CHANGED_DATE>
+          <CHANGED_DATE>1484503600370</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -5044,16 +5046,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_getContextVar"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                   </mx:Functions>
                   <mx:Pass name="1084c84b-822c-406e-ab72-62264a1ae6b6">
                     <TYPE>To Generic</TYPE>
@@ -5071,7 +5063,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyGroupMembers</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>$FUNCTION.fx_getAttributeByMskey(ACCOUNT%$rep.$NAME%!!$FUNCTION.fx_getAttributeByMskey(MX_ATTRIBUTE_VALUE!!$FUNCTION.fx_getContextVar(PENDINGMSKEY!!0)$$)$$)$$</mx:value>
@@ -5109,7 +5103,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484323914880</CHANGED_DATE>
+          <CHANGED_DATE>1484503276530</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -5155,7 +5149,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_createUser</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>$FUNCTION.fx_setParentContextVar(FX_ACCOUNT!!%MSKEYVALUE%)$$</mx:value>
@@ -5196,16 +5192,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_setParentContextVar"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_IDSID"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_getSchemaVersion"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_getConstant"/>
@@ -5235,7 +5221,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484318239820</CHANGED_DATE>
+          <CHANGED_DATE>1484503666593</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -5280,7 +5266,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyUser</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>%ACCOUNT%$rep.$NAME%%</mx:value>
@@ -5305,16 +5293,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_decrypt"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                   </mx:Functions>
                 </mx:Job>
               </mx:DSEJobs>
@@ -5341,7 +5319,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484308097510</CHANGED_DATE>
+          <CHANGED_DATE>1484503420160</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -5379,16 +5357,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_db_nolock"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_setParentContextVar"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                   </mx:Functions>
                   <mx:Pass name="4b2b6326-330a-4e40-9051-0bbdc0801ca7">
                     <TYPE>To Generic</TYPE>
@@ -5406,7 +5374,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_removeUser</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>$FUNCTION.fx_setParentContextVar(FX_ACCOUNT!!%ACCOUNT%$rep.$NAME%%)$$</mx:value>
@@ -5441,7 +5411,7 @@ function fx_trace(iv_message)&#13;
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>M80D1_admin</CHANGED_BY>
-          <CHANGED_DATE>1484315035580</CHANGED_DATE>
+          <CHANGED_DATE>1484503200933</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -5480,16 +5450,6 @@ function fx_trace(iv_message)&#13;
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_getContextVar"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="INITIALIZE">
-                      <mx:Code>function INITIALIZE(Par) {
-    fx_bobj_logon();
-}</mx:Code>
-                    </mx:Function>
-                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="TERMINATE">
-                      <mx:Code>function TERMINATE(Par) {
-    fx_bobj_logoff();
-}</mx:Code>
-                    </mx:Function>
                   </mx:Functions>
                   <mx:Pass name="857743c5-43a9-4386-95dd-fd67f9c6d300">
                     <TYPE>To Generic</TYPE>
@@ -5507,7 +5467,9 @@ function fx_trace(iv_message)&#13;
                     <USEIDSTORE>1</USEIDSTORE>
                     <IDSTORE>null</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
+                    <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyGroupMembers</SCRIPTNEXT>
+                    <SCRIPTCLOSE>fx_bobj_logoff</SCRIPTCLOSE>
                     <mx:Class>
                       <mx:attr name="SI_NAME">
                         <mx:value>$FUNCTION.fx_getAttributeByMskey(ACCOUNT%$rep.$NAME%!!$FUNCTION.fx_getAttributeByMskey(MX_ATTRIBUTE_VALUE!!$FUNCTION.fx_getContextVar(PENDINGMSKEY!!0)$$)$$)$$</mx:value>
@@ -8078,7 +8040,7 @@ select
   </DISPATCHERS>
   <PACKAGE_HISTORY>
     <MCMODIFIEDBYUSERNAME>ADMIN</MCMODIFIEDBYUSERNAME>
-    <MCMODIFIEDDATE>1484320761000</MCMODIFIEDDATE>
+    <MCMODIFIEDDATE>1484500495000</MCMODIFIEDDATE>
     <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
   </PACKAGE_HISTORY>
 </IDM>
