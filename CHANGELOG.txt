@@ -5,6 +5,10 @@ project adheres to Semantic Versioning.
 
 Unreleased
 
+Added
+
+  • Add support for SAP IDM 8.0
+
 1.0.2 - 2016-09-09
 
 Fixed

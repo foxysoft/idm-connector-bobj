@@ -3,6 +3,9 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Add support for SAP IDM 8.0
+
 ## [1.0.2] - 2016-09-09
 ### Fixed
 - Fix SQLSTATE=42704 in DB2 initial load
