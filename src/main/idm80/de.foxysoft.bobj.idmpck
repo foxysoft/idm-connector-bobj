@@ -1,5 +1,21 @@
 <?xml version="1.0"?>
-<IDM EXPORTED_ON="2017-01-15 18:15:33.813" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
+<!--
+Copyright 2017 Foxysoft GmbH
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<IDM EXPORTED_ON="2017-01-16 14:28:07.72" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
   <PACKAGES>
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
@@ -7,7 +23,7 @@
       <MCDISPLAYNAME>de.foxysoft.bobj</MCDISPLAYNAME>
       <MCLASTMODIFIED>1484040676167</MCLASTMODIFIED>
       <MCMAJORVERSION>0</MCMAJORVERSION>
-      <MCMINORVERSION>3</MCMINORVERSION>
+      <MCMINORVERSION>5</MCMINORVERSION>
       <MCPACKAGELEVEL>1528</MCPACKAGELEVEL>
       <MCPACKAGETYPE>0</MCPACKAGETYPE>
       <MCQUALIFIEDNAME>de.foxysoft.bobj</MCQUALIFIEDNAME>
@@ -134,6 +150,228 @@
           <MCREFERENCE>46868A46-F2CF-41D1-BB9B-8FFD7AEB79A3</MCREFERENCE>
           <MCTYPE>7</MCTYPE>
         </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_IDSID</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_IDSID</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_JavaUtils</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_JavaUtils</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_AliasReader</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_AliasReader</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_CeProperties</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_CeProperties</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_EntryReader</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_EntryReader</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_Group</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_Group</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_MemberReader</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_MemberReader</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_ReaderUtils</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_ReaderUtils</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_Session</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_Session</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_User</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_User</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_createUser</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_createUser</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_getModifyTriggers</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_getModifyTriggers</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_logoff</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_logoff</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_logon</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_logon</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_modifyGroupMembers</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_modifyGroupMembers</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_modifyUser</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_modifyUser</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_nextAliasEntry</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_nextAliasEntry</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_nextGroupEntry</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_nextGroupEntry</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_nextMemberEntry</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_nextMemberEntry</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_nextUserEntry</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_nextUserEntry</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_bobj_removeUser</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_bobj_removeUser</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_db_getDropIfExistsSyntax</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_db_getDropIfExistsSyntax</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_db_getProcedureCallSyntax</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_db_getProcedureCallSyntax</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_db_nolock</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_db_nolock</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_decrypt</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_decrypt</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_encrypt</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_encrypt</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_entryAddPolicyPassword</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_entryAddPolicyPassword</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_generatePolicyPassword</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_generatePolicyPassword</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_getAttributeByMskey</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_getAttributeByMskey</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_getConstant</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_getConstant</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_getContextVar</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_getContextVar</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_getSchemaVersion</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_getSchemaVersion</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_nop</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_nop</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_setParentContextVar</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_setParentContextVar</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_sleep</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_sleep</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_stop</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_stop</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
+        <PUBLIC_REFERENCE>
+          <MCNAME>fx_trace</MCNAME>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <MCREFERENCE>fx_trace</MCREFERENCE>
+          <MCTYPE>12</MCTYPE>
+        </PUBLIC_REFERENCE>
       </PUBLIC_REFERENCES>
       <REPOSITORY_TYPES>
         <REPOSITORY_TYPE MCPACKAGEID="de.foxysoft.bobj">
@@ -201,6 +439,29 @@
             </REPOSITORY_TYPE_VAR>
             <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
               <VARCATEGORY>-1</VARCATEGORY>
+              <VARDESCRIPTION>Master privilege</VARDESCRIPTION>
+              <VARDISPLAYORDER>14</VARDISPLAYORDER>
+              <VARNAME>MX_REQ_PRIV</VARNAME>
+              <VARTYPE>14</VARTYPE>
+              <VARVALUE>-1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
+              <VARCATEGORY>-3</VARCATEGORY>
+              <VARDESCRIPTION>No Master Process</VARDESCRIPTION>
+              <VARDISPLAYORDER>15</VARDISPLAYORDER>
+              <VARNAME>MX_REQ_PRIV_NOMASTER_TASK</VARNAME>
+              <VARTYPE>5</VARTYPE>
+              <VARVALUE>-1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>13</VARDISPLAYORDER>
+              <VARNAME>MX_REQ_PRIV_PCYADD_MISSING</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
+              <VARCATEGORY>-1</VARCATEGORY>
               <VARDESCRIPTION>Password</VARDESCRIPTION>
               <VARDISPLAYORDER>10</VARDISPLAYORDER>
               <VARNAME>PASSWORD</VARNAME>
@@ -257,78 +518,22 @@
 // See the License for the specific language governing permissions and&#13;
 // limitations under the License.&#13;
 &#13;
-/* global fx_getSchemaVersion, fx_db_nolock, fx_trace */&#13;
+/* global fx_trace */&#13;
 &#13;
 /**&#13;
  * &lt;div&gt;Returns the main (SAP Master) Identity Store's ID.&lt;/div&gt;&#13;
  * &lt;div&gt;If $IDSID is non-empty and not -1, returns that. Otherwise,&#13;
- * obtains the Identity Store ID of the package that this script&#13;
- * belongs to using a database lookup. If the script has been imported&#13;
- * into multiple Identity Stores, the ID with the minimum value will&#13;
- * be returned.&lt;/div&gt;&#13;
+ * obtains the minimum Identity Store ID from the database.&lt;/div&gt;&#13;
  * @return {string} IDSID&#13;
  * @requires fx_getSchemaVersion&#13;
  * @requires fx_db_nolock&#13;
  * @requires fx_trace&#13;
+ * @since 1.1.0&#13;
  */&#13;
-var fx_IDSID = (function() {&#13;
-&#13;
-    var SCRIPT = "fx_IDSID: ";&#13;
-    var gv_idsid = -1;&#13;
-&#13;
-    function fx_IDSIDImpl()&#13;
-    {&#13;
-        fx_trace(SCRIPT+"Entering");&#13;
-&#13;
-        var lv_idsid = gv_idsid;&#13;
-&#13;
-        if(lv_idsid != -1)&#13;
-        {&#13;
-            fx_trace(SCRIPT+"Result from cache");&#13;
-        }&#13;
-        else&#13;
-        {&#13;
-            if(fx_getSchemaVersion() &gt;= 1528)&#13;
-            {&#13;
-                fx_trace(SCRIPT+"Using IDSID on version 8.x");&#13;
-                lv_idsid = "%$IDSID%";&#13;
-&#13;
-                if(lv_idsid == "" || lv_idsid == "-1") {&#13;
-                    fx_trace(SCRIPT+"$IDSID="+lv_idsid+", need DB lookup");&#13;
-&#13;
-                    // Note that it's possible to have scripts with the same&#13;
-                    // name in multiple Identity Stores.&#13;
-                    var lv_sql&#13;
-                            = "select min(mcidstore)"&#13;
-                            + "    from mc_package_scripts s"&#13;
-			    + " " + fx_db_nolock()&#13;
-                            + "    inner join mc_package p"&#13;
-			    + " " + fx_db_nolock()&#13;
-                            + "    on s.mcpackageid=p.mcpackageid"&#13;
-                            + "    where mcscriptname='fx_IDSID'"&#13;
-                            + "    group by mcscriptname"&#13;
-                    ;&#13;
-                    fx_trace(SCRIPT+"lv_sql="+lv_sql);&#13;
-&#13;
-                    lv_idsid = uSelect(lv_sql);&#13;
-                }&#13;
-                // Cache result for subsequent invocations&#13;
-                gv_idsid = lv_idsid;&#13;
-            }&#13;
-            else&#13;
-            {&#13;
-                fx_trace(SCRIPT+"Using SAP_MASTER_IDS_ID on version 7.x");&#13;
-                lv_idsid = uGetConstant("glb.SAP_MASTER_IDS_ID");&#13;
-            }&#13;
-        }//else&#13;
-&#13;
-        fx_trace(SCRIPT+"Returning "+lv_idsid);&#13;
-        return lv_idsid;&#13;
-    }//fx_IDSIDImpl&#13;
-&#13;
-    return fx_IDSIDImpl;&#13;
-&#13;
-})();&#13;
+function fx_IDSID()&#13;
+{&#13;
+    return fx_trace({compat: 1.0}).fx_IDSID();&#13;
+}&#13;
 </MCSCRIPTDEFINITION>
           <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
           <MCSCRIPTNAME>fx_IDSID</MCSCRIPTNAME>
@@ -2775,14 +2980,15 @@ function fx_bobj_createUser(io_entry)&#13;
 // See the License for the specific language governing permissions and&#13;
 // limitations under the License.&#13;
 &#13;
-/* global fx_trace, fx_getConstant */&#13;
+/* global fx_trace */&#13;
 &#13;
 /**&#13;
  * &lt;div&gt;Returns all attribute names with BOBJ modify triggers.&lt;/div&gt;&#13;
- * &lt;div&gt;Returns the content of &lt;strong&gt;package constant&#13;
- * FX_BOBJ_MODIFY_TRIGGERS&lt;/strong&gt; as a comma-separated list, with&#13;
- * each element surrounded by single quotes. If FX_BOBJ_MODIFY_TRIGGERS&#13;
- * is empty, returns these attribute names by default:&lt;/div&gt;&#13;
+ * &lt;div&gt;Returns the content of package constant (IDM 8.0) or&#13;
+ * global constant (IDM 7.2) &lt;strong&gt;FX_BOBJ_MODIFY_TRIGGERS&lt;/strong&gt;&#13;
+ * as a comma-separated list, with each element surrounded by single&#13;
+ * quotes. If FX_BOBJ_MODIFY_TRIGGERS is empty, returns these attribute&#13;
+ * names by default:&lt;/div&gt;&#13;
  * &lt;table&gt;&#13;
  * &lt;tr&gt;&lt;td&gt;MXREF_MX_GROUP&lt;/td&gt;&lt;/tr&gt;&#13;
  * &lt;tr&gt;&lt;td&gt;MXMEMBER_MX_GROUP&lt;/td&gt;&lt;/tr&gt;&#13;
@@ -2793,19 +2999,18 @@ function fx_bobj_createUser(io_entry)&#13;
  * &lt;tr&gt;&lt;td&gt;MX_ENCRYPTED_PASSWORD&lt;/td&gt;&lt;/tr&gt;&#13;
  * &lt;/table&gt;&#13;
  * @requires fx_trace&#13;
- * @requires fx_getConstant&#13;
  */&#13;
 function fx_bobj_getModifyTriggers()&#13;
 {&#13;
     var SCRIPT = "fx_bobj_getModifyTriggers: ";&#13;
     fx_trace(SCRIPT+"Entering");&#13;
 &#13;
-    var lv_triggers = fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");&#13;
+    var lv_triggers = fx_trace({compat:1.0}).fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");&#13;
 &#13;
     if(lv_triggers == "")&#13;
     {&#13;
         fx_trace(SCRIPT&#13;
-                 + "Package constant FX_BOBJ_MODIFY_TRIGGERS is empty,"&#13;
+                 + "Constant FX_BOBJ_MODIFY_TRIGGERS is empty,"&#13;
                  + " using default triggers");&#13;
         lv_triggers&#13;
             = "MXREF_MX_GROUP"&#13;
@@ -2820,7 +3025,7 @@ function fx_bobj_getModifyTriggers()&#13;
     else&#13;
     {&#13;
         fx_trace(SCRIPT&#13;
-                 +"Package constant FX_BOBJ_MODIFY_TRIGGERS is "&#13;
+                 +"Constant FX_BOBJ_MODIFY_TRIGGERS is "&#13;
                  + lv_triggers);&#13;
     }&#13;
 &#13;
@@ -3254,38 +3459,6 @@ function fx_bobj_removeUser(io_entry)&#13;
           <MCENABLED>1</MCENABLED>
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
           <MCPROTECTED>0</MCPROTECTED>
-          <MCSCRIPTDEFINITION>// Copyright 2017 Foxysoft GmbH&#13;
-//&#13;
-// Licensed under the Apache License, Version 2.0 (the "License");&#13;
-// you may not use this file except in compliance with the License.&#13;
-// You may obtain a copy of the License at&#13;
-//&#13;
-//    http://www.apache.org/licenses/LICENSE-2.0&#13;
-//&#13;
-// Unless required by applicable law or agreed to in writing, software&#13;
-// distributed under the License is distributed on an "AS IS" BASIS,&#13;
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#13;
-// See the License for the specific language governing permissions and&#13;
-// limitations under the License.&#13;
-&#13;
-/**&#13;
- * &lt;div&gt;Automatically logoff after next commit.&lt;/div&gt;&#13;
- * @requires fx_bobj_Session&#13;
- * @see fx_bobj_Session.setAutoLogoff&#13;
- */&#13;
-function fx_bobj_setAutoLogoff()&#13;
-{&#13;
-    fx_bobj_Session.setAutoLogoff(true);&#13;
-}&#13;
-</MCSCRIPTDEFINITION>
-          <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
-          <MCSCRIPTNAME>fx_bobj_setAutoLogoff</MCSCRIPTNAME>
-          <MCSCRIPTSTATUS>0</MCSCRIPTSTATUS>
-        </SCRIPT>
-        <SCRIPT>
-          <MCENABLED>1</MCENABLED>
-          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
-          <MCPROTECTED>0</MCPROTECTED>
           <MCSCRIPTDEFINITION>// Copyright 2016 Foxysoft GmbH&#13;
 //&#13;
 // Licensed under the Apache License, Version 2.0 (the "License");&#13;
@@ -3611,13 +3784,15 @@ function fx_entryAddPolicyPassword(io_entry)&#13;
 // See the License for the specific language governing permissions and&#13;
 // limitations under the License.&#13;
 &#13;
-/* global fx_trace, fx_db_nolock, fx_JavaUtils, fx_IDSID, fx_getConstant */&#13;
+/* global fx_trace, fx_db_nolock, fx_JavaUtils, */&#13;
+&#13;
 /**&#13;
  * &lt;div&gt;Generate random password compliant with IDM's password policy.&lt;/div&gt;&#13;
  * &lt;div&gt;This function uses a subset of the password policy defined for&#13;
  * the current identity store, specifically minimum length, maximum&#13;
  * length, mixed case and mixed letters and numbers.&lt;/div&gt;&#13;
- * &lt;div&gt;Use the following package constants for additional customizing:&lt;/div&gt;&#13;
+ * &lt;div&gt;Use the following package constants (IDM 8.0) or global constants&#13;
+ * (IDM 7.2) for additional customizing:&lt;/div&gt;&#13;
  * &lt;table&gt;&#13;
  * &lt;tr&gt;&lt;th&gt;Constant&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;&#13;
  * &lt;tr&gt;&lt;td&gt;FX_PASSWORD_EXCLUDE_CHARS&lt;/td&gt;&#13;
@@ -3634,8 +3809,6 @@ function fx_entryAddPolicyPassword(io_entry)&#13;
  * @requires fx_trace&#13;
  * @requires fx_db_nolock&#13;
  * @requires fx_JavaUtils&#13;
- * @requires fx_IDSID&#13;
- * @requires fx_getConstant&#13;
  */&#13;
 var fx_generatePolicyPassword = (function() {&#13;
 &#13;
@@ -3648,6 +3821,7 @@ var fx_generatePolicyPassword = (function() {&#13;
     var gv_max_len;&#13;
     var gt_bytes;&#13;
     var gv_include_specials;&#13;
+    var go_compat_api;&#13;
 &#13;
     function init()&#13;
     {&#13;
@@ -3660,9 +3834,11 @@ var fx_generatePolicyPassword = (function() {&#13;
             ,1&#13;
         );&#13;
 &#13;
+        go_compat_api = fx_trace({compat:1.0});&#13;
+&#13;
         // Include special characters as per configuration&#13;
         gv_include_specials&#13;
-            = fx_getConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");&#13;
+            = go_compat_api.fx_getConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");&#13;
         fx_trace(SCRIPT+"gv_include_specials="+gv_include_specials);&#13;
 &#13;
         var lv_sql = "select"&#13;
@@ -3671,7 +3847,7 @@ var fx_generatePolicyPassword = (function() {&#13;
                 + "    ,MixedChar"&#13;
                 + "    ,CharNumb "&#13;
                 + "    from mxi_attributes" + fx_db_nolock()&#13;
-                + "    where is_id=" + fx_IDSID()&#13;
+                + "    where is_id=" + go_compat_api.fx_IDSID()&#13;
                 + "    and attrname='MX_PASSWORD'"&#13;
         ;&#13;
         fx_trace(SCRIPT+"lv_sql="+lv_sql);&#13;
@@ -3849,7 +4025,7 @@ var fx_generatePolicyPassword = (function() {&#13;
 &#13;
             // Exclude characters and digits as per package constant&#13;
             var lv_exclude_chars&#13;
-                    = fx_getConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");&#13;
+                    = go_compat_api.fx_getConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");&#13;
 &#13;
             // Exclude characters and digits as per package constant&#13;
             var i;&#13;
@@ -4159,26 +4335,11 @@ function fx_getAttributeByMskey(iv_params)&#13;
  * &lt;/pre&gt;&#13;
  * @return {string} value of constant&#13;
  * @requires fx_trace&#13;
+ * @since 1.1.0&#13;
  */&#13;
 function fx_getConstant(iv_name)&#13;
 {&#13;
-    var SCRIPT = "fx_getConstant: ";&#13;
-    fx_trace(SCRIPT+"Entering iv_name="+iv_name);&#13;
-&#13;
-    var lv_name = ""+iv_name;&#13;
-    var lv_result = uGetConstant(lv_name);&#13;
-&#13;
-    if(lv_name.indexOf("pck.") == 0)&#13;
-    {&#13;
-        if(lv_result == "-undefined-")&#13;
-        {&#13;
-            fx_trace(SCRIPT+"Adjusting corrupt value "+lv_result);&#13;
-            lv_result = "";&#13;
-        }&#13;
-    }&#13;
-&#13;
-    fx_trace(SCRIPT+"Returning "+lv_result);&#13;
-    return lv_result;&#13;
+    return fx_trace({compat: 1.0}).fx_getConstant(iv_name);&#13;
 }&#13;
 </MCSCRIPTDEFINITION>
           <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
@@ -4252,104 +4413,18 @@ function fx_getContextVar(iv_params)&#13;
 // See the License for the specific language governing permissions and&#13;
 // limitations under the License.&#13;
 &#13;
+/* global fx_trace */&#13;
+&#13;
 /**&#13;
  * &lt;div&gt;Get SAP IDM schema version.&lt;/div&gt;&#13;
  * @return {number} - schema version&#13;
  * @requires fx_trace&#13;
+ * @since 1.1.0&#13;
  */&#13;
-var fx_getSchemaVersion = (function() {&#13;
-    var SCRIPT = "fx_getSchemaVersion: ";&#13;
-    var gv_schema_version = -1;&#13;
-&#13;
-    function fx_getSchemaVersionImpl() {&#13;
-        fx_trace(SCRIPT+"Entering");&#13;
-&#13;
-        var lv_result = gv_schema_version;&#13;
-&#13;
-        if(lv_result != -1)&#13;
-        {&#13;
-            fx_trace(SCRIPT+"Result from cache");&#13;
-        }&#13;
-        else&#13;
-        {&#13;
-            fx_trace(SCRIPT+"Result from database");&#13;
-            try&#13;
-            {&#13;
-                var lo_exception = null;&#13;
-&#13;
-                // Don't use string interpolation for ddm.identiycenter,&#13;
-                // as it could contain double quotes and thus result&#13;
-                // in JavaScript code injection&#13;
-                var lv_jdbc_url = uGetConstant("ddm.identitycenter");&#13;
-&#13;
-                var lo_connection&#13;
-                        = java.sql.DriverManager.getConnection(&#13;
-                            lv_jdbc_url&#13;
-                        );&#13;
-                fx_trace(SCRIPT&#13;
-                         + "Opened connection"&#13;
-                         + " lo_connection="+lo_connection);&#13;
-&#13;
-                var lo_statement = lo_connection.prepareCall(&#13;
-                    "{call mc_schemaversion(?)}"&#13;
-                );&#13;
-                fx_trace(SCRIPT&#13;
-                         + "Prepared callable statement"&#13;
-                         + " lo_statement="+lo_statement);&#13;
-&#13;
-                lo_statement.registerOutParameter(&#13;
-                    "Schemaversion"&#13;
-                    ,java.sql.Types.INTEGER&#13;
-                );&#13;
-                fx_trace(SCRIPT&#13;
-                         + "Registered OUT parameter"&#13;
-                         + " @Schemaversion as datatype INT");&#13;
-&#13;
-                lo_statement.execute();&#13;
-                fx_trace(SCRIPT&#13;
-                         + "Executed callable statement"&#13;
-                         + " lo_statement="&#13;
-                         + lo_statement);&#13;
-&#13;
-                lv_result = lo_statement.getInt("Schemaversion");&#13;
-&#13;
-                // Cache result for subsequent invocations&#13;
-                gv_schema_version = lv_result;&#13;
-            }//try&#13;
-            catch(lo_exception)&#13;
-            {&#13;
-                var lo_string_writer&#13;
-                        = new java.io.StringWriter();&#13;
-&#13;
-                var lo_print_writer&#13;
-                        = new java.io.PrintWriter(lo_string_writer);&#13;
-&#13;
-                lo_exception.printStackTrace(lo_print_writer);&#13;
-&#13;
-                var lv_stacktrace = lo_string_writer.toString();&#13;
-                uError(SCRIPT+lv_stacktrace);&#13;
-            }&#13;
-&#13;
-            if(lo_statement != null)&#13;
-            {&#13;
-                lo_statement.close();&#13;
-                fx_trace(SCRIPT+"Statement closed");&#13;
-            }&#13;
-            if(lo_connection != null)&#13;
-            {&#13;
-                lo_connection.close();&#13;
-                fx_trace(SCRIPT+"Connection closed");&#13;
-            }//if(lo_connection != null)&#13;
-        }//else&#13;
-&#13;
-        fx_trace(SCRIPT+"Returning "+lv_result);&#13;
-        return lv_result;&#13;
-&#13;
-    }//fx_getSchemaVersionImpl&#13;
-&#13;
-    return fx_getSchemaVersionImpl;&#13;
-&#13;
-})();&#13;
+function fx_getSchemaVersion()&#13;
+{&#13;
+    return fx_trace({compat: 1.0}).fx_getSchemaVersion();&#13;
+}&#13;
 </MCSCRIPTDEFINITION>
           <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
           <MCSCRIPTNAME>fx_getSchemaVersion</MCSCRIPTNAME>
@@ -4688,7 +4763,7 @@ function fx_stop(iv_message)&#13;
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
           <MCPROTECTED>0</MCPROTECTED>
           <MCSCRIPTDEFINITION>// Copyright 2016 Foxysoft GmbH&#13;
-// &#13;
+//&#13;
 // Licensed under the Apache License, Version 2.0 (the "License");&#13;
 // you may not use this file except in compliance with the License.&#13;
 // You may obtain a copy of the License at&#13;
@@ -4708,14 +4783,199 @@ function fx_stop(iv_message)&#13;
  * @param {string} iv_message - trace message&#13;
  * @return {string} iv_message&#13;
  */&#13;
-function fx_trace(iv_message)&#13;
-{&#13;
-    if("1" == "%$pck.FX_TRACE%")&#13;
+var fx_trace = (function() {&#13;
+&#13;
+    var gv_is_idm8 = false;&#13;
+    var trace = traceOff;&#13;
+&#13;
+    var go_compat_api = {&#13;
+        fx_IDSID: function() {&#13;
+&#13;
+            var SCRIPT = "fx_IDSID: ";&#13;
+            trace(SCRIPT+"Entering");&#13;
+&#13;
+            var lv_idsid;&#13;
+&#13;
+            if(gv_is_idm8)&#13;
+            {&#13;
+                trace(SCRIPT+"Using $IDSID on version 8.x");&#13;
+                lv_idsid = "%$IDSID%";&#13;
+&#13;
+                if(lv_idsid == "" || lv_idsid == "-1")&#13;
+                {&#13;
+                    trace(SCRIPT&#13;
+                          + "$IDSID=" + lv_idsid&#13;
+                          + ", need DB lookup");&#13;
+&#13;
+                    var lv_sql&#13;
+                            = "select min(is_id) from mxi_idstores"&#13;
+                    ;&#13;
+                    if("%$ddm.databasetype%" == "1")&#13;
+                    {&#13;
+                        // We can't have a dependency to fx_db_nolock here&#13;
+                        lv_sql += " with (nolock)";&#13;
+                    }&#13;
+&#13;
+                    trace(SCRIPT+"lv_sql="+lv_sql);&#13;
+&#13;
+                    lv_idsid = uSelect(lv_sql);&#13;
+&#13;
+                }//if(lv_idsid == "" || lv_idsid == "-1")&#13;
+&#13;
+            }//if(gv_is_idm8)&#13;
+            else&#13;
+            {&#13;
+                trace(SCRIPT+"Using SAP_MASTER_IDS_ID on IDM 7.x");&#13;
+                lv_idsid = uGetConstant("glb.SAP_MASTER_IDS_ID");&#13;
+            }&#13;
+&#13;
+            trace(SCRIPT+"Returning "+lv_idsid);&#13;
+            return lv_idsid;&#13;
+        }//fx_IDSID&#13;
+&#13;
+        ,fx_getSchemaVersion: function()&#13;
+        {&#13;
+            var SCRIPT = "fx_getSchemaVersion: ";&#13;
+            trace(SCRIPT+"Entering");&#13;
+&#13;
+            var lv_result = -1;&#13;
+            try&#13;
+            {&#13;
+                var lo_exception = null;&#13;
+&#13;
+                // Don't use string interpolation&#13;
+                // for ddm.identiycenter,&#13;
+                // as it could contain double quotes and thus&#13;
+                // result in JavaScript code injection&#13;
+                var lv_jdbc_url = uGetConstant("ddm.identitycenter");&#13;
+&#13;
+                var lo_connection&#13;
+                        = java.sql.DriverManager.getConnection(&#13;
+                            lv_jdbc_url&#13;
+                        );&#13;
+                trace(SCRIPT&#13;
+                      + "Opened connection"&#13;
+                      + " lo_connection="+lo_connection);&#13;
+&#13;
+                var lo_statement = lo_connection.prepareCall(&#13;
+                    "{call mc_schemaversion(?)}"&#13;
+                );&#13;
+                trace(SCRIPT&#13;
+                      + "Prepared callable statement"&#13;
+                      + " lo_statement="+lo_statement);&#13;
+&#13;
+                lo_statement.registerOutParameter(&#13;
+                    "Schemaversion"&#13;
+                    ,java.sql.Types.INTEGER&#13;
+                );&#13;
+                trace(SCRIPT&#13;
+                      + "Registered OUT parameter"&#13;
+                      + " @Schemaversion as datatype INT");&#13;
+&#13;
+                lo_statement.execute();&#13;
+                trace(SCRIPT&#13;
+                      + "Executed callable statement"&#13;
+                      + " lo_statement="&#13;
+                      + lo_statement);&#13;
+&#13;
+                lv_result = lo_statement.getInt("Schemaversion");&#13;
+&#13;
+            }//try&#13;
+            catch(lo_exception)&#13;
+            {&#13;
+                var lo_string_writer&#13;
+                        = new java.io.StringWriter();&#13;
+&#13;
+                var lo_print_writer&#13;
+                        = new java.io.PrintWriter(lo_string_writer);&#13;
+&#13;
+                lo_exception.printStackTrace(lo_print_writer);&#13;
+&#13;
+                var lv_stacktrace = lo_string_writer.toString();&#13;
+                uError(SCRIPT+lv_stacktrace);&#13;
+            }&#13;
+&#13;
+            if(lo_statement != null)&#13;
+            {&#13;
+                lo_statement.close();&#13;
+                trace(SCRIPT+"Statement closed");&#13;
+            }&#13;
+            if(lo_connection != null)&#13;
+            {&#13;
+                lo_connection.close();&#13;
+                trace(SCRIPT+"Connection closed");&#13;
+            }//if(lo_connection != null)&#13;
+&#13;
+            trace(SCRIPT+"Returning "+lv_result);&#13;
+            return lv_result;&#13;
+&#13;
+        }//fx_getSchemaVersion&#13;
+&#13;
+        ,fx_getConstant: function(iv_name)&#13;
+        {&#13;
+&#13;
+            var SCRIPT = "fx_getConstant: ";&#13;
+            trace(SCRIPT+"Entering iv_name="+iv_name);&#13;
+&#13;
+            var lv_name = ""+iv_name;&#13;
+&#13;
+            if(!gv_is_idm8 &amp;&amp; lv_name.indexOf("pck.") == 0)&#13;
+            {&#13;
+                lv_name = "glb."+lv_name.substring(4);&#13;
+                trace(SCRIPT+"Adjusted lv_name="+lv_name+" for IDM 7.x");&#13;
+            }&#13;
+&#13;
+            var lv_result = uGetConstant(lv_name);&#13;
+&#13;
+            if(lv_name.indexOf("pck.") == 0)&#13;
+            {&#13;
+                if(lv_result == "-undefined-")&#13;
+                {&#13;
+                    trace(SCRIPT&#13;
+                          + "Fixing corrupt package constant value "&#13;
+                          + lv_result);&#13;
+                    lv_result = "";&#13;
+                }&#13;
+            }&#13;
+&#13;
+            trace(SCRIPT+"Returning "+lv_result);&#13;
+            return lv_result;&#13;
+&#13;
+        }//fx_getConstant&#13;
+    };&#13;
+&#13;
+    function class_init()&#13;
+    {&#13;
+        gv_is_idm8 = go_compat_api.fx_getSchemaVersion() &gt;= 1528;&#13;
+&#13;
+        trace = go_compat_api.fx_getConstant("pck.FX_TRACE") == "1"&#13;
+            ? traceOn&#13;
+            : traceOff&#13;
+        ;&#13;
+    }&#13;
+&#13;
+    function traceOff(iv_message)&#13;
+    {&#13;
+        return iv_message;&#13;
+    }&#13;
+&#13;
+    function traceOn(iv_message)&#13;
     {&#13;
         uWarning(iv_message);&#13;
+        return iv_message;&#13;
     }&#13;
-    return iv_message;&#13;
-}&#13;
+&#13;
+    function dispatch(io_argument)&#13;
+    {&#13;
+        return io_argument["compat"] === 1.0&#13;
+            ? go_compat_api&#13;
+            : trace(io_argument)&#13;
+        ;&#13;
+    }&#13;
+&#13;
+    class_init();&#13;
+    return dispatch;&#13;
+})();&#13;
 </MCSCRIPTDEFINITION>
           <MCSCRIPTLANGUAGE>JScript</MCSCRIPTLANGUAGE>
           <MCSCRIPTNAME>fx_trace</MCSCRIPTNAME>
@@ -8040,7 +8300,7 @@ select
   </DISPATCHERS>
   <PACKAGE_HISTORY>
     <MCMODIFIEDBYUSERNAME>ADMIN</MCMODIFIEDBYUSERNAME>
-    <MCMODIFIEDDATE>1484500495000</MCMODIFIEDDATE>
+    <MCMODIFIEDDATE>1484573239000</MCMODIFIEDDATE>
     <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
   </PACKAGE_HISTORY>
 </IDM>
