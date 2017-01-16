@@ -21,24 +21,9 @@
  * </pre>
  * @return {string} value of constant
  * @requires fx_trace
+ * @since 1.1.0
  */
 function fx_getConstant(iv_name)
 {
-    var SCRIPT = "fx_getConstant: ";
-    fx_trace(SCRIPT+"Entering iv_name="+iv_name);
-
-    var lv_name = ""+iv_name;
-    var lv_result = uGetConstant(lv_name);
-
-    if(lv_name.indexOf("pck.") == 0)
-    {
-        if(lv_result == "-undefined-")
-        {
-            fx_trace(SCRIPT+"Adjusting corrupt value "+lv_result);
-            lv_result = "";
-        }
-    }
-
-    fx_trace(SCRIPT+"Returning "+lv_result);
-    return lv_result;
+    return fx_trace({compat: 1.0}).fx_getConstant(iv_name);
 }

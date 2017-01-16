@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* global fx_trace, fx_getConstant */
+/* global fx_trace */
 
 /**
  * <div>Returns all attribute names with BOBJ modify triggers.</div>
- * <div>Returns the content of <strong>package constant
- * FX_BOBJ_MODIFY_TRIGGERS</strong> as a comma-separated list, with
- * each element surrounded by single quotes. If FX_BOBJ_MODIFY_TRIGGERS
- * is empty, returns these attribute names by default:</div>
+ * <div>Returns the content of package constant (IDM 8.0) or
+ * global constant (IDM 7.2) <strong>FX_BOBJ_MODIFY_TRIGGERS</strong>
+ * as a comma-separated list, with each element surrounded by single
+ * quotes. If FX_BOBJ_MODIFY_TRIGGERS is empty, returns these attribute
+ * names by default:</div>
  * <table>
  * <tr><td>MXREF_MX_GROUP</td></tr>
  * <tr><td>MXMEMBER_MX_GROUP</td></tr>
@@ -30,19 +31,18 @@
  * <tr><td>MX_ENCRYPTED_PASSWORD</td></tr>
  * </table>
  * @requires fx_trace
- * @requires fx_getConstant
  */
 function fx_bobj_getModifyTriggers()
 {
     var SCRIPT = "fx_bobj_getModifyTriggers: ";
     fx_trace(SCRIPT+"Entering");
 
-    var lv_triggers = fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
+    var lv_triggers = fx_trace({compat:1.0}).fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
 
     if(lv_triggers == "")
     {
         fx_trace(SCRIPT
-                 + "Package constant FX_BOBJ_MODIFY_TRIGGERS is empty,"
+                 + "Constant FX_BOBJ_MODIFY_TRIGGERS is empty,"
                  + " using default triggers");
         lv_triggers
             = "MXREF_MX_GROUP"
@@ -57,7 +57,7 @@ function fx_bobj_getModifyTriggers()
     else
     {
         fx_trace(SCRIPT
-                 +"Package constant FX_BOBJ_MODIFY_TRIGGERS is "
+                 +"Constant FX_BOBJ_MODIFY_TRIGGERS is "
                  + lv_triggers);
     }
 

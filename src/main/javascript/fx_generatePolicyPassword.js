@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/* global fx_trace, fx_db_nolock, fx_JavaUtils, fx_IDSID, fx_getConstant */
+/* global fx_trace, fx_db_nolock, fx_JavaUtils, */
+
 /**
  * <div>Generate random password compliant with IDM's password policy.</div>
  * <div>This function uses a subset of the password policy defined for
  * the current identity store, specifically minimum length, maximum
  * length, mixed case and mixed letters and numbers.</div>
- * <div>Use the following package constants for additional customizing:</div>
+ * <div>Use the following package constants (IDM 8.0) or global constants
+ * (IDM 7.2) for additional customizing:</div>
  * <table>
  * <tr><th>Constant</th><th>Description</th></tr>
  * <tr><td>FX_PASSWORD_EXCLUDE_CHARS</td>
@@ -35,8 +37,6 @@
  * @requires fx_trace
  * @requires fx_db_nolock
  * @requires fx_JavaUtils
- * @requires fx_IDSID
- * @requires fx_getConstant
  */
 var fx_generatePolicyPassword = (function() {
 
@@ -49,6 +49,7 @@ var fx_generatePolicyPassword = (function() {
     var gv_max_len;
     var gt_bytes;
     var gv_include_specials;
+    var go_compat_api;
 
     function init()
     {
@@ -61,9 +62,11 @@ var fx_generatePolicyPassword = (function() {
             ,1
         );
 
+        go_compat_api = fx_trace({compat:1.0});
+
         // Include special characters as per configuration
         gv_include_specials
-            = fx_getConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");
+            = go_compat_api.fx_getConstant("pck.FX_PASSWORD_INCLUDE_SPECIALS");
         fx_trace(SCRIPT+"gv_include_specials="+gv_include_specials);
 
         var lv_sql = "select"
@@ -72,7 +75,7 @@ var fx_generatePolicyPassword = (function() {
                 + "    ,MixedChar"
                 + "    ,CharNumb "
                 + "    from mxi_attributes" + fx_db_nolock()
-                + "    where is_id=" + fx_IDSID()
+                + "    where is_id=" + go_compat_api.fx_IDSID()
                 + "    and attrname='MX_PASSWORD'"
         ;
         fx_trace(SCRIPT+"lv_sql="+lv_sql);
@@ -250,7 +253,7 @@ var fx_generatePolicyPassword = (function() {
 
             // Exclude characters and digits as per package constant
             var lv_exclude_chars
-                    = fx_getConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");
+                    = go_compat_api.fx_getConstant("pck.FX_PASSWORD_EXCLUDE_CHARS");
 
             // Exclude characters and digits as per package constant
             var i;
