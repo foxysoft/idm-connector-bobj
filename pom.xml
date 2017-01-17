@@ -100,11 +100,23 @@ limitations under the License.
           <!-- may have changed.                                   -->
           <forceCreation>true</forceCreation>
           <transformationSets>
+            <!-- IDM 7.2 Transformations -->
             <transformationSet>
               <dir>src/main/idm72/globalscripts</dir>
               <stylesheet>src/main/xsl/fi_global_scripts.xsl</stylesheet>
               <outputDir>${fx.genGlobalScriptsStage1Dir}</outputDir>
             </transformationSet>
+            <!-- IDM 8.0 Transformations -->
+            <transformationSet>
+              <dir>src/main/idm80</dir>
+              <includes>
+		<!-- Restrict to file extension, in case we add more later -->
+                <include>*.idmpck</include>
+              </includes>
+              <stylesheet>src/main/xsl/fi_package_scripts.xsl</stylesheet>
+              <outputDir>${fx.genGlobalScriptsStage1Dir}</outputDir>
+            </transformationSet>
+            <!-- Common Transformations -->
             <transformationSet>
               <dir>${fx.genGlobalScriptsStage1Dir}</dir>
               <stylesheet>src/main/xsl/fi_pretty_print.xsl</stylesheet>
