@@ -72,15 +72,40 @@ limitations under the License.
       <xsl:value-of select="MCNAME"/>
     </xsl:message>
   </xsl:template>
-  <!-- Cancel copying any values of package variables. -->
-  <!-- This is specifically important for FX_TRACE, which is often 1 -->
-  <!-- in Foxysoft DEV systems, but shouldn't be in customer systems -->
+  <!-- Cancel copying package constant values -->
   <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE/VARVALUE">
     <xsl:message>
-      <xsl:text>Removing VARVALUE </xsl:text>
-      <xsl:value-of select="preceding-sibling::VARNAME"/>
+      <xsl:text>Removing </xsl:text>
+      <xsl:value-of select="name()"/>
       <xsl:text> </xsl:text>
-      <xsl:value-of select="text()"/>
+      <xsl:value-of select="./text()"/>
     </xsl:message>
+  </xsl:template>
+  <!-- Always set BOOLEAN package variables (e.g. FX_TRACE) to false.  -->
+  <!-- Note that removing the VARVALUE element altogehter, like SAP's  -->
+  <!-- own package export does for String variables in SP0, can result -->
+  <!-- in NPE inside uGetConstant at runtime:                          -->
+  <!--                                                                 -->
+  <!-- Exception:while trying to invoke the method                     -->
+  <!-- java.lang.String.isEmpty() of a null object loaded from local   -->
+  <!-- variable 'packConstValue'                                       -->
+  <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='6']">
+    <xsl:apply-templates select="@*|node()"/>
+    <xsl:message>
+      <xsl:text>Adding VARVALUE=0 to </xsl:text>
+      <xsl:value-of select="VARNAME"/>
+    </xsl:message>
+    <VARVALUE>0</VARVALUE>
+  </xsl:template>
+  <!-- Always set STRING package variables      -->
+  <!-- (e.g. FX_BOBJ_MODIFY_TRIGGERS) to empty. -->
+  <!-- See above for rationale.                 -->
+  <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='0']">
+    <xsl:apply-templates select="@*|node()"/>
+    <xsl:message>
+      <xsl:text>Adding VARVALUE= to </xsl:text>
+      <xsl:value-of select="VARNAME"/>
+    </xsl:message>
+    <VARVALUE/>
   </xsl:template>
 </xsl:stylesheet>
