@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,11 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** 
+/* global fx_trace, CrystalEnterprise */
+
+/**
  * Connect/disconnect to BOBJ CMS and access InfoStore service
- * @class 
+ * @class
+ * @requires fx_trace
  */
 var fx_bobj_Session = (function () {
+    /**
+     * Indicates whether static class members have been initialized
+     * or not. Each public method must first check this and call
+     * class_init() if it's false. Set to true by class_init().
+     */
+    var gv_initialized = false;
+
     /**
      * Session object from which service referenes can be obtained.
      * Initialized by logon(), cleaned up by logoff().
@@ -43,8 +53,8 @@ var fx_bobj_Session = (function () {
     function getValueOrRepoConst(iv_value, iv_repo_const_name)
     {
         return (typeof iv_value != "undefined"
-		&& iv_value != null
-		&& iv_value != "")
+                && iv_value != null
+                && iv_value != "")
             ? iv_value
             : uGetConstant("rep."+iv_repo_const_name)
         ;
@@ -69,6 +79,10 @@ var fx_bobj_Session = (function () {
          */
         logon: function(iv_host, iv_port, iv_login, iv_password)
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_Session=>logon: ";
             fx_trace(SCRIPT+"Entering");
 
@@ -115,6 +129,10 @@ var fx_bobj_Session = (function () {
          */
         logoff: function()
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_session=>logoff: ";
             fx_trace(SCRIPT+"Entering");
             var lo_exception = null;
@@ -159,6 +177,10 @@ var fx_bobj_Session = (function () {
          */
         getInfoStore: function()
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             if(go_info_store == null)
             {
                 throw new java.lang.Exception("Not connected");
@@ -188,6 +210,10 @@ var fx_bobj_Session = (function () {
             ,iv_additional_props
         )
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_Session=>lookupSingleInfoObject: ";
 
             if(go_info_store == null)
@@ -253,17 +279,18 @@ var fx_bobj_Session = (function () {
 
     function class_init()
     {
-        // Workaround "Packages is undefined"
-        var lo_packages = (function(){return this["Packages"];}).call(null);
-        if(lo_packages)
-        {
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.framework
-                        .CrystalEnterprise);
-        }//if(lo_packages)
+        importClass(Packages
+                    .com.crystaldecisions.sdk.framework
+                    .CrystalEnterprise);
+
+	gv_initialized = true;
     }//class_init
 
-    class_init();
+    // Static initialization at script load time has issues in SAP IDM.
+    // Avoid it where possible, and use lazy initialization instead.
+    // ===== DON'T TRY THIS =====
+    // class_init()
+    // ==========================
     return go_result;
 
 })();

@@ -12,11 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace, fx_bobj_Session, fx_JavaUtils, IUser, IInfoObject */
+
 /**
  * Data manipulation functions for BOBJ users
  * @class
+ * @requires fx_trace
+ * @requires fx_bobj_Session
+ * @requires fx_JavaUtils
  */
 var fx_bobj_User = (function() {
+    /**
+     * Indicates whether static class members have been initialized
+     * or not. Each public method must first check this and call
+     * class_init() if it's false. Set to true by class_init().
+     */
+    var gv_initialized = false;
 
     /** @type {java.text.SimpleDateFormat} */
     var go_date_format = null;
@@ -402,6 +413,10 @@ var fx_bobj_User = (function() {
          */
         modify: function(io_entry)
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_User=>modify: ";
             fx_trace(SCRIPT + "Entering io_entry="+io_entry);
             var lv_si_name = io_entry.get("SI_NAME");
@@ -457,6 +472,10 @@ var fx_bobj_User = (function() {
          */
         create: function(io_entry)
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_User=>create: ";
             fx_trace(SCRIPT + "Entering io_entry="+io_entry);
 
@@ -511,6 +530,10 @@ var fx_bobj_User = (function() {
          */
         remove: function(io_entry)
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_User=>remove: ";
             fx_trace(SCRIPT + "Entering io_entry="+io_entry);
 
@@ -551,23 +574,24 @@ var fx_bobj_User = (function() {
 
     function class_init()
     {
-        // Workaround "Packages is undefined"
-        var lo_packages = (function(){return this["Packages"];}).call(null);
-        if(lo_packages)
-        {
-            go_date_format = new java.text.SimpleDateFormat(
-                "yyyy-MM-dd'T'hh:mm:ss");
+        go_date_format = new java.text.SimpleDateFormat(
+            "yyyy-MM-dd'T'hh:mm:ss");
 
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.occa.infostore
-                        .IInfoObject);
+        importClass(Packages
+                    .com.crystaldecisions.sdk.occa.infostore
+                    .IInfoObject);
 
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.plugin.desktop.user
-                        .IUser);
-        }//if(lo_packages)
+        importClass(Packages
+                    .com.crystaldecisions.sdk.plugin.desktop.user
+                    .IUser);
+
+	gv_initialized = true;
     }//class_init
 
-    class_init();
+    // Static initialization at script load time has issues in SAP IDM.
+    // Avoid it where possible, and use lazy initialization instead.
+    // ===== DON'T TRY THIS =====
+    // class_init()
+    // ==========================
     return go_result;
 })();

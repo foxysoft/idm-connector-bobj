@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,12 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/** 
- * Common functions for {@link fx_bobj_MemberReader} 
+/* global fx_trace, fx_bobj_CeProperties, CePropertyID */
+
+/**
+ * Common functions for {@link fx_bobj_MemberReader}
  * and {@link fx_bobj_AliasReader}
- * @class 
+ * @class
+ * @requires fx_trace
+ * @requires fx_bobj_CeProperties
  */
 var fx_bobj_ReaderUtils = (function() {
+    /**
+     * Indicates whether static class members have been initialized
+     * or not. Each public method must first check this and call
+     * class_init() if it's false. Set to true by class_init().
+     */
+    var gv_initialized = false;
 
     var go_result = {
         /**
@@ -50,6 +60,10 @@ var fx_bobj_ReaderUtils = (function() {
             ,io_value
         )
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT="fx_bobj_ReaderUtils=>infoObjectToDseEntry: ";
             fx_trace(SCRIPT
                      + "Entering (typeof io_info_object)="
@@ -103,17 +117,18 @@ var fx_bobj_ReaderUtils = (function() {
 
     function class_init()
     {
-        // Workaround "Packages is undefined"
-        var lo_packages = (function(){return this["Packages"];}).call(null);
-        if(lo_packages)
-        {
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.occa.infostore
-                        .CePropertyID);
-        }//if(lo_packages)
+        importClass(Packages
+                    .com.crystaldecisions.sdk.occa.infostore
+                    .CePropertyID);
+	
+        gv_initialized = true;
     }//class_init
 
-    class_init();
+    // Static initialization at script load time has issues in SAP IDM.
+    // Avoid it where possible, and use lazy initialization instead.
+    // ===== DON'T TRY THIS =====
+    // class_init()
+    // ==========================
     return go_result;
 
 })();

@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace, fx_bobj_Session, IUserGroup, fx_JavaUtils, IUser */
+
 /**
  * Data manipulation functions for BOBJ groups
  * @class
@@ -20,6 +22,12 @@
  * @requires fx_JavaUtils
  */
 var fx_bobj_Group = (function() {
+    /**
+     * Indicates whether static class members have been initialized
+     * or not. Each public method must first check this and call
+     * class_init() if it's false. Set to true by class_init().
+     */
+    var gv_initialized = false;
 
     var go_result = {
         /**
@@ -54,6 +62,10 @@ var fx_bobj_Group = (function() {
          */
         modifyMembers: function(io_entry)
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_Group=>modifyMembers: ";
             fx_trace(SCRIPT+"Entering io_entry="+io_entry);
 
@@ -221,17 +233,14 @@ var fx_bobj_Group = (function() {
 
     function class_init()
     {
-        // Workaround "Packages is undefined"
-        var lo_packages = (function(){return this["Packages"];}).call(null);
-        if(lo_packages)
-        {
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.plugin.desktop.user
-                        .IUser);
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.plugin.desktop.usergroup
-                        .IUserGroup);
-        }//if(lo_packages)
+        importClass(Packages
+                    .com.crystaldecisions.sdk.plugin.desktop.user
+                    .IUser);
+        importClass(Packages
+                    .com.crystaldecisions.sdk.plugin.desktop.usergroup
+                    .IUserGroup);
+
+        gv_initialized = true;
     }//class_init
 
     class_init();

@@ -1,5 +1,5 @@
 // Copyright 2016 Foxysoft GmbH
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,14 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace, fx_bobj_CeProperties, CePropertyID, fx_bobj_ReaderUtils
+ *        fx_JavaUtils, IUserGroup, fx_bobj_Session */
+
 /**
+ * Read all available BOBJ group members during initial load.
  * @class
  * @requires fx_trace
  * @requires fx_bobj_Session
  * @requires fx_bobj_CeProperties
  * @requires fx_JavaUtils
+ * @requires fx_bobj_ReaderUtils
  */
 var fx_bobj_MemberReader = (function() {
+    /**
+     * Indicates whether static class members have been initialized
+     * or not. Each public method must first check this and call
+     * class_init() if it's false. Set to true by class_init().
+     */
+    var gv_initialized = false;
 
     /**
      * Internal state of read(). Initialized and cleaned up by read().
@@ -130,11 +141,15 @@ var fx_bobj_MemberReader = (function() {
          * @function
          * @public
          * @name fx_bobj_MemberReader.read
-         * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
+         * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null
          *          if no more members
          */
         read: function()
         {
+            if(!gv_initialized)
+            {
+                class_init();
+            }
             var SCRIPT = "fx_bobj_MemberReader=>read: ";
             fx_trace(SCRIPT+"Entering");
 
@@ -190,20 +205,21 @@ var fx_bobj_MemberReader = (function() {
 
     function class_init()
     {
-        // Workaround "Packages is undefined"
-        var lo_packages = (function(){return this["Packages"];}).call(null);
-        if(lo_packages)
-        {
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.plugin.desktop.usergroup
-                        .IUserGroup);
-            importClass(lo_packages
-                        .com.crystaldecisions.sdk.occa.infostore
-                        .CePropertyID);
-        }//if(lo_packages)
+        importClass(Packages
+                    .com.crystaldecisions.sdk.plugin.desktop.usergroup
+                    .IUserGroup);
+        importClass(Packages
+                    .com.crystaldecisions.sdk.occa.infostore
+                    .CePropertyID);
+
+        gv_initialized = true;
     }//class_init
 
-    class_init();
+    // Static initialization at script load time has issues in SAP IDM.
+    // Avoid it where possible, and use lazy initialization instead.
+    // ===== DON'T TRY THIS =====
+    // class_init()
+    // ==========================
     return go_result;
 
 })();

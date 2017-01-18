@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace, fx_bobj_Session, fx_bobj_CeProperties */
+
 /**
  * Read all available BOBJ entries of a given type during initial load.
  * @class
- * @requires fx_bobj_trace
+ * @requires fx_trace
  * @requires fx_bobj_Session
  * @requires fx_bobj_CeProperties
  */
