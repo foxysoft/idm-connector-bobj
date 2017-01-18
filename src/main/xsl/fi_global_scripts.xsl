@@ -48,6 +48,9 @@ limitations under the License.
     <xsl:variable
         name="lv_b64_uri"
         select="concat($lv_base_uri, '.b64')"/>
+    <xsl:variable
+        name="lv_md5_uri"
+        select="concat($lv_base_uri, '.md5')"/>
     <!-- Uncomment for debugging
     <xsl:message>
       <xsl:text>lv_base_uri=</xsl:text>
@@ -61,7 +64,9 @@ limitations under the License.
       <SCRIPTDEFINITION>
         <xsl:value-of select="unparsed-text($lv_b64_uri)"/>
       </SCRIPTDEFINITION>
-      <SCRIPTHASH>00000000000000000000000000000000</SCRIPTHASH>
+      <SCRIPTHASH>
+        <xsl:value-of select="unparsed-text($lv_md5_uri)"/>
+      </SCRIPTHASH>
       <SCRIPTID><xsl:value-of select="position()"/></SCRIPTID>
       <SCRIPTLANGUAGE>JScript</SCRIPTLANGUAGE>
       <SCRIPTLASTCHANGE>
