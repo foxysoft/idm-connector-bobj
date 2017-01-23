@@ -53,6 +53,15 @@ limitations under the License.
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>2.7</version>
       </plugin>
@@ -110,7 +119,7 @@ limitations under the License.
             <transformationSet>
               <dir>src/main/idm80</dir>
               <includes>
-		<!-- Restrict to file extension, in case we add more later -->
+                <!-- Restrict to file extension, in case we add more later -->
                 <include>*.idmpck</include>
               </includes>
               <stylesheet>src/main/xsl/fi_package_scripts.xsl</stylesheet>
