@@ -91,7 +91,7 @@ limitations under the License.
   <!-- END: Package script definitions -->
   <!-- BEGIN: Package description -->
   <xsl:template match="/IDM/PACKAGES/PACKAGE/MCDESCRIPTION/text()">
-    <xsl:text>SAP(R) BusinessObjects(TM) connector </xsl:text>
+    <xsl:text>SAP BusinessObjects connector, version: </xsl:text>
     <xsl:value-of select="$gp_project_version"/>
   </xsl:template>
   <!-- END: Package description -->
