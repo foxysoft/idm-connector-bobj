@@ -19,6 +19,8 @@ limitations under the License.
 <!-- to SAP(R) IDM package export as public package scripts -->
 <xsl:stylesheet version="3.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <!-- This is a global stylesheet parameter passed by pom.xml -->
+  <xsl:param name="gp_project_version"/>
   <xsl:template match="@*|node()">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
@@ -87,4 +89,10 @@ limitations under the License.
     </SCRIPT>
   </xsl:template>
   <!-- END: Package script definitions -->
+  <!-- BEGIN: Package description -->
+  <xsl:template match="/IDM/PACKAGES/PACKAGE/MCDESCRIPTION/text()">
+    <xsl:text>SAP(R) BusinessObjects(TM) connector </xsl:text>
+    <xsl:value-of select="$gp_project_version"/>
+  </xsl:template>
+  <!-- END: Package description -->
 </xsl:stylesheet>

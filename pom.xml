@@ -123,6 +123,12 @@ limitations under the License.
                 <include>*.idmpck</include>
               </includes>
               <stylesheet>src/main/xsl/fi_package_scripts.xsl</stylesheet>
+              <parameters>
+                <parameter>
+                  <name>iv_project_version</name>
+                  <value>${project.version}</value>
+                </parameter>
+              </parameters>
               <outputDir>${fx.genGlobalScriptsStage1Dir}</outputDir>
             </transformationSet>
             <!-- Common Transformations -->
