@@ -90,22 +90,37 @@ limitations under the License.
   <!-- java.lang.String.isEmpty() of a null object loaded from local   -->
   <!-- variable 'packConstValue'                                       -->
   <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='6']">
-    <xsl:apply-templates select="@*|node()"/>
-    <xsl:message>
-      <xsl:text>Adding VARVALUE=0 to </xsl:text>
-      <xsl:value-of select="VARNAME"/>
-    </xsl:message>
-    <VARVALUE>0</VARVALUE>
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+      <xsl:message>
+	<xsl:text>Adding VARVALUE=0 to </xsl:text>
+	<xsl:value-of select="VARNAME"/>
+      </xsl:message>
+      <VARVALUE>0</VARVALUE>
+    </xsl:copy>
   </xsl:template>
-  <!-- Always set STRING package variables      -->
-  <!-- (e.g. FX_BOBJ_MODIFY_TRIGGERS) to empty. -->
-  <!-- See above for rationale.                 -->
+  <!-- Always set STRING package variables to empty. -->
   <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='0']">
-    <xsl:apply-templates select="@*|node()"/>
-    <xsl:message>
-      <xsl:text>Adding VARVALUE= to </xsl:text>
-      <xsl:value-of select="VARNAME"/>
-    </xsl:message>
-    <VARVALUE/>
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+      <xsl:message>
+	<xsl:text>Adding VARVALUE= to </xsl:text>
+	<xsl:value-of select="VARNAME"/>
+      </xsl:message>
+      <VARVALUE/>
+    </xsl:copy>
+  </xsl:template>
+  <!-- Always set entry reference (14) package variables -->
+  <!-- or process reference (5) package variables to -1. -->
+  <xsl:template 
+      match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='14' or VARTYPE='5']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+      <xsl:message>
+	<xsl:text>Adding VARVALUE=-1 to </xsl:text>
+	<xsl:value-of select="VARNAME"/>
+      </xsl:message>
+      <VARVALUE>-1</VARVALUE>
+    </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>

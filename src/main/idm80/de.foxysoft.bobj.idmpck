@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<IDM EXPORTED_ON="2017-01-17 16:06:47.063" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
+<IDM EXPORTED_ON="2017-01-24 13:55:07.097" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
   <PACKAGES>
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
@@ -28,34 +28,42 @@ limitations under the License.
       <MCPACKAGETYPE>0</MCPACKAGETYPE>
       <MCQUALIFIEDNAME>de.foxysoft.bobj</MCQUALIFIEDNAME>
       <PACKAGE_VARS>
-        <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
-        <VARBEHAVIOR>0</VARBEHAVIOR>
-        <VARCATEGORY>-1</VARCATEGORY>
-        <VARDESCRIPTION>List of attribute names that should trigger the SAP BOBJ modify task. Names must be separated by one or more non-word characters, e.g. comma and/or space</VARDESCRIPTION>
-        <VARNAME>FX_BOBJ_MODIFY_TRIGGERS</VARNAME>
-        <VARTYPE>0</VARTYPE>
-        <VARVALUE/>
-        <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
-        <VARBEHAVIOR>0</VARBEHAVIOR>
-        <VARCATEGORY>-1</VARCATEGORY>
-        <VARDESCRIPTION>Characters that must never occur in passwords</VARDESCRIPTION>
-        <VARNAME>FX_PASSWORD_EXCLUDE_CHARS</VARNAME>
-        <VARTYPE>0</VARTYPE>
-        <VARVALUE/>
-        <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
-        <VARBEHAVIOR>0</VARBEHAVIOR>
-        <VARCATEGORY>-1</VARCATEGORY>
-        <VARDESCRIPTION>Special characters to include in passwords</VARDESCRIPTION>
-        <VARNAME>FX_PASSWORD_INCLUDE_SPECIALS</VARNAME>
-        <VARTYPE>0</VARTYPE>
-        <VARVALUE/>
-        <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
-        <VARBEHAVIOR>0</VARBEHAVIOR>
-        <VARCATEGORY>-1</VARCATEGORY>
-        <VARDESCRIPTION>Check to enable developer trace for SAP BOBJ connector</VARDESCRIPTION>
-        <VARNAME>FX_TRACE</VARNAME>
-        <VARTYPE>6</VARTYPE>
-        <VARVALUE>0</VARVALUE>
+        <VARIABLE>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <VARBEHAVIOR>0</VARBEHAVIOR>
+          <VARCATEGORY>-1</VARCATEGORY>
+          <VARDESCRIPTION>List of attribute names that should trigger the SAP BOBJ modify task. Names must be separated by one or more non-word characters, e.g. comma and/or space</VARDESCRIPTION>
+          <VARNAME>FX_BOBJ_MODIFY_TRIGGERS</VARNAME>
+          <VARTYPE>0</VARTYPE>
+          <VARVALUE/>
+        </VARIABLE>
+        <VARIABLE>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <VARBEHAVIOR>0</VARBEHAVIOR>
+          <VARCATEGORY>-1</VARCATEGORY>
+          <VARDESCRIPTION>Characters that must never occur in passwords</VARDESCRIPTION>
+          <VARNAME>FX_PASSWORD_EXCLUDE_CHARS</VARNAME>
+          <VARTYPE>0</VARTYPE>
+          <VARVALUE/>
+        </VARIABLE>
+        <VARIABLE>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <VARBEHAVIOR>0</VARBEHAVIOR>
+          <VARCATEGORY>-1</VARCATEGORY>
+          <VARDESCRIPTION>Special characters to include in passwords</VARDESCRIPTION>
+          <VARNAME>FX_PASSWORD_INCLUDE_SPECIALS</VARNAME>
+          <VARTYPE>0</VARTYPE>
+          <VARVALUE/>
+        </VARIABLE>
+        <VARIABLE>
+          <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
+          <VARBEHAVIOR>0</VARBEHAVIOR>
+          <VARCATEGORY>-1</VARCATEGORY>
+          <VARDESCRIPTION>Check to enable developer trace for SAP BOBJ connector</VARDESCRIPTION>
+          <VARNAME>FX_TRACE</VARNAME>
+          <VARTYPE>6</VARTYPE>
+          <VARVALUE>0</VARVALUE>
+        </VARIABLE>
       </PACKAGE_VARS>
       <USES>
         <USE>
