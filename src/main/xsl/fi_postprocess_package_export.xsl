@@ -82,43 +82,45 @@ limitations under the License.
     </xsl:message>
   </xsl:template>
   <!-- Always set BOOLEAN package variables (e.g. FX_TRACE) to false.  -->
-  <!-- Note that removing the VARVALUE element altogehter, like SAP's  -->
-  <!-- own package export does for String variables in SP0, can result -->
-  <!-- in NPE inside uGetConstant at runtime:                          -->
-  <!--                                                                 -->
-  <!-- Exception:while trying to invoke the method                     -->
-  <!-- java.lang.String.isEmpty() of a null object loaded from local   -->
-  <!-- variable 'packConstValue'                                       -->
   <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='6']">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
       <xsl:message>
-	<xsl:text>Adding VARVALUE=0 to </xsl:text>
-	<xsl:value-of select="VARNAME"/>
+        <xsl:text>Adding VARVALUE=0 to </xsl:text>
+        <xsl:value-of select="VARNAME"/>
       </xsl:message>
       <VARVALUE>0</VARVALUE>
     </xsl:copy>
   </xsl:template>
-  <!-- Always set STRING package variables to empty. -->
+  <!-- Always set value of STRING package variables to $EMPTY.         -->
+  <!-- This is to work around a problem with importing empty string    -->
+  <!-- constants in SP0, resulting in NPE in uGetConstant at runtime:  -->
+  <!--                                                                 -->
+  <!-- Exception:while trying to invoke the method                     -->
+  <!-- java.lang.String.isEmpty() of a null object loaded from local   -->
+  <!-- variable 'packConstValue'                                       -->
+  <!--                                                                 -->
+  <!-- To undo this workaround at runtime, fx_getConstant will replace -->
+  <!-- $EMPTY with empty string again at runtime.                      -->
   <xsl:template match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='0']">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
       <xsl:message>
-	<xsl:text>Adding VARVALUE= to </xsl:text>
-	<xsl:value-of select="VARNAME"/>
+        <xsl:text>Adding VARVALUE=$EMPTY to </xsl:text>
+        <xsl:value-of select="VARNAME"/>
       </xsl:message>
-      <VARVALUE/>
+      <VARVALUE>$EMPTY</VARVALUE>
     </xsl:copy>
   </xsl:template>
   <!-- Always set entry reference (14) package variables -->
   <!-- or process reference (5) package variables to -1. -->
-  <xsl:template 
+  <xsl:template
       match="/IDM/PACKAGES/PACKAGE/PACKAGE_VARS/VARIABLE[VARTYPE='14' or VARTYPE='5']">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
       <xsl:message>
-	<xsl:text>Adding VARVALUE=-1 to </xsl:text>
-	<xsl:value-of select="VARNAME"/>
+        <xsl:text>Adding VARVALUE=-1 to </xsl:text>
+        <xsl:value-of select="VARNAME"/>
       </xsl:message>
       <VARVALUE>-1</VARVALUE>
     </xsl:copy>

@@ -161,7 +161,10 @@ var fx_trace = (function() {
                 trace(SCRIPT+"Adjusted lv_name="+lv_name+" for IDM 7.x");
             }
 
-            var lv_result = uGetConstant(lv_name);
+            // Make sure to return a JS string, never a Java string
+            var lv_result = "" + uGetConstant(lv_name);
+
+            trace(SCRIPT+"uGetConstant("+lv_name+"): '"+lv_result+"'");
 
             if(lv_name.indexOf("pck.") == 0)
             {
@@ -174,7 +177,15 @@ var fx_trace = (function() {
                 }
             }
 
-            trace(SCRIPT+"Returning "+lv_result);
+            // Replace $EMPTY with empty string to work around
+            // NPE issues with empty package constants after
+            // after transport.
+            if(lv_result=="$EMPTY")
+            {
+                lv_result = "";
+            }
+
+            trace(SCRIPT+"Returning '"+lv_result+"'");
             return lv_result;
 
         }//fx_getConstant

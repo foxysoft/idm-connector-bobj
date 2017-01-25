@@ -14,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<IDM EXPORTED_ON="2017-01-24 13:55:07.097" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
+<IDM EXPORTED_ON="2017-01-25 10:27:46.383" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
   <PACKAGES>
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
@@ -23,7 +23,7 @@ limitations under the License.
       <MCDISPLAYNAME>de.foxysoft.bobj</MCDISPLAYNAME>
       <MCLASTMODIFIED>1484648287833</MCLASTMODIFIED>
       <MCMAJORVERSION>0</MCMAJORVERSION>
-      <MCMINORVERSION>8</MCMINORVERSION>
+      <MCMINORVERSION>9</MCMINORVERSION>
       <MCPACKAGELEVEL>1528</MCPACKAGELEVEL>
       <MCPACKAGETYPE>0</MCPACKAGETYPE>
       <MCQUALIFIEDNAME>de.foxysoft.bobj</MCQUALIFIEDNAME>
@@ -35,7 +35,7 @@ limitations under the License.
           <VARDESCRIPTION>List of attribute names that should trigger the SAP BOBJ modify task. Names must be separated by one or more non-word characters, e.g. comma and/or space</VARDESCRIPTION>
           <VARNAME>FX_BOBJ_MODIFY_TRIGGERS</VARNAME>
           <VARTYPE>0</VARTYPE>
-          <VARVALUE/>
+          <VARVALUE>$EMPTY</VARVALUE>
         </VARIABLE>
         <VARIABLE>
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
@@ -44,7 +44,7 @@ limitations under the License.
           <VARDESCRIPTION>Characters that must never occur in passwords</VARDESCRIPTION>
           <VARNAME>FX_PASSWORD_EXCLUDE_CHARS</VARNAME>
           <VARTYPE>0</VARTYPE>
-          <VARVALUE/>
+          <VARVALUE>$EMPTY</VARVALUE>
         </VARIABLE>
         <VARIABLE>
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
@@ -53,7 +53,7 @@ limitations under the License.
           <VARDESCRIPTION>Special characters to include in passwords</VARDESCRIPTION>
           <VARNAME>FX_PASSWORD_INCLUDE_SPECIALS</VARNAME>
           <VARTYPE>0</VARTYPE>
-          <VARVALUE/>
+          <VARVALUE>$EMPTY</VARVALUE>
         </VARIABLE>
         <VARIABLE>
           <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
@@ -3598,7 +3598,7 @@ select
   </DISPATCHERS>
   <PACKAGE_HISTORY>
     <MCMODIFIEDBYUSERNAME>FOXYSOFT</MCMODIFIEDBYUSERNAME>
-    <MCMODIFIEDDATE>1484661920000</MCMODIFIEDDATE>
+    <MCMODIFIEDDATE>1485335773000</MCMODIFIEDDATE>
     <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
   </PACKAGE_HISTORY>
 </IDM>
