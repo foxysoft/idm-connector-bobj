@@ -18,9 +18,14 @@ limitations under the License.
 <!-- Add all JavaScript files from src/javascript directory -->
 <!-- to SAP(R) IDM package export as public package scripts -->
 <xsl:stylesheet version="3.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                >
   <!-- This is a global stylesheet parameter passed by pom.xml -->
-  <xsl:param name="gp_project_version"/>
+  <xsl:param 
+      name="gp_project_version" 
+      as="xs:string" 
+      />
   <xsl:template match="@*|node()">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
@@ -95,4 +100,15 @@ limitations under the License.
     <xsl:value-of select="$gp_project_version"/>
   </xsl:template>
   <!-- END: Package description -->
+  <!-- BEGIN: Use project major/minor version as package version -->
+  <xsl:template match="/IDM/PACKAGES/PACKAGE/MCMAJORVERSION/text()">
+    <!-- Note that . is special in XSLT and XPath and must be escaped. -->
+    <xsl:value-of
+        select="tokenize($gp_project_version,'\.')[position() = 1]"/>
+  </xsl:template>
+  <xsl:template match="/IDM/PACKAGES/PACKAGE/MCMINORVERSION/text()">
+    <xsl:value-of
+        select="tokenize($gp_project_version,'\.')[position() = 2]"/>
+  </xsl:template>
+  <!-- END: Use project major/minor version as package version -->
 </xsl:stylesheet>
