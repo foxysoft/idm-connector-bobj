@@ -30,20 +30,23 @@ limitations under the License.
   <xsl:template match="/">
     <xsl:message>Adding license</xsl:message>
     <xsl:comment>
-Copyright 2017 Foxysoft GmbH
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-</xsl:comment>
+      <!-- Use text elements instead of inline text  -->
+      <!-- to keep this stylesheet pretty-printable. -->
+      <xsl:text>&#xa;</xsl:text>
+      <xsl:text>Copyright 2017 Foxysoft GmbH&#xa;</xsl:text>
+      <xsl:text>&#xa;</xsl:text>
+      <xsl:text>Licensed under the Apache License, Version 2.0 (the "License");&#xa;</xsl:text>
+      <xsl:text>you may not use this file except in compliance with the License.&#xa;</xsl:text>
+      <xsl:text>You may obtain a copy of the License at&#xa;</xsl:text>
+      <xsl:text>&#xa;</xsl:text>
+      <xsl:text>http://www.apache.org/licenses/LICENSE-2.0&#xa;</xsl:text>
+      <xsl:text>&#xa;</xsl:text>
+      <xsl:text>Unless required by applicable law or agreed to in writing, software&#xa;</xsl:text>
+      <xsl:text>distributed under the License is distributed on an "AS IS" BASIS,&#xa;</xsl:text>
+      <xsl:text>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xa;</xsl:text>
+      <xsl:text>See the License for the specific language governing permissions and&#xa;</xsl:text>
+      <xsl:text>limitations under the License.&#xa;</xsl:text>
+    </xsl:comment>
     <xsl:apply-templates select="@*|node()"/>
   </xsl:template>
   <!-- Replace username in CHANGED_BY or MCMODIFIEDBYUSERNAME text content -->
