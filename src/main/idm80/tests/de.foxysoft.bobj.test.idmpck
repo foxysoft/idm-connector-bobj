@@ -6,7 +6,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,15 +15,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<IDM EXPORTED_ON="2017-01-28 11:44:16.18" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
+<IDM EXPORTED_ON="2017-01-28 13:03:58.0" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
   <PACKAGES>
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj.test">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
       <MCCOPIEDFROMMINORVERSION>0</MCCOPIEDFROMMINORVERSION>
       <MCDISPLAYNAME>de.foxysoft.bobj.test</MCDISPLAYNAME>
-      <MCLASTMODIFIED>1485600099920</MCLASTMODIFIED>
+      <MCLASTMODIFIED>1485600099000</MCLASTMODIFIED>
       <MCMAJORVERSION>0</MCMAJORVERSION>
-      <MCMINORVERSION>1</MCMINORVERSION>
+      <MCMINORVERSION>4</MCMINORVERSION>
       <MCPACKAGELEVEL>1528</MCPACKAGELEVEL>
       <MCPACKAGETYPE>0</MCPACKAGETYPE>
       <MCQUALIFIEDNAME>de.foxysoft.bobj.test</MCQUALIFIEDNAME>
@@ -32,7 +32,7 @@ limitations under the License.
           <MCFROMREFERENCE>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</MCFROMREFERENCE>
           <MCFROMTYPE>8</MCFROMTYPE>
           <MCPACKAGEID>de.foxysoft.bobj.test</MCPACKAGEID>
-          <MCTOQUALIFIEDNAME>de.foxysoft.bobj:jscript.fx_trace</MCTOQUALIFIEDNAME>
+          <MCTOQUALIFIEDNAME>de.foxysoft.bobj:jscript.fx_encrypt</MCTOQUALIFIEDNAME>
           <MCTOTYPE>12</MCTOTYPE>
           <MCVERSION>0</MCVERSION>
         </USE>
@@ -40,18 +40,151 @@ limitations under the License.
           <MCFROMREFERENCE>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</MCFROMREFERENCE>
           <MCFROMTYPE>8</MCFROMTYPE>
           <MCPACKAGEID>de.foxysoft.bobj.test</MCPACKAGEID>
-          <MCTOQUALIFIEDNAME>de.foxysoft.bobj:jscript.fx_encrypt</MCTOQUALIFIEDNAME>
+          <MCTOQUALIFIEDNAME>de.foxysoft.bobj:jscript.fx_trace</MCTOQUALIFIEDNAME>
           <MCTOTYPE>12</MCTOTYPE>
           <MCVERSION>0</MCVERSION>
         </USE>
       </USES>
+      <REPOSITORY_TYPES>
+        <REPOSITORY_TYPE MCPACKAGEID="de.foxysoft.bobj.test">
+          <MCQUALIFIEDNAME>de.foxysoft.bobj.test:reptype.TEST_SapBusinessObjects42</MCQUALIFIEDNAME>
+          <REP_GUID>2C4B8F1E-C980-4E83-B6AF-2F6ED81FEE79</REP_GUID>
+          <REP_NAME>TEST_SapBusinessObjects42</REP_NAME>
+           <REPOSITORY_TYPE_VARS>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-1</VARCATEGORY>
+              <VARDESCRIPTION>Host name of CMS</VARDESCRIPTION>
+              <VARDISPLAYORDER>8</VARDISPLAYORDER>
+              <VARNAME>HOST</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>bihost</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDESCRIPTION>Initial load job</VARDESCRIPTION>
+              <VARDISPLAYORDER>12</VARDISPLAYORDER>
+              <VARNAME>INITIAL_LOAD</VARNAME>
+              <VARTYPE>13</VARTYPE>
+              <VARVALUE>D1B3E8DB-A6C1-48D9-A22E-792A4A189C05</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj.test:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>2</VARDISPLAYORDER>
+              <VARNAME>CONNECTOR_TEST</VARNAME>
+              <VARTYPE>13</VARTYPE>
+              <VARVALUE>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-1</VARCATEGORY>
+              <VARDESCRIPTION>Login user</VARDESCRIPTION>
+              <VARDISPLAYORDER>9</VARDISPLAYORDER>
+              <VARNAME>LOGIN</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>Administrator</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>2</VARDISPLAYORDER>
+              <VARNAME>MX_ADD_MEMBER_TASK</VARNAME>
+              <VARTYPE>5</VARTYPE>
+              <VARVALUE>2811ADD2-97BA-4C3C-BF36-EFC313C40C37</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>3</VARDISPLAYORDER>
+              <VARNAME>MX_DEL_MEMBER_TASK</VARNAME>
+              <VARTYPE>5</VARTYPE>
+              <VARVALUE>478246E8-F948-42C6-8F25-67C0F5116FE2</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>4</VARDISPLAYORDER>
+              <VARNAME>MX_MODIFYTASK</VARNAME>
+              <VARTYPE>5</VARTYPE>
+              <VARVALUE>3EA680DE-431F-4BCA-B876-67C73591202B</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>1</VARDISPLAYORDER>
+              <VARNAME>MX_PRIV_GROUPING_ATTRIBUTE</VARNAME>
+              <VARTYPE>0</VARTYPE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>0</VARDISPLAYORDER>
+              <VARNAME>MX_PRIV_GROUPING_RULE</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>P:-1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-1</VARCATEGORY>
+              <VARDESCRIPTION>Master privilege</VARDESCRIPTION>
+              <VARDISPLAYORDER>14</VARDISPLAYORDER>
+              <VARNAME>MX_REQ_PRIV</VARNAME>
+              <VARTYPE>14</VARTYPE>
+              <VARVALUE>-1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-3</VARCATEGORY>
+              <VARDESCRIPTION>No Master Process</VARDESCRIPTION>
+              <VARDISPLAYORDER>15</VARDISPLAYORDER>
+              <VARNAME>MX_REQ_PRIV_NOMASTER_TASK</VARNAME>
+              <VARTYPE>5</VARTYPE>
+              <VARVALUE>-1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>13</VARDISPLAYORDER>
+              <VARNAME>MX_REQ_PRIV_PCYADD_MISSING</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>1</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-1</VARCATEGORY>
+              <VARDESCRIPTION>Password</VARDESCRIPTION>
+              <VARDISPLAYORDER>10</VARDISPLAYORDER>
+              <VARNAME>PASSWORD</VARNAME>
+              <VARTYPE>4</VARTYPE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-1</VARCATEGORY>
+              <VARDESCRIPTION>Name server port</VARDESCRIPTION>
+              <VARDISPLAYORDER>11</VARDISPLAYORDER>
+              <VARNAME>PORT</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>6400</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>5</VARDISPLAYORDER>
+              <VARNAME>REPOSITORY_SYNC</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>SYNC</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>6</VARDISPLAYORDER>
+              <VARNAME>REPOSITORY_TYPE</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>LDAP</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+            <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>7</VARDISPLAYORDER>
+              <VARNAME>SYSTEM_PRIVILEGE</VARNAME>
+              <VARTYPE>0</VARTYPE>
+              <VARVALUE>PRIV:SYSTEM:%$rep.$NAME%</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
+          </REPOSITORY_TYPE_VARS>
+        </REPOSITORY_TYPE>
+      </REPOSITORY_TYPES>
       <JOBS>
         <JOB JOBGUID="E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2" MCPACKAGEID="de.foxysoft.bobj.test">
           <ACTIVE>1</ACTIVE>
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1485603798770</CHANGED_DATE>
+          <CHANGED_DATE>1485607415000</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <GROUP_ID>D9D91409-64E2-4603-ACC1-1769D870339C</GROUP_ID>
           <JOBDEFINITION>
@@ -82,7 +215,7 @@ limitations under the License.
                   <mx:Globals/>
                   <mx:Common>
                     <ENGINETYPE>1</ENGINETYPE>
-                    <SCRIPTENG>JScript</SCRIPTENG>
+                    <SCRIPTENG>null</SCRIPTENG>
                     <EVLOG>0</EVLOG>
                     <ERRLOG>%$ddm.ddmpath%\DSE.log</ERRLOG>
                     <XLRESET>1</XLRESET>
@@ -327,7 +460,7 @@ limitations under the License.
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>06 Change Master Data</DESCRIPTION>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>!!!!!!!!!!!!1!!!!!!!!!!!!</IDSTORE>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
@@ -631,19 +764,19 @@ limitations under the License.
                       </mx:attr>
                     </mx:Class>
                   </mx:Pass>
-<mx:Functions>
-        <mx:Function name="db_fromDummyTable" ErrorStatus="0" Script="JScript" Enabled="TRUE">
-          <mx:Code>// Main function: db_fromDummyTable
+                  <mx:Functions>
+                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="db_fromDummyTable">
+                      <mx:Code>// Main function: db_fromDummyTable
 
 function db_fromDummyTable(Par){
     return "%$ddm.databasetype%" == "1" ? "" : "FROM DUAL";
 }
 </mx:Code>
-        </mx:Function>
-        <mx:Function name="fx_encrypt" Script="JScript" Enabled="TRUE" ExternalScript="de.foxysoft.bobj:jscript.fx_encrypt"/>
-        <mx:Function name="fx_trace" Script="JScript" Enabled="TRUE" ExternalScript="de.foxysoft.bobj:jscript.fx_trace"/>
-        <mx:Function name="initActivePassVariable" ErrorStatus="0" Script="JScript" Enabled="TRUE">
-          <mx:Code>// Main function: initActivePassVariable
+                    </mx:Function>
+                    <mx:Function Enabled="TRUE" ExternalScript="de.foxysoft.bobj:jscript.fx_encrypt" Script="JScript" name="fx_encrypt"/>
+                    <mx:Function Enabled="TRUE" ExternalScript="de.foxysoft.bobj:jscript.fx_trace" Script="JScript" name="fx_trace"/>
+                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="initActivePassVariable">
+                      <mx:Code>// Main function: initActivePassVariable
 
 function initActivePassVariable()
 {
@@ -669,9 +802,9 @@ function initActivePassVariable()
     return "";
 }
 </mx:Code>
-        </mx:Function>
-        <mx:Function name="checkActivePass" ErrorStatus="0" Script="JScript" Enabled="TRUE">
-          <mx:Code>// Main function: checkActivePass
+                    </mx:Function>
+                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="checkActivePass">
+                      <mx:Code>// Main function: checkActivePass
 
 function checkActivePass(Par){
     var lv_active_pass_index = parseInt(uGetUserVar(
@@ -696,9 +829,9 @@ function checkActivePass(Par){
         uSkip(2);
     }
 }</mx:Code>
-        </mx:Function>
-        <mx:Function name="setActivePassNext" ErrorStatus="0" Script="JScript" Enabled="TRUE">
-          <mx:Code>// Main function: setActivePassNext
+                    </mx:Function>
+                    <mx:Function Enabled="TRUE" ErrorStatus="0" Script="JScript" name="setActivePassNext">
+                      <mx:Code>// Main function: setActivePassNext
 
 function setActivePassNext(Par){
     var lv_active_pass_index = parseInt(
@@ -720,8 +853,8 @@ function setActivePassNext(Par){
     return "";
 }
 </mx:Code>
-        </mx:Function>
-      </mx:Functions>
+                    </mx:Function>
+                  </mx:Functions>
                 </mx:Job>
               </mx:DSEJobs>
             </mx:EMS>
@@ -729,9 +862,9 @@ function setActivePassNext(Par){
           <MAX_LOGENTRIES>100</MAX_LOGENTRIES>
           <MCPUBLIC>0</MCPUBLIC>
           <MCREFERENCESTATUS>-1</MCREFERENCESTATUS>
-          <MCREPOSITORYTYPEQN>de.foxysoft.bobj:reptype.SapBusinessObjects42</MCREPOSITORYTYPEQN>
+          <MCREPOSITORYTYPEQN>de.foxysoft.bobj:reptype.TEST_SapBusinessObjects42</MCREPOSITORYTYPEQN>
           <MCSCRIPTSTATUS>0</MCSCRIPTSTATUS>
-          <MCSOURCEGUID>EE983C37-8F09-49C7-B90B-D48D2125E229</MCSOURCEGUID>
+          <MCSOURCEGUID>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</MCSOURCEGUID>
           <MULTIPROVISION>0</MULTIPROVISION>
           <MXPROTECTED>0</MXPROTECTED>
           <NAME>SAP BOBJ 4.2 Connector Test</NAME>
@@ -746,7 +879,7 @@ function setActivePassNext(Par){
       </JOBS>
       <FOLDERS>
         <FOLDER GROUPGUID="11E78CED-8F5D-4CC6-BCAD-8BF13904E127">
-          <ACTIVATEDATE>1485603700600</ACTIVATEDATE>
+          <ACTIVATEDATE>1485603700000</ACTIVATEDATE>
           <GROUP_NAME>Processes</GROUP_NAME>
           <GROUP_STATUS>1</GROUP_STATUS>
           <MCPACKAGEID>de.foxysoft.bobj.test</MCPACKAGEID>
@@ -757,7 +890,7 @@ function setActivePassNext(Par){
           <WFSHOWGROUP>0</WFSHOWGROUP>
         </FOLDER>
         <FOLDER GROUPGUID="D9D91409-64E2-4603-ACC1-1769D870339C">
-          <ACTIVATEDATE>1485603700600</ACTIVATEDATE>
+          <ACTIVATEDATE>1485603700000</ACTIVATEDATE>
           <GROUP_NAME>Jobs</GROUP_NAME>
           <GROUP_STATUS>1</GROUP_STATUS>
           <MCPACKAGEID>de.foxysoft.bobj.test</MCPACKAGEID>
@@ -768,7 +901,7 @@ function setActivePassNext(Par){
           <WFSHOWGROUP>0</WFSHOWGROUP>
         </FOLDER>
         <FOLDER GROUPGUID="E0F89B03-B1C8-4EDD-A224-B128BC0633C2">
-          <ACTIVATEDATE>1485603700600</ACTIVATEDATE>
+          <ACTIVATEDATE>1485603700000</ACTIVATEDATE>
           <GROUP_NAME>Forms</GROUP_NAME>
           <GROUP_STATUS>1</GROUP_STATUS>
           <MCPACKAGEID>de.foxysoft.bobj.test</MCPACKAGEID>
@@ -782,13 +915,13 @@ function setActivePassNext(Par){
     </PACKAGE>
   </PACKAGES>
   <DISPATCHERS>
-    <DISPATCHER MACHINE="idmdispatcher_M80D1_1">
-      <JOBID>EE983C37-8F09-49C7-B90B-D48D2125E229</JOBID>
+    <DISPATCHER MACHINE="idmdispatcher_D80D1_1">
+      <JOBID>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</JOBID>
     </DISPATCHER>
   </DISPATCHERS>
   <PACKAGE_HISTORY>
-    <MCMODIFIEDBYUSERNAME>ADMIN</MCMODIFIEDBYUSERNAME>
-    <MCMODIFIEDDATE>1485600218000</MCMODIFIEDDATE>
+    <MCMODIFIEDBYUSERNAME>FOXYSOFT</MCMODIFIEDBYUSERNAME>
+    <MCMODIFIEDDATE>1485605011000</MCMODIFIEDDATE>
     <MCPACKAGEID>de.foxysoft.bobj.test</MCPACKAGEID>
   </PACKAGE_HISTORY>
 </IDM>
