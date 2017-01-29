@@ -20,11 +20,16 @@ limitations under the License.
 <xsl:stylesheet version="3.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:fx="http://foxysoft.de/idm"
                 >
-  <!-- This is a global stylesheet parameter passed by pom.xml -->
-  <xsl:param 
-      name="gp_project_version" 
-      as="xs:string" 
+  <!-- These are global stylesheet parameters passed by pom.xml -->
+  <xsl:param
+      name="gp_project_version"
+      as="xs:string"
+      />
+  <xsl:param
+      name="gp_include_xml_test_content"
+      as="xs:boolean"
       />
   <xsl:template match="@*|node()">
     <xsl:copy>
@@ -111,4 +116,15 @@ limitations under the License.
         select="tokenize($gp_project_version,'\.')[position() = 2]"/>
   </xsl:template>
   <!-- END: Use project major/minor version as package version -->
+  <!-- START: Conditionally include XML test content -->
+  <xsl:template match="*[@fx:is-test-content]">
+    <xsl:if test="$gp_include_xml_test_content">
+      <xsl:copy>
+        <xsl:apply-templates select="@*|node()"/>
+      </xsl:copy>
+    </xsl:if>
+  </xsl:template>
+  <!-- Cancel copying attributes in the fx namespace -->
+  <xsl:template match="@fx:*"/>
+  <!-- END: Conditionally include XML test content -->
 </xsl:stylesheet>

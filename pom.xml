@@ -40,6 +40,7 @@ limitations under the License.
     <fx.genJavaScriptDir>${fx.genResourcesDir}/javascript</fx.genJavaScriptDir>
     <fx.genGlobalScriptsStage1Dir>${fx.genResourcesDir}/globalscrips-stage-1</fx.genGlobalScriptsStage1Dir>
     <fx.genGlobalScriptsStage2Dir>${fx.genResourcesDir}/globalscrips-stage-2</fx.genGlobalScriptsStage2Dir>
+    <fx.test.includeXmlTestContent>false</fx.test.includeXmlTestContent>
   </properties>
   <dependencies>
     <dependency>
@@ -128,6 +129,10 @@ limitations under the License.
                   <name>gp_project_version</name>
                   <value>${project.version}</value>
                 </parameter>
+                <parameter>
+                  <name>gp_include_xml_test_content</name>
+                  <value>${fx.test.includeXmlTestContent}</value>
+                </parameter>
               </parameters>
               <outputDir>${fx.genGlobalScriptsStage1Dir}</outputDir>
             </transformationSet>
@@ -209,4 +214,12 @@ limitations under the License.
       </plugin>
     </plugins>
   </reporting>
+  <profiles>
+    <profile>
+      <id>test</id>
+      <properties>
+        <fx.test.includeXmlTestContent>true</fx.test.includeXmlTestContent>
+      </properties>
+    </profile>
+  </profiles>
 </project>
