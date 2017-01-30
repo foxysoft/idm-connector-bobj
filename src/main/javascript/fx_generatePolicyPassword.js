@@ -63,7 +63,7 @@ var fx_generatePolicyPassword = (function() {
             ,1
         );
 
-        go_compat_api = fx_trace({compat:1.0});
+        go_compat_api = fx_trace({compat: 1.0});
 
         // Include special characters as per configuration
         gv_include_specials

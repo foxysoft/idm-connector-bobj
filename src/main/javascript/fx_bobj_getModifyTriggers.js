@@ -38,7 +38,7 @@ function fx_bobj_getModifyTriggers()
     var SCRIPT = "fx_bobj_getModifyTriggers: ";
     fx_trace(SCRIPT+"Entering");
 
-    var lv_triggers = fx_trace({compat:1.0}).fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
+    var lv_triggers = fx_trace({compat: 1.0}).fx_getConstant("pck.FX_BOBJ_MODIFY_TRIGGERS");
 
     if(lv_triggers == "")
     {
