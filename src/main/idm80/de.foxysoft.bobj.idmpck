@@ -14,16 +14,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<IDM xmlns:fx="http://foxysoft.de/idm" EXPORTED_ON="2017-01-25 10:27:46.383" IS_PACKAGE_FOLDER_EXPORT="0" PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" SCHEMA_VERSION="1528">
+<IDM xmlns:fx="http://foxysoft.de/idm"
+     EXPORTED_ON="2017-01-30 10:33:52.53" 
+     IS_PACKAGE_FOLDER_EXPORT="0" 
+     PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" 
+     SCHEMA_VERSION="1528">
   <PACKAGES>
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
       <MCCOPIEDFROMMINORVERSION>0</MCCOPIEDFROMMINORVERSION>
-      <MCDESCRIPTION>Connector for SAP BusinessObjects systems</MCDESCRIPTION>
+      <MCDESCRIPTION>SAP BusinessObjects connector, version: 1.1.0-SNAPSHOT</MCDESCRIPTION>
       <MCDISPLAYNAME>de.foxysoft.bobj</MCDISPLAYNAME>
       <MCLASTMODIFIED>1484648287833</MCLASTMODIFIED>
-      <MCMAJORVERSION>0</MCMAJORVERSION>
-      <MCMINORVERSION>9</MCMINORVERSION>
+      <MCMAJORVERSION>1</MCMAJORVERSION>
+      <MCMINORVERSION>2</MCMINORVERSION>
       <MCPACKAGELEVEL>1528</MCPACKAGELEVEL>
       <MCPACKAGETYPE>0</MCPACKAGETYPE>
       <MCQUALIFIEDNAME>de.foxysoft.bobj</MCQUALIFIEDNAME>
@@ -159,6 +163,13 @@ limitations under the License.
           <REP_GUID>79D3D418-21D5-42B0-B8A7-1F7D4648A69F</REP_GUID>
           <REP_NAME>SapBusinessObjects42</REP_NAME>
           <REPOSITORY_TYPE_VARS>
+            <REPOSITORY_TYPE_VAR fx:is-test-content="true" VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
+              <VARCATEGORY>-4</VARCATEGORY>
+              <VARDISPLAYORDER>17</VARDISPLAYORDER>
+              <VARNAME>CONNECTOR_TEST</VARNAME>
+              <VARTYPE>13</VARTYPE>
+              <VARVALUE>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</VARVALUE>
+            </REPOSITORY_TYPE_VAR>
             <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
               <VARCATEGORY>-1</VARCATEGORY>
               <VARDESCRIPTION>Host name of CMS</VARDESCRIPTION>
@@ -174,13 +185,6 @@ limitations under the License.
               <VARNAME>INITIAL_LOAD</VARNAME>
               <VARTYPE>13</VARTYPE>
               <VARVALUE>D1B3E8DB-A6C1-48D9-A22E-792A4A189C05</VARVALUE>
-            </REPOSITORY_TYPE_VAR>
-            <REPOSITORY_TYPE_VAR fx:is-test-content="true" VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
-              <VARCATEGORY>-4</VARCATEGORY>
-              <VARDISPLAYORDER>2</VARDISPLAYORDER>
-              <VARNAME>CONNECTOR_TEST</VARNAME>
-              <VARTYPE>13</VARTYPE>
-              <VARVALUE>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</VARVALUE>
             </REPOSITORY_TYPE_VAR>
             <REPOSITORY_TYPE_VAR VARREPTYPE="de.foxysoft.bobj:reptype.SapBusinessObjects42">
               <VARCATEGORY>-1</VARCATEGORY>
@@ -293,7 +297,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234033</CHANGED_DATE>
+          <CHANGED_DATE>1485769588890</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -332,7 +336,7 @@ limitations under the License.
                     <READFROMPVO>0</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -378,7 +382,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234110</CHANGED_DATE>
+          <CHANGED_DATE>1485769589060</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -421,7 +425,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyUser</SCRIPTNEXT>
@@ -472,7 +476,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234173</CHANGED_DATE>
+          <CHANGED_DATE>1485769589133</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -515,7 +519,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyUser</SCRIPTNEXT>
@@ -572,7 +576,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234157</CHANGED_DATE>
+          <CHANGED_DATE>1485769589120</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -626,7 +630,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyGroupMembers</SCRIPTNEXT>
@@ -668,7 +672,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234140</CHANGED_DATE>
+          <CHANGED_DATE>1485769589107</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -712,7 +716,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_createUser</SCRIPTNEXT>
@@ -786,7 +790,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234017</CHANGED_DATE>
+          <CHANGED_DATE>1485769588863</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -829,7 +833,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyUser</SCRIPTNEXT>
@@ -884,7 +888,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234190</CHANGED_DATE>
+          <CHANGED_DATE>1485769589150</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -937,7 +941,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_removeUser</SCRIPTNEXT>
@@ -976,7 +980,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234127</CHANGED_DATE>
+          <CHANGED_DATE>1485769589090</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <JOBDEFINITION>
             <mx:EMS xmlns:mx="http://www.maxware.com/EMS">
@@ -1030,7 +1034,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <READFROMPVO>1</READFROMPVO>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!null!!!!</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SOURCEENTRYTYPE>0</SOURCEENTRYTYPE>
                     <SCRIPTOPEN>fx_bobj_logon</SCRIPTOPEN>
                     <SCRIPTNEXT>fx_bobj_modifyGroupMembers</SCRIPTNEXT>
@@ -1072,7 +1076,7 @@ limitations under the License.
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1484653234093</CHANGED_DATE>
+          <CHANGED_DATE>1485769589010</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <GROUP_ID>6F47CCEA-2651-4EFF-A3F6-0823F50F6197</GROUP_ID>
           <JOBDEFINITION>
@@ -1140,7 +1144,7 @@ limitations under the License.
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <TODB>%$ddm.identitycenter%</TODB>
                     <SQLUPDATE>1</SQLUPDATE>
                     <mx:Class>
@@ -1176,7 +1180,7 @@ limitations under the License.
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <TODB>%$ddm.identitycenter%</TODB>
                     <SQLUPDATE>1</SQLUPDATE>
                     <mx:Class>
@@ -1202,7 +1206,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <FILTEREDITSTATUS>0</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -1265,7 +1269,7 @@ limitations under the License.
                     <CURRTAB>2</CURRTAB>
                     <FILTEREDITSTATUS>0</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -1748,7 +1752,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -1821,7 +1825,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -1922,7 +1926,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2005,7 +2009,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2082,7 +2086,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2156,7 +2160,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2230,7 +2234,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2296,7 +2300,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2491,7 +2495,7 @@ select
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>null</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
@@ -2565,7 +2569,7 @@ select
           <AUTOCREATED>0</AUTOCREATED>
           <BOOTSTRAPJOB>0</BOOTSTRAPJOB>
           <CHANGED_BY>FOXYSOFT</CHANGED_BY>
-          <CHANGED_DATE>1485607415000</CHANGED_DATE>
+          <CHANGED_DATE>1485771709070</CHANGED_DATE>
           <ENGINE_TYPE>2</ENGINE_TYPE>
           <GROUP_ID>6F47CCEA-2651-4EFF-A3F6-0823F50F6197</GROUP_ID>
           <JOBDEFINITION>
@@ -2574,9 +2578,9 @@ select
               <mx:VERSION>1.0</mx:VERSION>
               <mx:DSEJobs>
                 <mx:Sequence>
-                  <mx:Step Enabled="TRUE" Key="SAP BOBJ 4.2 Connector Test"/>
+                  <mx:Step Enabled="TRUE" Key="SAP BOBJ 4.2 - Connector Test"/>
                 </mx:Sequence>
-                <mx:Job name="SAP BOBJ 4.2 Connector Test">
+                <mx:Job name="SAP BOBJ 4.2 - Connector Test">
                   <mx:Description/>
                   <mx:Sequence>
                     <mx:Step Enabled="TRUE" Key="A1E05FA0-942A-430C-AA5F-05A473A3904C"/>
@@ -2593,7 +2597,6 @@ select
                     <mx:Step Enabled="TRUE" Key="9E068B33-24A1-41C7-B3FA-892B2CCE753B"/>
                     <mx:Step Enabled="TRUE" Key="84FD85CD-2782-424C-B6C4-E861900D2128"/>
                   </mx:Sequence>
-                  <mx:Globals/>
                   <mx:Common>
                     <ENGINETYPE>1</ENGINETYPE>
                     <SCRIPTENG>null</SCRIPTENG>
@@ -2609,8 +2612,16 @@ select
                   <mx:Pass name="466390EF-7E4E-46A2-BCA8-345C65999CA8">
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>01 Create Test Persons</DESCRIPTION>
-                    <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <REPOSITORY>0</REPOSITORY>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
+                    <MAXDELETE>null</MAXDELETE>
+                    <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
+                    <SKIP>0</SKIP>
+                    <JUSTDELTA>0</JUSTDELTA>
+                    <MARKDEL>0</MARKDEL>
+                    <AUTODELETE>0</AUTODELETE>
+                    <CURRTAB>2</CURRTAB>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FROMSQL>with t(counter) as (
                     select 1 $FUNCTION.db_fromDummyTable()$$
@@ -2619,21 +2630,14 @@ select
                     )
                     select * from t order by counter</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
+                    <USEIDSTORE>0</USEIDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
                     <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
                     <PROBE>0</PROBE>
-                    <REPOSITORY>0</REPOSITORY>
                     <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
-                    <MAXDELETE>null</MAXDELETE>
-                    <AUDITLEVEL>0</AUDITLEVEL>
-                    <SKIP>0</SKIP>
-                    <JUSTDELTA>0</JUSTDELTA>
-                    <MARKDEL>0</MARKDEL>
-                    <AUTODELETE>0</AUTODELETE>
-                    <CURRTAB>2</CURRTAB>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>FX_BOBJ_TEST_%COUNTER%</mx:value>
@@ -2663,29 +2667,35 @@ select
                         <mx:value>{R}</mx:value>
                       </mx:attr>
                     </mx:Class>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
                   </mx:Pass>
                   <mx:Pass name="7EF3D483-0475-451D-9F21-3F9BD88412C1">
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>02 Add Account</DESCRIPTION>
-                    <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
-                    <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
-                    <DELIMITER>|</DELIMITER>
-                    <STOREID>-- Self --</STOREID>
-                    <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
-                    <PROBE>0</PROBE>
                     <REPOSITORY>0</REPOSITORY>
-                    <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
                     <MAXDELETE>null</MAXDELETE>
                     <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
                     <SKIP>0</SKIP>
                     <JUSTDELTA>0</JUSTDELTA>
                     <MARKDEL>0</MARKDEL>
                     <AUTODELETE>0</AUTODELETE>
                     <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <FROMSQL>select mcmskeyvalue as MSKEYVALUE
+                    from idmv_entry_simple
+                    where mcmskeyvalue like 'FX_BOBJ_TEST%'
+                    and mcentrytype='MX_PERSON'
+                    order by mcmskeyvalue</FROMSQL>
+                    <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
+                    <USEIDSTORE>0</USEIDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
+                    <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+                    <DELIMITER>|</DELIMITER>
+                    <STOREID>-- Self --</STOREID>
+                    <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+                    <PROBE>0</PROBE>
+                    <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2700,35 +2710,35 @@ select
                         <mx:value>{A}&lt;PRIV:%$rep.$NAME%:ONLY&gt;</mx:value>
                       </mx:attr>
                     </mx:Class>
+                  </mx:Pass>
+                  <mx:Pass name="9D9D1160-AD1A-4A66-B459-B27753143072">
+                    <TYPE>ToIDStore</TYPE>
+                    <DESCRIPTION>03 Add Privilege</DESCRIPTION>
+                    <REPOSITORY>0</REPOSITORY>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
+                    <MAXDELETE>null</MAXDELETE>
+                    <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
+                    <SKIP>0</SKIP>
+                    <JUSTDELTA>0</JUSTDELTA>
+                    <MARKDEL>0</MARKDEL>
+                    <AUTODELETE>0</AUTODELETE>
+                    <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FROMSQL>select mcmskeyvalue as MSKEYVALUE
                     from idmv_entry_simple
                     where mcmskeyvalue like 'FX_BOBJ_TEST%'
                     and mcentrytype='MX_PERSON'
                     order by mcmskeyvalue</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
-                  </mx:Pass>
-                  <mx:Pass name="9D9D1160-AD1A-4A66-B459-B27753143072">
-                    <TYPE>ToIDStore</TYPE>
-                    <DESCRIPTION>03 Add Privilege</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
                     <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
                     <PROBE>0</PROBE>
-                    <REPOSITORY>0</REPOSITORY>
                     <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
-                    <MAXDELETE>null</MAXDELETE>
-                    <AUDITLEVEL>0</AUDITLEVEL>
-                    <SKIP>0</SKIP>
-                    <JUSTDELTA>0</JUSTDELTA>
-                    <MARKDEL>0</MARKDEL>
-                    <AUTODELETE>0</AUTODELETE>
-                    <CURRTAB>1</CURRTAB>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2743,35 +2753,35 @@ select
                         <mx:value>{A}&lt;PRIV:GROUP:%$rep.$NAME%:Data Federation Administrators&gt;</mx:value>
                       </mx:attr>
                     </mx:Class>
+                  </mx:Pass>
+                  <mx:Pass name="B82F14B4-C390-42D1-8B0B-0DFD72AB9762">
+                    <TYPE>ToIDStore</TYPE>
+                    <DESCRIPTION>04 Add/Remove Group</DESCRIPTION>
+                    <REPOSITORY>0</REPOSITORY>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
+                    <MAXDELETE>null</MAXDELETE>
+                    <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
+                    <SKIP>0</SKIP>
+                    <JUSTDELTA>0</JUSTDELTA>
+                    <MARKDEL>0</MARKDEL>
+                    <AUTODELETE>0</AUTODELETE>
+                    <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FROMSQL>select mcmskeyvalue as MSKEYVALUE
                     from idmv_entry_simple
                     where mcmskeyvalue like 'FX_BOBJ_TEST%'
                     and mcentrytype='MX_PERSON'
                     order by mcmskeyvalue</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
-                  </mx:Pass>
-                  <mx:Pass name="B82F14B4-C390-42D1-8B0B-0DFD72AB9762">
-                    <TYPE>ToIDStore</TYPE>
-                    <DESCRIPTION>04 Add/Remove Group</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
                     <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
                     <PROBE>0</PROBE>
-                    <REPOSITORY>0</REPOSITORY>
                     <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
-                    <MAXDELETE>null</MAXDELETE>
-                    <AUDITLEVEL>0</AUDITLEVEL>
-                    <SKIP>0</SKIP>
-                    <JUSTDELTA>0</JUSTDELTA>
-                    <MARKDEL>0</MARKDEL>
-                    <AUTODELETE>0</AUTODELETE>
-                    <CURRTAB>1</CURRTAB>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2786,35 +2796,35 @@ select
                         <mx:value>{D}&lt;GROUP:%$rep.$NAME%:Data Federation Administrators&gt;|{A}&lt;GROUP:%$rep.$NAME%:Cryptographic Officers&gt;</mx:value>
                       </mx:attr>
                     </mx:Class>
+                  </mx:Pass>
+                  <mx:Pass name="5B759BE9-81FF-4C6C-8588-014D61891E38">
+                    <TYPE>ToIDStore</TYPE>
+                    <DESCRIPTION>05 Remove Privilege</DESCRIPTION>
+                    <REPOSITORY>0</REPOSITORY>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
+                    <MAXDELETE>null</MAXDELETE>
+                    <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
+                    <SKIP>0</SKIP>
+                    <JUSTDELTA>0</JUSTDELTA>
+                    <MARKDEL>0</MARKDEL>
+                    <AUTODELETE>0</AUTODELETE>
+                    <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FROMSQL>select mcmskeyvalue as MSKEYVALUE
                     from idmv_entry_simple
                     where mcmskeyvalue like 'FX_BOBJ_TEST%'
                     and mcentrytype='MX_PERSON'
                     order by mcmskeyvalue</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
-                  </mx:Pass>
-                  <mx:Pass name="5B759BE9-81FF-4C6C-8588-014D61891E38">
-                    <TYPE>ToIDStore</TYPE>
-                    <DESCRIPTION>05 Remove Privilege</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
                     <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
                     <PROBE>0</PROBE>
-                    <REPOSITORY>0</REPOSITORY>
                     <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
-                    <MAXDELETE>null</MAXDELETE>
-                    <AUDITLEVEL>0</AUDITLEVEL>
-                    <SKIP>0</SKIP>
-                    <JUSTDELTA>0</JUSTDELTA>
-                    <MARKDEL>0</MARKDEL>
-                    <AUTODELETE>0</AUTODELETE>
-                    <CURRTAB>1</CURRTAB>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2829,35 +2839,35 @@ select
                         <mx:value>{D}&lt;PRIV:GROUP:%$rep.$NAME%:Cryptographic Officers&gt;</mx:value>
                       </mx:attr>
                     </mx:Class>
-                    <FROMSQL>select mcmskeyvalue as MSKEYVALUE
+                  </mx:Pass>
+                  <mx:Pass name="24BE282C-D8B8-4B8E-98E2-0FBB14C9BBE7">
+                    <TYPE>ToIDStore</TYPE>
+                    <DESCRIPTION>06 Change Master Data</DESCRIPTION>
+                    <REPOSITORY>0</REPOSITORY>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
+                    <MAXDELETE>null</MAXDELETE>
+                    <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
+                    <SKIP>0</SKIP>
+                    <JUSTDELTA>0</JUSTDELTA>
+                    <MARKDEL>0</MARKDEL>
+                    <AUTODELETE>0</AUTODELETE>
+                    <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <FROMSQL>select mcmskey as MSKEY
                     from idmv_entry_simple
                     where mcmskeyvalue like 'FX_BOBJ_TEST%'
                     and mcentrytype='MX_PERSON'
                     order by mcmskeyvalue</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
-                  </mx:Pass>
-                  <mx:Pass name="24BE282C-D8B8-4B8E-98E2-0FBB14C9BBE7">
-                    <TYPE>ToIDStore</TYPE>
-                    <DESCRIPTION>06 Change Master Data</DESCRIPTION>
                     <USEIDSTORE>1</USEIDSTORE>
-                    <IDSTORE>!!!!!!!!!!!!1!!!!!!!!!!!!</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
                     <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
                     <PROBE>0</PROBE>
-                    <REPOSITORY>0</REPOSITORY>
                     <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
-                    <MAXDELETE>null</MAXDELETE>
-                    <AUDITLEVEL>0</AUDITLEVEL>
-                    <SKIP>0</SKIP>
-                    <JUSTDELTA>0</JUSTDELTA>
-                    <MARKDEL>0</MARKDEL>
-                    <AUTODELETE>0</AUTODELETE>
-                    <CURRTAB>1</CURRTAB>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2884,35 +2894,35 @@ select
                         <mx:value>%DESCRIPTION% (changed)</mx:value>
                       </mx:attr>
                     </mx:Class>
-                    <FROMSQL>select mcmskey as MSKEY
-                    from idmv_entry_simple
-                    where mcmskeyvalue like 'FX_BOBJ_TEST%'
-                    and mcentrytype='MX_PERSON'
-                    order by mcmskeyvalue</FROMSQL>
-                    <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
                   </mx:Pass>
                   <mx:Pass name="1B66F2D4-EF2D-4CEB-963C-BD179C8F2532">
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>07 Disable Account</DESCRIPTION>
-                    <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
-                    <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
-                    <DELIMITER>|</DELIMITER>
-                    <STOREID>-- Self --</STOREID>
-                    <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
-                    <PROBE>0</PROBE>
                     <REPOSITORY>0</REPOSITORY>
-                    <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
                     <MAXDELETE>null</MAXDELETE>
                     <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
                     <SKIP>0</SKIP>
                     <JUSTDELTA>0</JUSTDELTA>
                     <MARKDEL>0</MARKDEL>
                     <AUTODELETE>0</AUTODELETE>
                     <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <FROMSQL>select mcmskeyvalue as MSKEYVALUE
+                    from idmv_entry_simple
+                    where mcmskeyvalue like 'FX_BOBJ_TEST%'
+                    and mcentrytype='MX_PERSON'
+                    order by mcmskeyvalue</FROMSQL>
+                    <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
+                    <USEIDSTORE>0</USEIDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
+                    <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
+                    <DELIMITER>|</DELIMITER>
+                    <STOREID>-- Self --</STOREID>
+                    <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
+                    <PROBE>0</PROBE>
+                    <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2927,35 +2937,35 @@ select
                         <mx:value>1</mx:value>
                       </mx:attr>
                     </mx:Class>
+                  </mx:Pass>
+                  <mx:Pass name="492B5DFD-F278-49BB-B0FF-71FB347E509A">
+                    <TYPE>ToIDStore</TYPE>
+                    <DESCRIPTION>08 Enable Account</DESCRIPTION>
+                    <REPOSITORY>0</REPOSITORY>
+                    <PINITIALIZE>checkActivePass</PINITIALIZE>
+                    <MAXDELETE>null</MAXDELETE>
+                    <AUDITLEVEL>0</AUDITLEVEL>
+                    <DELTAENABLED>0</DELTAENABLED>
+                    <SKIP>0</SKIP>
+                    <JUSTDELTA>0</JUSTDELTA>
+                    <MARKDEL>0</MARKDEL>
+                    <AUTODELETE>0</AUTODELETE>
+                    <CURRTAB>2</CURRTAB>
+                    <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FROMSQL>select mcmskeyvalue as MSKEYVALUE
                     from idmv_entry_simple
                     where mcmskeyvalue like 'FX_BOBJ_TEST%'
                     and mcentrytype='MX_PERSON'
                     order by mcmskeyvalue</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
-                  </mx:Pass>
-                  <mx:Pass name="492B5DFD-F278-49BB-B0FF-71FB347E509A">
-                    <TYPE>ToIDStore</TYPE>
-                    <DESCRIPTION>08 Enable Account</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
-                    <FROMDB>%$ddm.identitycenter%</FROMDB>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
                     <STOREID>-- Self --</STOREID>
                     <DATABASEURL>%$ddm.identitycenter%</DATABASEURL>
                     <PROBE>0</PROBE>
-                    <REPOSITORY>0</REPOSITORY>
                     <SOURCEREPOSITORY>0</SOURCEREPOSITORY>
-                    <DELTAENABLED>0</DELTAENABLED>
-                    <MAXDELETE>null</MAXDELETE>
-                    <AUDITLEVEL>0</AUDITLEVEL>
-                    <SKIP>0</SKIP>
-                    <JUSTDELTA>0</JUSTDELTA>
-                    <MARKDEL>0</MARKDEL>
-                    <AUTODELETE>0</AUTODELETE>
-                    <CURRTAB>2</CURRTAB>
                     <mx:Class>
                       <mx:attr name="MSKEYVALUE">
                         <mx:value>%MSKEYVALUE%</mx:value>
@@ -2970,19 +2980,12 @@ select
                         <mx:value>%%</mx:value>
                       </mx:attr>
                     </mx:Class>
-                    <FROMSQL>select mcmskeyvalue as MSKEYVALUE
-                    from idmv_entry_simple
-                    where mcmskeyvalue like 'FX_BOBJ_TEST%'
-                    and mcentrytype='MX_PERSON'
-                    order by mcmskeyvalue</FROMSQL>
-                    <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
-                    <PINITIALIZE>checkActivePass</PINITIALIZE>
                   </mx:Pass>
                   <mx:Pass name="1A32CB12-EF25-4E93-8C04-75480E25A6A0">
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>09 Change Password</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
@@ -3025,7 +3028,7 @@ select
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>10 Delete Account</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
@@ -3068,7 +3071,7 @@ select
                     <TYPE>ToIDStore</TYPE>
                     <DESCRIPTION>11 Delete Test Persons</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
                     <FROMSQL>with t(counter) as (
                     select 1 $FUNCTION.db_fromDummyTable()$$
@@ -3109,7 +3112,7 @@ select
                     <TYPE>To Generic</TYPE>
                     <DESCRIPTION>Init Active Pass</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SCRIPTNEXT>initActivePassVariable</SCRIPTNEXT>
                     <DELTAENABLED>0</DELTAENABLED>
                     <MAXDELETE>null</MAXDELETE>
@@ -3129,7 +3132,7 @@ select
                     <TYPE>To Generic</TYPE>
                     <DESCRIPTION>Set Next Pass Active</DESCRIPTION>
                     <USEIDSTORE>0</USEIDSTORE>
-                    <IDSTORE>1</IDSTORE>
+                    <IDSTORE>-- Self --</IDSTORE>
                     <SCRIPTNEXT>setActivePassNext</SCRIPTNEXT>
                     <DELTAENABLED>0</DELTAENABLED>
                     <MAXDELETE>null</MAXDELETE>
@@ -3236,6 +3239,7 @@ function setActivePassNext(Par){
 </mx:Code>
                     </mx:Function>
                   </mx:Functions>
+                  <mx:Globals/>
                 </mx:Job>
               </mx:DSEJobs>
             </mx:EMS>
@@ -3248,7 +3252,7 @@ function setActivePassNext(Par){
           <MCSOURCEGUID>E9749DA6-3BBA-4E40-8FB3-F41A8BB067D2</MCSOURCEGUID>
           <MULTIPROVISION>0</MULTIPROVISION>
           <MXPROTECTED>0</MXPROTECTED>
-          <NAME>SAP BOBJ 4.2 Connector Test</NAME>
+          <NAME>SAP BOBJ 4.2 - Connector Test</NAME>
           <PRIORITY_ACTUAL>20</PRIORITY_ACTUAL>
           <PRIORITY_DEF>20</PRIORITY_DEF>
           <PROVISION>0</PROVISION>
@@ -4303,7 +4307,7 @@ function setActivePassNext(Par){
   </DISPATCHERS>
   <PACKAGE_HISTORY>
     <MCMODIFIEDBYUSERNAME>FOXYSOFT</MCMODIFIEDBYUSERNAME>
-    <MCMODIFIEDDATE>1485335773000</MCMODIFIEDDATE>
+    <MCMODIFIEDDATE>1485768116000</MCMODIFIEDDATE>
     <MCPACKAGEID>de.foxysoft.bobj</MCPACKAGEID>
   </PACKAGE_HISTORY>
 </IDM>

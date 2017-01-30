@@ -215,6 +215,7 @@ limitations under the License.
     </plugins>
   </reporting>
   <profiles>
+    <!-- Build profile to include test jobs in assembly -->
     <profile>
       <id>test</id>
       <properties>

@@ -52,7 +52,7 @@ limitations under the License.
   <!-- Replace username in CHANGED_BY or MCMODIFIEDBYUSERNAME text content -->
   <xsl:template match="CHANGED_BY/text()|MCMODIFIEDBYUSERNAME/text()">
     <xsl:message>
-      <xsl:text>Replacing </xsl:text>
+      <xsl:text>Replacing user ID </xsl:text>
       <xsl:value-of select="parent::node()"/>
     </xsl:message>
     <xsl:text>FOXYSOFT</xsl:text>
@@ -127,5 +127,13 @@ limitations under the License.
       </xsl:message>
       <VARVALUE>-1</VARVALUE>
     </xsl:copy>
+  </xsl:template>
+  <!-- Set all ID store references to "Self" -->
+  <xsl:template match="IDSTORE/text()|STOREID/text()">
+    <xsl:message>
+      <xsl:text>Replacing Identity Store ID </xsl:text>
+      <xsl:value-of select="parent::node()"/>
+    </xsl:message>
+    <xsl:text>-- Self --</xsl:text>
   </xsl:template>
 </xsl:stylesheet>
