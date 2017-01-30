@@ -16,8 +16,11 @@
 
 /**
  * <div>Returns the main (SAP Master) Identity Store's ID.</div>
- * <div>If $IDSID is non-empty and not -1, returns that. Otherwise,
- * obtains the minimum Identity Store ID from the database.</div>
+ * <div><strong>SAP IDM 8.0:</strong> If $IDSID is non-empty and not -1,
+ * returns that. Otherwise, obtains the minimum Identity Store ID
+ * from the database and returns that.</div>
+ * <div><strong>SAP IDM 7.2:</strong> Returns the value of global
+ * constant SAP_MASTER_IDS_ID.</div>
  * @return {string} IDSID
  * @requires fx_getSchemaVersion
  * @requires fx_db_nolock
