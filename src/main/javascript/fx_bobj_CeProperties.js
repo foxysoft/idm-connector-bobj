@@ -18,6 +18,7 @@
  * Utility functions for working with BOBJ (Crystal Enterprise) properties
  * @class
  * @requires fx_trace
+ * @since 1.0.0
  */
 var fx_bobj_CeProperties = (function() {
     /**

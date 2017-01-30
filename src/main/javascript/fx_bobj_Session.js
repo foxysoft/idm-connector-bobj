@@ -18,6 +18,7 @@
  * Connect/disconnect to BOBJ CMS and access InfoStore service
  * @class
  * @requires fx_trace
+ * @since 1.0.0
  */
 var fx_bobj_Session = (function () {
     /**

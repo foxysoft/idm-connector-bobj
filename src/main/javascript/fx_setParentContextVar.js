@@ -23,6 +23,7 @@
  * @return {string} - var_value
  * @requires fx_trace
  * @requires fx_db_nolock
+ * @since 1.0.0
  */
 function fx_setParentContextVar(iv_params)
 {

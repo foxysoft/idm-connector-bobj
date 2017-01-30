@@ -37,6 +37,7 @@
  * functions directly, and not rely on this feature.</div>
  * @param {string|object} iv_message - trace message or JS object
  * @return {string|object} iv_message or compatibility API object
+ * @since 1.0.0
  */
 var fx_trace = (function() {
 

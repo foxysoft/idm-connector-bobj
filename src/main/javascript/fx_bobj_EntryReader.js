@@ -20,6 +20,7 @@
  * @requires fx_trace
  * @requires fx_bobj_Session
  * @requires fx_bobj_CeProperties
+ * @since 1.0.0
  */
 var fx_bobj_EntryReader = (function() {
     /**

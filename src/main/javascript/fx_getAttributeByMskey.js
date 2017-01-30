@@ -38,6 +38,7 @@
  * otherwise empty string.
  * </div>
  * @requires fx_trace
+ * @since 1.0.0
  */
 function fx_getAttributeByMskey(iv_params)
 {

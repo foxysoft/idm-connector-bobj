@@ -19,6 +19,7 @@
  * @param {com.sap.idm.ic.DSEEntry} io_entry - IDM entry
  * @return {com.sap.idm.ic.DSEEntry} - io_entry or skips entry on failure
  * @requires fx_generatePolicyPassword
+ * @since 1.0.0
  */
 function fx_entryAddPolicyPassword(io_entry)
 {

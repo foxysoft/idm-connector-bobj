@@ -23,6 +23,7 @@
  * @requires fx_bobj_CeProperties
  * @requires fx_JavaUtils
  * @requires fx_bobj_ReaderUtils
+ * @since 1.0.0
  */
 var fx_bobj_MemberReader = (function() {
     /**

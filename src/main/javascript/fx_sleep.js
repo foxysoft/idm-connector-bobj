@@ -16,6 +16,7 @@
  * Sleep a given number of milliseconds
  * @param {string} iv_millis - number of milliseconds
  * @return {string} - iv_millis
+ * @since 1.0.0
  */
 function fx_sleep(iv_millis)
 {

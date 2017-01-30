@@ -17,6 +17,7 @@
  * @param {string} iv_params - table name
  * @return {string} SQL statement
  * @requires fx_trace
+ * @since 1.0.0
  */
 function fx_db_getDropIfExistsSyntax(iv_params)
 {

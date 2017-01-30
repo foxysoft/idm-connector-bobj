@@ -20,6 +20,7 @@
  * @requires fx_trace
  * @requires fx_bobj_Session
  * @requires fx_JavaUtils
+ * @since 1.0.0
  */
 var fx_bobj_Group = (function() {
     /**

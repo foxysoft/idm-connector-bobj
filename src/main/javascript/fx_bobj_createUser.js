@@ -19,6 +19,7 @@
  * @return {string} - empty on success or skips entry on failure
  * @requires fx_bobj_User
  * @requires fx_JavaUtils
+ * @since 1.0.0
  */
 function fx_bobj_createUser(io_entry)
 {

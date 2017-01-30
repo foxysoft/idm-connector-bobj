@@ -18,6 +18,7 @@
  * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null 
  *          if no more users
  * @requires fx_bobj_EntryReader
+ * @since 1.0.0
  */
 function fx_bobj_nextUserEntry()
 {

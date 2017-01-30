@@ -17,6 +17,7 @@
  * @see fx_bobj_EntryReader.read
  * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null if no more groups
  * @requires fx_bobj_EntryReader
+ * @since 1.0.0
  */
 function fx_bobj_nextGroupEntry()
 {

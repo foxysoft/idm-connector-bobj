@@ -22,6 +22,7 @@
  * @requires fx_bobj_ReaderUtils
  * @requires fx_bobj_Session
  * @requires fx_trace
+ * @since 1.0.0
  */
 var fx_bobj_AliasReader = (function() {
     /**

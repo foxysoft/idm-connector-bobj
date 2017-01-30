@@ -16,6 +16,7 @@
  * Encrypts cleartext with default algorithm, key and character encoding.
  * @param {string} iv_cleartext - cleartext data
  * @return {string} - ciphertext
+ * @since 1.0.0
  */
 function fx_encrypt(iv_cleartext)
 {

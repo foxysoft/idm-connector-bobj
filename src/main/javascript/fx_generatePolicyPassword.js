@@ -37,6 +37,7 @@
  * @requires fx_trace
  * @requires fx_db_nolock
  * @requires fx_JavaUtils
+ * @since 1.0.0
  */
 var fx_generatePolicyPassword = (function() {
 

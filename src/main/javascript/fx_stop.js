@@ -17,6 +17,7 @@
  * @param {string} iv_message - Supposed to be written to the job log,
  *        but seems to be ignored by uStop() in SAP IDM 7.2
  * @return {string} iv_message
+ * @since 1.0.0
  */
 function fx_stop(iv_message)
 {

@@ -17,6 +17,7 @@
  * @see fx_bobj_AliasReader.read
  * @returns {com.sap.idm.ic.DSEEntry?} - IDM entry or null if no more aliases
  * @requires fx_bobj_AliasReader
+ * @since 1.0.0
  */
 function fx_bobj_nextAliasEntry()
 {

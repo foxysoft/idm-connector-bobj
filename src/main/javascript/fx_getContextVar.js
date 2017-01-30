@@ -20,6 +20,7 @@
  * @return {string} - value of context variable or default value
  *         if variable doesn't exist 
  * @requires fx_trace
+ * @since 1.0.0
  */
 function fx_getContextVar(iv_params)
 {

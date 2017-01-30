@@ -16,6 +16,7 @@
  * Utility functions for scripting the Java language from JavaScript
  * @class 
  * @requires fx_trace
+ * @since 1.0.0
  */
 var fx_JavaUtils = (function() {
 

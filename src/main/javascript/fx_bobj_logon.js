@@ -24,6 +24,7 @@
  * @requires fx_bobj_Session
  * @requires fx_JavaUtils
  * @see fx_bobj_Session.logon
+ * @since 1.0.0
  */
 function fx_bobj_logon(iv_params)
 {

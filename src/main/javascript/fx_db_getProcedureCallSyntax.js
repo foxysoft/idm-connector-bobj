@@ -26,6 +26,8 @@
  * to the stored procedure. This list may be empty.
  * Char-like arguments need to be surrounded by single quotes.
  * @return {string} SQL statement
+ * @requires fx_trace
+ * @since 1.0.0
  */
 function fx_db_getProcedureCallSyntax(iv_params)
 {
