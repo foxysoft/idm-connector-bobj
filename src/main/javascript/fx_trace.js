@@ -13,14 +13,39 @@
 // limitations under the License.
 
 /**
- * <div>Writes message to log if package constant FX_TRACE is 1.</div>
+ * <div>Writes message to log if package/global constant FX_TRACE is 1.</div>
  * <div>The severity of the message is <strong>WARNING</strong>, so
  * it shows up in the log without any additional tweaks.</div>
- * @param {string} iv_message - trace message
- * @return {string} iv_message
+ * <div>Since version 1.1.0, invoking this function with a JS object
+ * containing a property "compat" set to the numeric value 1.0, will
+ * return a compatibility API object.</div>
+ * <div><br/><strong>The compatibility API is an internal feature which
+ * customer code should never use. It will be removed in the 2.x
+ * version of the BOBJ connector.</strong></div>
+ * <div><br/>The API object has the following properties, each of which is
+ * identical to the corresponding package (IDM 8.0) or global (IDM 7.2)
+ * function with the same name:</div>
+ * <ul>
+ * <li>{@link fx_IDSID}</li>
+ * <li>{@link fx_getSchemaVersion}</li>
+ * <li>{@link fx_getConstant}</li>
+ * </ul>
+ * <div>The ability to obtain references to these new functions
+ * from release 1.1.0 via fx_trace is provided for backward
+ * compatibility of existing functions from 1.0.x. New functions
+ * introduced in 1.1.x or later should always use the package/global
+ * functions directly, and not rely on this feature.</div>
+ * @param {string|object} iv_message - trace message or JS object
+ * @return {string|object} iv_message or compatibility API object
  */
 var fx_trace = (function() {
 
+    /**
+     * Indicates whether static class members have been initialized
+     * or not. Each public method must first check this and call
+     * class_init() if it's false. Set to true by class_init().
+     */
+    var gv_initialized = false;
     var gv_is_idm8 = false;
     var trace = traceOff;
 
@@ -199,6 +224,8 @@ var fx_trace = (function() {
             ? traceOn
             : traceOff
         ;
+
+        gv_initialized = true;
     }
 
     function traceOff(iv_message)
@@ -214,12 +241,20 @@ var fx_trace = (function() {
 
     function dispatch(io_argument)
     {
+        if(!gv_initialized)
+        {
+            class_init();
+        }
         return io_argument["compat"] === 1.0
             ? go_compat_api
             : trace(io_argument)
         ;
     }
 
-    class_init();
+    // Static initialization at script load time has issues in SAP IDM.
+    // Avoid it where possible, and use lazy initialization instead.
+    // ===== DON'T TRY THIS =====
+    // class_init()
+    // ==========================
     return dispatch;
 })();
