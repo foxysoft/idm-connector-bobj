@@ -20,9 +20,9 @@ limitations under the License.
   <mx:VERSION>1.0</mx:VERSION>
   <mx:DSEJobs>
     <mx:Sequence>
-      <mx:Step Enabled="TRUE" Key="SAP BOBJ 4.2 Connector Test"/>
+      <mx:Step Enabled="TRUE" Key="SAP BOBJ 4.2 - Connector Test"/>
     </mx:Sequence>
-    <mx:Job name="SAP BOBJ 4.2 Connector Test">
+    <mx:Job name="SAP BOBJ 4.2 - Connector Test">
       <mx:Description/>
       <mx:Sequence>
         <mx:Step Enabled="TRUE" Key="A1E05FA0-942A-430C-AA5F-05A473A3904C"/>

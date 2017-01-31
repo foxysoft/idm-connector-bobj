@@ -58,6 +58,13 @@ limitations under the License.
         <include>*</include>
       </includes>
     </fileSet>
+    <fileSet>
+      <directory>src/main/idm72/tests</directory>
+      <outputDirectory/>
+      <includes>
+        <include>${fx.test.idm72TestsIncludePattern}</include>
+      </includes>
+    </fileSet>
   </fileSets>
   <baseDirectory>/</baseDirectory>
 </assembly>

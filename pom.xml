@@ -42,6 +42,7 @@ limitations under the License.
     <fx.genGlobalScriptsStage1Dir>${fx.genResourcesDir}/globalscrips-stage-1</fx.genGlobalScriptsStage1Dir>
     <fx.genGlobalScriptsStage2Dir>${fx.genResourcesDir}/globalscrips-stage-2</fx.genGlobalScriptsStage2Dir>
     <fx.test.includeXmlTestContent>false</fx.test.includeXmlTestContent>
+    <fx.test.idm72TestsIncludePattern>nothing</fx.test.idm72TestsIncludePattern>
   </properties>
   <dependencies>
     <dependency>
@@ -221,6 +222,7 @@ limitations under the License.
       <id>test</id>
       <properties>
         <fx.test.includeXmlTestContent>true</fx.test.includeXmlTestContent>
+        <fx.test.idm72TestsIncludePattern>*</fx.test.idm72TestsIncludePattern>
       </properties>
     </profile>
   </profiles>
