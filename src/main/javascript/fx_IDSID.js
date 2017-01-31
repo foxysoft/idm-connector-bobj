@@ -22,8 +22,6 @@
  * <div><strong>SAP IDM 7.2:</strong> Returns the value of global
  * constant SAP_MASTER_IDS_ID.</div>
  * @return {string} IDSID
- * @requires fx_getSchemaVersion
- * @requires fx_db_nolock
  * @requires fx_trace
  * @since 1.1.0
  */

@@ -16,6 +16,8 @@
 
 /**
  * <div>Get SAP IDM schema version.</div>
+ * <div>This function internally uses stored procedure
+ * mc_schemaversion.</div>
  * @return {number} - schema version
  * @requires fx_trace
  * @since 1.1.0
