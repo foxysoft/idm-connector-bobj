@@ -5,6 +5,8 @@ project adheres to Semantic Versioning.
 
 Unreleased
 
+1.1.0-RC1 - 2017-01-31
+
 Added
 
   • Add support for SAP IDM 8.0

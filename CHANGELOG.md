@@ -3,6 +3,7 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+## [1.1.0-RC1] - 2017-01-31
 ### Added
 - Add support for SAP IDM 8.0
 
@@ -20,6 +21,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First public release
 
-[Unreleased]: ../../compare/1.0.2...HEAD
-[1.0.1]: ../../compare/1.0.0...1.0.1
+[Unreleased]: ../../compare/1.1.0-RC1...HEAD
+[1.1.0-RC1]: ../../compare/1.0.2...1.1.0-RC1
 [1.0.2]: ../../compare/1.0.1...1.0.2
+[1.0.1]: ../../compare/1.0.0...1.0.1
+
