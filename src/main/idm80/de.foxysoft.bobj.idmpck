@@ -926,6 +926,7 @@ limitations under the License.
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_db_nolock"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_setParentContextVar"/>
                     <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_trace"/>
+                    <mx:Function Enabled="TRUE" GlobalScript="TRUE" Script="JScript" name="fx_JavaUtils"/>
                   </mx:Functions>
                   <mx:Pass name="4b2b6326-330a-4e40-9051-0bbdc0801ca7">
                     <TYPE>To Generic</TYPE>
