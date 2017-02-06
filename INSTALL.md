@@ -1,4 +1,6 @@
-# Installation
+# Installation on SAP IDM 8.0
+The following installation instructions are specific to SAP IDM 8.0. If you intend to install on SAP IDM 7.2, please refer to [INSTALL72.txt](INSTALL72.md).
+
 ## Install Prerequisites
 This connector internally uses the SAP Business Intelligence platform Java SDK, a commercial software available to SAP customers
 on the SAP Service Marketplace. Before installling the connector, plase download the SDK first. We recommend you do not install
@@ -21,14 +23,21 @@ e.g. C:\IDM_BOBJ_LIBS:
  * TraceLog.jar
  
 For the purposes of this connector, you don't need any other content included in the SDK installation.
+
 ## Add SDK JARs to IDM Classpath
-In the Identity Center Designtime 7.2 (MMC), use **Tools -> Options -> Java -> Classpath extension -> Add...** to add all SDK JAR files listed above. After saving your changes, regenerate dispatcher scripts and restart all dispatchers. If you need to do this without MMC, edit property DSECLASSPATH in the dispatcher service property files.
+On the SAP IDM runtime machine, start the Identity Management Dispatcher Utility in GUI mode using the command `dispatcherutil gui`.
+
+Open the Dispatcher Utility's settings dialog using **Tools -> Settings**. Add all SDK JAR files listed above to the setting **DSE Class Path**. Make sure to specify each class path entry as an absolute path, and separate individual class path entries using your platform's separator character (semicolon for Windows, colon for Unix). 
+
+After saving your changes, regenerate dispatcher scripts using **Dispatcher -> Regenerate Scripts** and restart the dispatcher. If you have mutliple dispatchers, repeat these two steps for all your dispatchers.
+
+If your version of the Identity Management Dispatcher Utility doesn't support editing the DSE class path, edit property DSECLASSPATH in the dispatcher service property files directly. Keep in mind, though, that such manual changes will be lost whenever dispatcher scripts are regenerated from the tool.
+
 ## Install Connector
-1. Copy idm-connector-bobj-&lt;VERSION&gt;.zip to the SAP IDM runtime and unzip its contents into a new directory, e.g. C:\IDM_BOBJ_INSTALL
-1. Import file **SAP BOBJ 4.2 Global Scripts.mcc** into SAP IDM's global scripts.
-1. Import file **SAP BOBJ 4.2 Tasks.mcc** into SAP IDM's provisioning folder.
-1. Create a new SAP IDM repository from template **SAP BOBJ 4.2 Repository.rtt**. Fill in the required connection data when prompted.
-1. Create a new SAP IDM job from template **SAP BOBJ 4.2 Initial Load.dst**. Assign the repository created in the previous step to this job.
-1. Execute the initial load job. 
-1. After job completion, add the account privilege it has created as master privilege to the repository created in step 4.
+Perform the remaining steps on a machine with SAP IDM Developer Studio installed:
+
+1. Unzip the content of idm-connector-bobj-&lt;VERSION&gt;.zip into a new directory, e.g. C:\IDM_BOBJ_INSTALL
+1. Use SAP IDM Developer Studio to import the connector package file **de.foxysoft.bobj.idmpck** into your main Identity Store (SAP Master IDS).
+1. Use the SAP IDM administration web UI (/idm/admin) to create a new repository of type **SapBusinessObjects42**
+1. Run the job **SAP BusinessObjects 4.2 - Initial Load** with this new repository
 

@@ -1,6 +1,8 @@
+idm-connector-bobj
+
 SAP® Identity Management connector for SAP® BusinessObjects™ BI Platform
 
- What is it?
+What is it?
 
 This is an add-on for SAP® Identity Management (IDM) which enables IDM to
 manage users and authorizations of the SAP® BusinessObjects™ BI Platform.
@@ -9,7 +11,7 @@ It is free and open source software available under the Apache License, Version
 2.0. Commercial consulting, implementation services and support are available
 from Foxysoft GmbH in Germany. Visit http://foxysoft.de for more information.
 
- Build
+Build
 
 You need Git and Maven 3.x to build the connector. Maven downloads dependencies
 from the Internet by default, so your build machine will need to be connected
@@ -22,11 +24,12 @@ to the Internet.
 The build produces a file idm-connector-bobj-<VERSION>.zip in the target
 subdirectory. The files in this ZIP archive can be imported into SAP® IDM.
 
- Install
+Install
 
-Please refer to INSTALL.txt for detailed installation instructions.
+Please refer to INSTALL.txt or INSTALL72.txt for detailed installation
+instructions specific to SAP® IDM 8.0 or 7.2, respectively.
 
- Features
+Features
 
   • Initial load existing BusinessObjects™ users, groups and aliases into SAP®
     IDM
@@ -34,3 +37,4 @@ Please refer to INSTALL.txt for detailed installation instructions.
   • Lock/unlock Enterprise users
   • Change password of Enterprise users
   • Add/remove user members to Enterprise groups
+

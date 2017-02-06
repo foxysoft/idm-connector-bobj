@@ -13,7 +13,7 @@ You need [Git](https://git-scm.com/) and [Maven 3.x](https://maven.apache.org/) 
      
 The build produces a file **idm-connector-bobj-&lt;VERSION&gt;.zip**  in the target subdirectory. The files in this ZIP archive can be imported into SAP&reg; IDM.
 ## Install
-Please refer to [INSTALL.txt](INSTALL.md) for detailed installation instructions.
+Please refer to [INSTALL.txt](INSTALL.md) or [INSTALL72.txt](INSTALL72.md) for detailed installation instructions specific to SAP&reg; IDM 8.0 or 7.2, respectively.
 ## Features
 * Initial load existing BusinessObjects&trade; users, groups and aliases into SAP&reg; IDM
 * Create/update/delete Enterprise users
