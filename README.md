@@ -15,7 +15,7 @@ The build produces a file **idm-connector-bobj-&lt;VERSION&gt;.zip**  in the tar
 ## Install
 Please refer to [INSTALL.txt](INSTALL.md) or [INSTALL72.txt](INSTALL72.md) for detailed installation instructions specific to SAP&reg; IDM 8.0 or 7.2, respectively.
 ## Features
-* Initial load existing BusinessObjects&trade; users, groups and aliases into SAP&reg; IDM
+* Initial load existing SAP&reg; BusinessObjects&trade; users, groups and aliases into SAP&reg; IDM
 * Create/update/delete Enterprise users
 * Lock/unlock Enterprise users
 * Change password of Enterprise users

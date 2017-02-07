@@ -31,8 +31,8 @@ instructions specific to SAP® IDM 8.0 or 7.2, respectively.
 
 Features
 
-  • Initial load existing BusinessObjects™ users, groups and aliases into SAP®
-    IDM
+  • Initial load existing SAP® BusinessObjects™ users, groups and aliases into
+    SAP® IDM
   • Create/update/delete Enterprise users
   • Lock/unlock Enterprise users
   • Change password of Enterprise users

@@ -25,9 +25,7 @@ e.g. C:\IDM_BOBJ_LIBS:
 For the purposes of this connector, you don't need any other content included in the SDK installation.
 
 ## Add SDK JARs to IDM Classpath
-In the Identity Center Designtime 7.2 (MMC), use **Tools -> Options -> Java -> Classpath extension -> Add...** to add all SDK JAR files listed above. After saving your changes, regenerate dispatcher scripts and restart all dispatchers. 
-
-After saving your changes, regenerate dispatcher scripts using **Dispatcher -> Regenerate Scripts** and restart the dispatcher. If you have mutliple dispatchers, repeat these two steps for all your dispatchers.
+In the Identity Center Designtime 7.2 (MMC), use **Tools -> Options -> Java -> Classpath extension -> Add...** to add all SDK JAR files listed above. After saving your changes, regenerate dispatcher scripts and restart all dispatchers.
 
 If you need to do add classpath extensions without MMC, edit property DSECLASSPATH in the dispatcher service property files. Keep in mind, though, that such manual changes will be lost whenever dispatcher scripts are regenerated from the tool.
 

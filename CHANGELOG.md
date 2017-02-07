@@ -3,6 +3,9 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Fix error handling of task "Delete BOBJ User"
+
 ## [1.1.0-RC1] - 2017-01-31
 ### Added
 - Add support for SAP IDM 8.0

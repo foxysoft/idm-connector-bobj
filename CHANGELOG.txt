@@ -5,6 +5,10 @@ project adheres to Semantic Versioning.
 
 Unreleased
 
+Fixed
+
+  • Fix error handling of task "Delete BOBJ User"
+
 1.1.0-RC1 - 2017-01-31
 
 Added
