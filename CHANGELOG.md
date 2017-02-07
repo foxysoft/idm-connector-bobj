@@ -3,6 +3,8 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.1.0] - 2017-02-07
 ### Fixed
 - Fix error handling of task "Delete BOBJ User"
 
@@ -24,8 +26,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First public release
 
-[Unreleased]: ../../compare/1.1.0-RC1...HEAD
-[1.1.0-RC1]: ../../compare/1.0.2...1.1.0-RC1
-[1.0.2]: ../../compare/1.0.1...1.0.2
-[1.0.1]: ../../compare/1.0.0...1.0.1
+[Unreleased]: ../../compare/1.1.0...HEAD
+[1.1.0]:      ../../compare/1.1.0-RC1...1.1.0
+[1.1.0-RC1]:  ../../compare/1.0.2...1.1.0-RC1
+[1.0.2]:      ../../compare/1.0.1...1.0.2
+[1.0.1]:      ../../compare/1.0.0...1.0.1
 
