@@ -1,5 +1,5 @@
 # Installation on SAP IDM 7.2
-The following installation instructions are specific to SAP IDM 7.2. If you intend to install on SAP IDM 8.0, please refer to [INSTALL.txt](INSTALL.md).
+This documentation is specific to SAP IDM 7.2. If you intend to install on SAP IDM 8.0, please refer to [INSTALL.txt](INSTALL.md).
 
 ## Install Prerequisites
 This connector internally uses the SAP Business Intelligence platform Java SDK, a commercial software available to SAP customers
