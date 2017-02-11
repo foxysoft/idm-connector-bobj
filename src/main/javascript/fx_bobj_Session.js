@@ -225,6 +225,8 @@ var fx_bobj_Session = (function () {
             var lv_query
                     = "select"
                     + " SI_ID"
+            // TESTING: workaround FWM 02021, see SAP note 2356828
+                    + " ,SI_CUID"
                     + ( iv_additional_props != null
                         ? ("," + iv_additional_props)
                         : ""
