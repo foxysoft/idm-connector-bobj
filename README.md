@@ -1,7 +1,7 @@
 # idm-connector-bobj
 SAP&reg; Identity Management connector for SAP&reg; BusinessObjects&trade; BI Platform
 ## What is it?
-This is an add-on for [SAP&reg; Identity Management (IDM)](https://www.sap.com/products/identity-management.html) which enables IDM to manage users and authorizations of the [SAP&reg; BusinessObjects&trade; BI Platform](http://go.sap.com/germany/product/analytics/bi-platform.html).
+This is an add-on for [SAP&reg; Identity Management (IDM)](https://www.sap.com/products/identity-management.html) which enables IDM to manage users and authorizations of the [SAP&reg; BusinessObjects&trade; BI Platform](https://www.sap.com/germany/products/bi-platform.html).
 
 It is free and open source software available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt). Commercial consulting, implementation services and support are available from Foxysoft GmbH in Germany. Visit http://foxysoft.de for more information.
 ## Build
