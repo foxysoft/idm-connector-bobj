@@ -3,6 +3,8 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Fix BCM initialization error related to SAP note 2451365
+- Fix "property not found" exception related to SAP note 2356828
 
 ## [1.1.0] - 2017-02-07
 ### Fixed
