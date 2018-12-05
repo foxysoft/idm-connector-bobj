@@ -29,6 +29,7 @@
  * <li>{@link fx_IDSID}</li>
  * <li>{@link fx_getSchemaVersion}</li>
  * <li>{@link fx_getConstant}</li>
+ * <li>{@link fx_getJdbcConnection}</li>
  * </ul>
  * <div>The ability to obtain references to these new functions
  * from release 1.1.0 via fx_trace is provided for backward
@@ -112,7 +113,7 @@ var fx_trace = (function() {
                 var lv_jdbc_url = uGetConstant("ddm.identitycenter");
 
                 var lo_connection
-                        = java.sql.DriverManager.getConnection(
+                        = this.fx_getJdbcConnection(
                             lv_jdbc_url
                         );
                 trace(SCRIPT
@@ -127,12 +128,12 @@ var fx_trace = (function() {
                       + " lo_statement="+lo_statement);
 
                 lo_statement.registerOutParameter(
-                    "Schemaversion"
+                    1
                     ,java.sql.Types.INTEGER
                 );
                 trace(SCRIPT
                       + "Registered OUT parameter"
-                      + " @Schemaversion as datatype INT");
+                      + " at position 1 as datatype INT");
 
                 lo_statement.execute();
                 trace(SCRIPT
@@ -140,7 +141,7 @@ var fx_trace = (function() {
                       + " lo_statement="
                       + lo_statement);
 
-                lv_result = lo_statement.getInt("Schemaversion");
+                lv_result = lo_statement.getInt(1);
 
             }//try
             catch(lo_exception)
@@ -215,6 +216,48 @@ var fx_trace = (function() {
             return lv_result;
 
         }//fx_getConstant
+
+        ,fx_getJdbcConnection: function(iv_url_plus_extra) {
+
+            var SCRIPT = "fx_getJdbcConnection: ";
+            trace(SCRIPT+"Entering");
+
+            var lo_connection;
+            var lv_vendor_url;
+            var lv_user;
+            var lv_password;
+            
+            var lt_matches
+                    = /^(.+)!!!user=(.+);password=(.+)$/i
+                    .exec(iv_url_plus_extra);
+
+            if(lt_matches != null)
+            {
+                trace(SCRIPT+"Input URL has extra info");
+                lv_vendor_url = lt_matches[1];
+                lv_user       = lt_matches[2];
+                lv_password   = lt_matches[3];
+
+                lo_connection
+                    = java.sql.DriverManager.getConnection(
+                        lv_vendor_url
+                        ,lv_user
+                        ,lv_password
+                        );
+            }
+            else
+            {
+                trace(SCRIPT+"Input URL DOES NOT have extra info");
+
+                lo_connection
+                    = java.sql.DriverManager.getConnection(
+                        iv_url_plus_extra
+                    );
+            }
+            
+            trace(SCRIPT+"Returning "+lo_connection);
+            return lo_connection;
+        }//fx_getJdbcConnection
     };
 
     function class_init()

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/* global fx_trace */
+
 /**
  * <div>Set context variable in parent of current audit.</div>
  * <div>Can only be used in provisioning tasks. This function internally
@@ -70,7 +72,7 @@ function fx_setParentContextVar(iv_params)
                 var lv_jdbc_url = uGetConstant("ddm.identitycenter");
 
                 var lo_connection
-                        = java.sql.DriverManager.getConnection(
+                        = fx_trace({compat: 1.0}).fx_getJdbcConnection(
                             lv_jdbc_url
                         );
                 fx_trace(SCRIPT
