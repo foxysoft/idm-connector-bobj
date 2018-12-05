@@ -38,11 +38,26 @@ function fx_db_getProcedureCallSyntax(iv_params)
     var lv_procedure_name = lt_params.shift();
     var lv_procedure_args = lt_params.join("!!");
 
-    var lv_result
-            = "%$ddm.databasetype%" == "1" //MSSQL
-            ? ( "execute " + lv_procedure_name + " " + lv_procedure_args )
-            : ( "call " + lv_procedure_name + " (" + lv_procedure_args + ")" )
-    ;
+    var lv_result;
+    
+    var lv_dbtype = "%$ddm.databasetype%";
+    
+    if(lv_dbtype == "1" || lv_dbtype == "9") // MSS or SYB
+    {
+        lv_result
+            = "execute "
+            + lv_procedure_name
+            + " "
+            + lv_procedure_args;
+    }
+    else // ORA or DB2
+    {
+        lv_result
+            = "call "
+            + lv_procedure_name
+            + " (" + lv_procedure_args + ")";
+    }
+
     fx_trace(SCRIPT+"Returning "+lv_result);
     return lv_result;
 }
