@@ -2523,7 +2523,7 @@ select
     ,attrname
     from mxi_attributes $FUNCTION.fx_db_nolock()$$
     where attrname in ( $FUNCTION.fx_bobj_getModifyTriggers()$$ )
-    and is_id=$FUNCTION.fx_IDSID()$$
+    and is_id in ( $FUNCTION.fx_IDSID()$$ )
 
 )$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
