@@ -15,7 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <IDM xmlns:fx="http://foxysoft.de/idm"
-     EXPORTED_ON="2017-01-30 10:33:52.53" 
+     EXPORTED_ON="2018-12-10 10:20:44.123"
      IS_PACKAGE_FOLDER_EXPORT="0" 
      PACKAGE_TRANSPORT_VERSION="8#0#0#${timestamp}#0#1#800SP0#1528#1528#1513" 
      SCHEMA_VERSION="1528">
@@ -23,9 +23,9 @@ limitations under the License.
     <PACKAGE MCQUALIFIEDNAME="de.foxysoft.bobj">
       <MCCOPIEDFROMMAJORVERSION>0</MCCOPIEDFROMMAJORVERSION>
       <MCCOPIEDFROMMINORVERSION>0</MCCOPIEDFROMMINORVERSION>
-      <MCDESCRIPTION>SAP BusinessObjects connector, version: 1.1.0-SNAPSHOT</MCDESCRIPTION>
+      <MCDESCRIPTION>SAP BusinessObjects connector, version: 1.2.0-SNAPSHOT</MCDESCRIPTION>
       <MCDISPLAYNAME>de.foxysoft.bobj</MCDISPLAYNAME>
-      <MCLASTMODIFIED>1484648287833</MCLASTMODIFIED>
+      <MCLASTMODIFIED>1544433600820</MCLASTMODIFIED>
       <MCMAJORVERSION>1</MCMAJORVERSION>
       <MCMINORVERSION>2</MCMINORVERSION>
       <MCPACKAGELEVEL>1528</MCPACKAGELEVEL>
@@ -1971,32 +1971,30 @@ select
                     <FROMSQL>--SQL file: fx_bobj_load_user_to_group.sql
 $FUNCTION.fx_trace(
 
-with enterprise_groups_cte as (
-select 
-    a.si_name
-    ,a.si_id
-    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
-    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
-    on a.si_id=b.si_id
-    where b.fx_aliases_si_name like 'secEnterprise:%'
-    --Exclude groups that have any non-Enterprise aliases,
-    --as BOBJ will treat these as third-party groups and
-    --will not allow assignment/unassignment
-    and not exists (
-        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
-        where c.si_id=a.si_id
-        and c.fx_aliases_si_name not like 'secEnterprise:%'
-    )
-    --Exclude Everyone group, as it is managed internally by BOBJ
-    and not a.si_name = 'Everyone'
-)
 select 
     a.si_id    as parent_si_id
     ,a.si_name as parent_si_name
     ,c.si_id   as child_si_id
     ,c.si_name as child_si_name
-    
-    from enterprise_groups_cte a
+    from (
+        select 
+            a1.si_name
+            ,a1.si_id
+            from fx_%$rep.$NAME%_group a1 $FUNCTION.fx_db_nolock()$$
+            inner join fx_%$rep.$NAME%_alias b1 $FUNCTION.fx_db_nolock()$$
+            on a1.si_id=b1.si_id
+            where b1.fx_aliases_si_name like 'secEnterprise:%'
+            --Exclude groups that have any non-Enterprise aliases,
+            --as BOBJ will treat these as third-party groups and
+            --will not allow assignment/unassignment
+            and not exists (
+                select * from fx_%$rep.$NAME%_alias c1 $FUNCTION.fx_db_nolock()$$
+                where c1.si_id=a1.si_id
+                and c1.fx_aliases_si_name not like 'secEnterprise:%'
+            )
+            --Exclude Everyone group, as it is managed internally by BOBJ
+            and not a1.si_name = 'Everyone'
+        ) a
     inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
     on a.si_id=b.si_id
     inner join fx_%$rep.$NAME%_user c $FUNCTION.fx_db_nolock()$$
@@ -2007,7 +2005,8 @@ select
     
     order by a.si_name,c.si_name
 
-)$$</FROMSQL>
+)$$
+</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
                     <IDSTORE>-- Self --</IDSTORE>
@@ -2048,32 +2047,30 @@ select
                     <FROMSQL>--SQL file: fx_bobj_load_user_to_group.sql
 $FUNCTION.fx_trace(
 
-with enterprise_groups_cte as (
-select 
-    a.si_name
-    ,a.si_id
-    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
-    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
-    on a.si_id=b.si_id
-    where b.fx_aliases_si_name like 'secEnterprise:%'
-    --Exclude groups that have any non-Enterprise aliases,
-    --as BOBJ will treat these as third-party groups and
-    --will not allow assignment/unassignment
-    and not exists (
-        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
-        where c.si_id=a.si_id
-        and c.fx_aliases_si_name not like 'secEnterprise:%'
-    )
-    --Exclude Everyone group, as it is managed internally by BOBJ
-    and not a.si_name = 'Everyone'
-)
 select 
     a.si_id    as parent_si_id
     ,a.si_name as parent_si_name
     ,c.si_id   as child_si_id
     ,c.si_name as child_si_name
-    
-    from enterprise_groups_cte a
+    from (
+        select 
+            a1.si_name
+            ,a1.si_id
+            from fx_%$rep.$NAME%_group a1 $FUNCTION.fx_db_nolock()$$
+            inner join fx_%$rep.$NAME%_alias b1 $FUNCTION.fx_db_nolock()$$
+            on a1.si_id=b1.si_id
+            where b1.fx_aliases_si_name like 'secEnterprise:%'
+            --Exclude groups that have any non-Enterprise aliases,
+            --as BOBJ will treat these as third-party groups and
+            --will not allow assignment/unassignment
+            and not exists (
+                select * from fx_%$rep.$NAME%_alias c1 $FUNCTION.fx_db_nolock()$$
+                where c1.si_id=a1.si_id
+                and c1.fx_aliases_si_name not like 'secEnterprise:%'
+            )
+            --Exclude Everyone group, as it is managed internally by BOBJ
+            and not a1.si_name = 'Everyone'
+        ) a
     inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
     on a.si_id=b.si_id
     inner join fx_%$rep.$NAME%_user c $FUNCTION.fx_db_nolock()$$
@@ -2084,7 +2081,8 @@ select
     
     order by a.si_name,c.si_name
 
-)$$</FROMSQL>
+)$$
+</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
                     <IDSTORE>-- Self --</IDSTORE>
@@ -2125,40 +2123,57 @@ select
                     <FROMSQL>-- SQL file: fx_bobj_load_group_to_group_privs.sql
 $FUNCTION.fx_trace(
 
-with enterprise_groups_cte as (
-select 
-    a.si_name
-    ,a.si_id
-    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
-    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
-    on a.si_id=b.si_id
-    where b.fx_aliases_si_name like 'secEnterprise:%'
-    --Exclude groups that have any non-Enterprise aliases,
-    --as BOBJ will treat these as third-party groups and
-    --will not allow assignment/unassignment
-    and not exists (
-        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
-        where c.si_id=a.si_id
-        and c.fx_aliases_si_name not like 'secEnterprise:%'
-    )
-    --Exclude Everyone group, as it is managed internally by BOBJ
-    and not a.si_name = 'Everyone'
-)
 select 
     a.si_id    as parent_si_id
     ,a.si_name as parent_si_name
     ,c.si_id   as child_si_id
     ,c.si_name as child_si_name
-    
-    from enterprise_groups_cte a
+    from (
+        select 
+            a1.si_name
+            ,a1.si_id
+            from fx_%$rep.$NAME%_group a1 $FUNCTION.fx_db_nolock()$$
+            inner join fx_%$rep.$NAME%_alias b1 $FUNCTION.fx_db_nolock()$$
+            on a1.si_id=b1.si_id
+            where b1.fx_aliases_si_name like 'secEnterprise:%'
+            --Exclude groups that have any non-Enterprise aliases,
+            --as BOBJ will treat these as third-party groups and
+            --will not allow assignment/unassignment
+            and not exists (
+                select * from fx_%$rep.$NAME%_alias c1 $FUNCTION.fx_db_nolock()$$
+                where c1.si_id=a1.si_id
+                and c1.fx_aliases_si_name not like 'secEnterprise:%'
+            )
+            --Exclude Everyone group, as it is managed internally by BOBJ
+            and not a1.si_name = 'Everyone'
+        ) a
     inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
     on a.si_id=b.si_id
-    inner join enterprise_groups_cte c $FUNCTION.fx_db_nolock()$$
+    inner join (
+        select 
+            a1.si_name
+            ,a1.si_id
+            from fx_%$rep.$NAME%_group a1 $FUNCTION.fx_db_nolock()$$
+            inner join fx_%$rep.$NAME%_alias b1 $FUNCTION.fx_db_nolock()$$
+            on a1.si_id=b1.si_id
+            where b1.fx_aliases_si_name like 'secEnterprise:%'
+            --Exclude groups that have any non-Enterprise aliases,
+            --as BOBJ will treat these as third-party groups and
+            --will not allow assignment/unassignment
+            and not exists (
+                select * from fx_%$rep.$NAME%_alias c1 $FUNCTION.fx_db_nolock()$$
+                where c1.si_id=a1.si_id
+                and c1.fx_aliases_si_name not like 'secEnterprise:%'
+            )
+            --Exclude Everyone group, as it is managed internally by BOBJ
+            and not a1.si_name = 'Everyone'
+        ) c $FUNCTION.fx_db_nolock()$$
     on b.si_subgroups=c.si_id
     
     order by a.si_name,c.si_name
 
-)$$</FROMSQL>
+)$$
+</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
                     <IDSTORE>-- Self --</IDSTORE>
@@ -2199,40 +2214,57 @@ select
                     <FROMSQL>-- SQL file: fx_bobj_load_group_to_group_privs.sql
 $FUNCTION.fx_trace(
 
-with enterprise_groups_cte as (
-select 
-    a.si_name
-    ,a.si_id
-    from fx_%$rep.$NAME%_group a $FUNCTION.fx_db_nolock()$$
-    inner join fx_%$rep.$NAME%_alias b $FUNCTION.fx_db_nolock()$$
-    on a.si_id=b.si_id
-    where b.fx_aliases_si_name like 'secEnterprise:%'
-    --Exclude groups that have any non-Enterprise aliases,
-    --as BOBJ will treat these as third-party groups and
-    --will not allow assignment/unassignment
-    and not exists (
-        select * from fx_%$rep.$NAME%_alias c $FUNCTION.fx_db_nolock()$$
-        where c.si_id=a.si_id
-        and c.fx_aliases_si_name not like 'secEnterprise:%'
-    )
-    --Exclude Everyone group, as it is managed internally by BOBJ
-    and not a.si_name = 'Everyone'
-)
 select 
     a.si_id    as parent_si_id
     ,a.si_name as parent_si_name
     ,c.si_id   as child_si_id
     ,c.si_name as child_si_name
-    
-    from enterprise_groups_cte a
+    from (
+        select 
+            a1.si_name
+            ,a1.si_id
+            from fx_%$rep.$NAME%_group a1 $FUNCTION.fx_db_nolock()$$
+            inner join fx_%$rep.$NAME%_alias b1 $FUNCTION.fx_db_nolock()$$
+            on a1.si_id=b1.si_id
+            where b1.fx_aliases_si_name like 'secEnterprise:%'
+            --Exclude groups that have any non-Enterprise aliases,
+            --as BOBJ will treat these as third-party groups and
+            --will not allow assignment/unassignment
+            and not exists (
+                select * from fx_%$rep.$NAME%_alias c1 $FUNCTION.fx_db_nolock()$$
+                where c1.si_id=a1.si_id
+                and c1.fx_aliases_si_name not like 'secEnterprise:%'
+            )
+            --Exclude Everyone group, as it is managed internally by BOBJ
+            and not a1.si_name = 'Everyone'
+        ) a
     inner join fx_%$rep.$NAME%_member b $FUNCTION.fx_db_nolock()$$
     on a.si_id=b.si_id
-    inner join enterprise_groups_cte c $FUNCTION.fx_db_nolock()$$
+    inner join (
+        select 
+            a1.si_name
+            ,a1.si_id
+            from fx_%$rep.$NAME%_group a1 $FUNCTION.fx_db_nolock()$$
+            inner join fx_%$rep.$NAME%_alias b1 $FUNCTION.fx_db_nolock()$$
+            on a1.si_id=b1.si_id
+            where b1.fx_aliases_si_name like 'secEnterprise:%'
+            --Exclude groups that have any non-Enterprise aliases,
+            --as BOBJ will treat these as third-party groups and
+            --will not allow assignment/unassignment
+            and not exists (
+                select * from fx_%$rep.$NAME%_alias c1 $FUNCTION.fx_db_nolock()$$
+                where c1.si_id=a1.si_id
+                and c1.fx_aliases_si_name not like 'secEnterprise:%'
+            )
+            --Exclude Everyone group, as it is managed internally by BOBJ
+            and not a1.si_name = 'Everyone'
+        ) c $FUNCTION.fx_db_nolock()$$
     on b.si_subgroups=c.si_id
     
     order by a.si_name,c.si_name
 
-)$$</FROMSQL>
+)$$
+</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
                     <IDSTORE>-- Self --</IDSTORE>
