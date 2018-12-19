@@ -81,6 +81,21 @@ function fx_db_getDropIfExistsSyntax(iv_params)
         // at the end of overall anonymous block
         ;
     }
+    else if(lv_database_type == "9") //SYB
+    {
+        lv_result
+            = "IF EXISTS ("
+            + "SELECT 1 FROM SYSOBJECTS"
+            + "    WHERE NAME='"+lv_table_name+"'"
+            + "    AND TYPE='U'"
+            + ") EXECUTE('DROP TABLE "+lv_table_name+"')"
+        // Note that Sybase does NOT accept a terminating semicolon here.
+        // The error that would occur otherwise is:
+        // 
+        // Error code 102 SQL state:42000(!)
+        // com.sybase.jdbc4.jdbc.SybSQLException: Incorrect syntax near ';'
+        ;
+    }
     else
     {
         uWarning(SCRIPT+"Using unconditional drop"
