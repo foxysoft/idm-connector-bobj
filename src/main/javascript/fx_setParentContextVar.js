@@ -96,30 +96,41 @@ function fx_setParentContextVar(iv_params)
                 var lo_statement = lo_connection.prepareCall(
                     "{call mxp_xset_context_var(?,?,?,?,?)}"
                 );
+
                 fx_trace(SCRIPT
                          + "Prepared callable statement"
                          + " lo_statement="+lo_statement);
 
-                lo_statement.setInt("Pauditid", lv_parent_audit_id);
+                // Mapping parameter names to their indexes, as
+                // supplying parameters by index is more portable.
+                var SP_PARAMS = {
+                    "Pauditid":   1
+                    ,"Pkey":      2
+                    ,"Pvalue":    3
+                    ,"Pinternal": 4
+                    ,"Perr":      5
+                };
+                
+                lo_statement.setInt(SP_PARAMS.Pauditid, lv_parent_audit_id);
                 fx_trace(SCRIPT
                          + "Supplied INT parameter @Pauditid="
                          + lv_parent_audit_id);
 
-                lo_statement.setString("Pkey", lv_var_name);
+                lo_statement.setString(SP_PARAMS.Pkey, lv_var_name);
                 fx_trace(SCRIPT
                          + "Supplied VARCHAR parameter @Pkey="
                          + lv_var_name);
 
-                lo_statement.setString("Pvalue", lv_var_value);
+                lo_statement.setString(SP_PARAMS.Pvalue, lv_var_value);
                 fx_trace(SCRIPT
                          + "Supplied NVARCHAR parameter @Pvalue="
                          + lv_var_value);
 
-                lo_statement.setInt("Pinternal", 0);
+                lo_statement.setInt(SP_PARAMS.Pinternal, 0);
                 fx_trace(SCRIPT+"Supplied INT parameter @Pinternal=0");
 
                 lo_statement.registerOutParameter(
-                    "Perr"
+                    SP_PARAMS.Perr
                     ,java.sql.Types.INTEGER
                 );
                 fx_trace(SCRIPT
@@ -132,7 +143,7 @@ function fx_setParentContextVar(iv_params)
                          + " lo_statement="
                          + lo_statement);
 
-                lv_sql_result = lo_statement.getInt("Perr");
+                lv_sql_result = lo_statement.getInt(SP_PARAMS.Perr);
 
                 if(lv_sql_result != 0)
                 {
