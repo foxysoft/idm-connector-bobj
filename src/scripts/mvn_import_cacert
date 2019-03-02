@@ -73,9 +73,15 @@ sub find_local_ca_certificate_by_subject_key_id {
   no warnings 'File::Find';
   find({ wanted => sub {
            visit_local_ca_certificate($iv_subject_key_id) }
+         # Causes symbolic links to be followed, and cheaper
+         # than the similar option follow.
+         # Required under Cygwin at least, because /etc/ssl/certs
+         # contains symbolic links.
+         ,follow_fast => 1
          # follow_skip==2 causes File::Find to ignore any
          # duplicate files and directories but to proceed
-         # normally otherwise.
+         # normally otherwise. Only has an effect if either
+         # follow or follow_fast is enabled.
          # See https://perldoc.perl.org/File/Find.html
          ,follow_skip => 2
        }
