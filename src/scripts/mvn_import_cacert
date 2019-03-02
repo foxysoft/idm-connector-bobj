@@ -73,11 +73,11 @@ sub find_local_ca_certificate_by_subject_key_id {
   no warnings 'File::Find';
   find({ wanted => sub {
            visit_local_ca_certificate($iv_subject_key_id) }
-         # Must enable following symlinks explicitly,
-         # otherwise Perl on Cygwin won't do it and hence
-         # never succeed because /etc/ssl/certs typically
-         # contains symlinks only
-         ,follow_fast => 1
+         # follow_skip==2 causes File::Find to ignore any
+         # duplicate files and directories but to proceed
+         # normally otherwise.
+         # See https://perldoc.perl.org/File/Find.html
+         ,follow_skip => 2
        }
        , @{ $ir_dirs });
 
