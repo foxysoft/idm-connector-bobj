@@ -21,6 +21,7 @@ e.g. C:\IDM_BOBJ_LIBS:
  * log4j.jar
  * logging.jar
  * TraceLog.jar
+ * jcmFIPS.jar (BIP 4.2 SP4 or higher)
  
 For the purposes of this connector, you don't need any other content included in the SDK installation.
 
