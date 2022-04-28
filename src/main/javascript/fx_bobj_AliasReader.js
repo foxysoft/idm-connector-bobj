@@ -257,8 +257,31 @@ var fx_bobj_AliasReader = (function() {
                          + "Initial invocation,"
                          + " retrieving entries from CMS");
 
-                var lv_query
+                // Get count of matching objects first for subsequent TOP N clause
+                var lv_count_query
                         = "select"
+                        + "    COUNT(SI_ID)"
+                        + "    from CI_SYSTEMOBJECTS"
+                        + "    where SI_KIND in ('"
+                        + IUserGroup.KIND
+                        + "', '"
+                        + IUser.KIND
+                        + "')";
+
+                var lo_count_info_objects
+                        = fx_bobj_Session.getInfoStore().query(lv_count_query)
+                ;
+                var lo_count_info_object = lo_count_info_objects.get(0);
+
+                var lo_counts_properties
+                        = lo_count_info_object.properties().getProperties("SI_AGGREGATE_COUNT")
+                ;
+                var lv_id_count = lo_counts_properties.getInt("SI_ID");
+                fx_trace(SCRIPT+"lv_id_count="+lv_id_count);
+
+                // Apply TOP N clause to avoid implicit limit of 1000 entries
+                var lv_query
+                        = "select TOP "+lv_id_count
                         + "    SI_ID "
                         + "    ,SI_NAME"
                         + "    ,SI_ALIASES"

@@ -62,8 +62,28 @@ var fx_bobj_EntryReader = (function() {
                          + "Initial invocation,"
                          + " retrieving entries from CMS");
 
+                // Get count of matching objects first for subsequent TOP N clause
+                var lv_count_query
+                        = "select"
+                        + "    COUNT(SI_ID)"
+                        + "    FROM CI_SYSTEMOBJECTS"
+                        + "    WHERE SI_KIND = '" + iv_kind + "'"
+                ;
+
+                var lo_count_info_objects
+                        = fx_bobj_Session.getInfoStore().query(lv_count_query)
+                ;
+                var lo_count_info_object = lo_count_info_objects.get(0);
+
+                var lo_counts_properties
+                         = lo_count_info_object.properties().getProperties("SI_AGGREGATE_COUNT")
+                ;
+                var lv_id_count = lo_counts_properties.getInt("SI_ID");
+                fx_trace(SCRIPT+"lv_id_count="+lv_id_count);
+
+                // Apply TOP N clause to avoid implicit limit of 1000 entries
                 var lv_query
-                        = "SELECT *"
+                        = "SELECT TOP " + lv_id_count + " *"
                         + "    FROM CI_SYSTEMOBJECTS"
                         + "    WHERE SI_KIND = '" + iv_kind + "'"
                         + "    ORDER BY SI_NAME"
