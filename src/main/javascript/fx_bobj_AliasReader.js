@@ -280,6 +280,7 @@ var fx_bobj_AliasReader = (function() {
                 fx_trace(SCRIPT+"lv_id_count="+lv_id_count);
 
                 // Apply TOP N clause to avoid implicit limit of 1000 entries
+                // Note that even TOP 0 is legal syntax on BOE/SQL Anywhere
                 var lv_query
                         = "select TOP "+lv_id_count
                         + "    SI_ID "
