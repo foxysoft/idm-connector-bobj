@@ -5,8 +5,17 @@ project adheres to Semantic Versioning.
 
 Unreleased
 
-  • Fix 1000 row limit for ALIAS table
+  • Nothing at this time
+
+1.2.0-RC1 - 2022-04-29
+
+Added
+
   • Add support for Sybase ASE
+
+Fixed
+
+  • Fix 1000 row limit for ALIAS table
   • Fix BCM initialization error related to SAP note 2451365
   • Fix "property not found" exception related to SAP note 2356828
 

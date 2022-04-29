@@ -3,8 +3,14 @@ All notable changes to idm-connector-bobj will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-- Fix 1000 row limit for ALIAS table
+- Nothing at this time
+
+## [1.2.0-RC1] - 2022-04-29
+### Added
 - Add support for Sybase ASE
+
+### Fixed
+- Fix 1000 row limit for ALIAS table
 - Fix BCM initialization error related to SAP note 2451365
 - Fix "property not found" exception related to SAP note 2356828
 
@@ -30,7 +36,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First public release
 
-[Unreleased]: ../../compare/1.1.0...HEAD
+[Unreleased]: ../../compare/1.2.0-RC1...HEAD
+[1.2.0-RC1]:  ../../compare/1.1.0...1.2.0-RC1
 [1.1.0]:      ../../compare/1.1.0-RC1...1.1.0
 [1.1.0-RC1]:  ../../compare/1.0.2...1.1.0-RC1
 [1.0.2]:      ../../compare/1.0.1...1.0.2
