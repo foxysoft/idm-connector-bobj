@@ -244,7 +244,11 @@ var fx_bobj_Group = (function() {
         gv_initialized = true;
     }//class_init
 
-    class_init();
+    // Static initialization at script load time has issues in SAP IDM.
+    // Avoid it where possible, and use lazy initialization instead.
+    // ===== DON'T TRY THIS =====
+    // class_init()
+    // ==========================
     return go_result;
 
 })();
