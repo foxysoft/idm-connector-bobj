@@ -2656,12 +2656,9 @@ select
                     <AUTODELETE>0</AUTODELETE>
                     <CURRTAB>2</CURRTAB>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
-                    <FROMSQL>with t(counter) as (
-                    select 1 $FUNCTION.db_fromDummyTable()$$
-                    union all select 2 $FUNCTION.db_fromDummyTable()$$
-                    union all select 3 $FUNCTION.db_fromDummyTable()$$
-                    )
-                    select * from t order by counter</FROMSQL>
+                    <FROMSQL>select 1 as counter $FUNCTION.db_fromDummyTable()$$
+union all select 2 as counter $FUNCTION.db_fromDummyTable()$$
+union all select 3 as counter $FUNCTION.db_fromDummyTable()$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USEIDSTORE>0</USEIDSTORE>
                     <IDSTORE>-- Self --</IDSTORE>
@@ -3106,12 +3103,9 @@ select
                     <USEIDSTORE>0</USEIDSTORE>
                     <IDSTORE>-- Self --</IDSTORE>
                     <FROMDB>%$ddm.identitycenter%</FROMDB>
-                    <FROMSQL>with t(counter) as (
-                    select 1 $FUNCTION.db_fromDummyTable()$$
-                    union all select 2 $FUNCTION.db_fromDummyTable()$$
-                    union all select 3 $FUNCTION.db_fromDummyTable()$$
-                    )
-                    select * from t order by counter</FROMSQL>
+                    <FROMSQL>select 1 as counter $FUNCTION.db_fromDummyTable()$$
+union all select 2 as counter $FUNCTION.db_fromDummyTable()$$
+union all select 3 as counter $FUNCTION.db_fromDummyTable()$$</FROMSQL>
                     <FILTEREDITSTATUS>16</FILTEREDITSTATUS>
                     <USERINFO>JobId=%$ddm.mcjob%</USERINFO>
                     <DELIMITER>|</DELIMITER>
@@ -3186,7 +3180,7 @@ select
                       <mx:Code>// Main function: db_fromDummyTable
 
 function db_fromDummyTable(Par){
-    return "%$ddm.databasetype%" == "1" ? "" : "FROM DUAL";
+    return ( "%$ddm.databasetype%" == "1" || "%$ddm.databasetype%" == "9" ) ? "" : "FROM DUAL";
 }
 </mx:Code>
                     </mx:Function>
