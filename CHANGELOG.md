@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 - Nothing at this time
 
+## [1.2.0] - 2022-05-05
+- Public release of all changes in 1.2.0-RC1
+
 ## [1.2.0-RC1] - 2022-04-29
 ### Added
 - Add support for Sybase ASE
@@ -36,7 +39,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First public release
 
-[Unreleased]: ../../compare/1.2.0-RC1...HEAD
+[Unreleased]: ../../compare/1.2.0...HEAD
+[1.2.0]:      ../../compare/1.2.0-RC1...1.2.0
 [1.2.0-RC1]:  ../../compare/1.1.0...1.2.0-RC1
 [1.1.0]:      ../../compare/1.1.0-RC1...1.1.0
 [1.1.0-RC1]:  ../../compare/1.0.2...1.1.0-RC1

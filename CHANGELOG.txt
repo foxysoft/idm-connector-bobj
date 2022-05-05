@@ -7,6 +7,10 @@ Unreleased
 
   • Nothing at this time
 
+1.2.0 - 2022-05-05
+
+  • Public release of all changes in 1.2.0-RC1
+
 1.2.0-RC1 - 2022-04-29
 
 Added
