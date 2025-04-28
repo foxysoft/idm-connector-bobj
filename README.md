@@ -3,7 +3,8 @@ SAP&reg; Identity Management connector for SAP&reg; BusinessObjects&trade; BI Pl
 ## What is it?
 This is an add-on for [SAP&reg; Identity Management (IDM)](https://www.sap.com/products/identity-management.html) which enables IDM to manage users and authorizations of the [SAP&reg; BusinessObjects&trade; BI Platform](https://www.sap.com/germany/products/bi-platform.html).
 
-It is free and open source software available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt). Commercial consulting, implementation services and support are available from Foxysoft GmbH in Germany. Visit http://foxysoft.de for more information.
+It is free and open source software available under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt). Its maintainers provide non-commerical community support for the software on a best-effort basis. If you encounter any problems, please create a GitHub issue in this repository. Commercial maintenance contracts or support options do not exist at this time.
+
 ## Build
 You need [Git](https://git-scm.com/) and [Maven 3.x](https://maven.apache.org/) to build the connector. Maven downloads dependencies from the Internet by default, so your build machine will need to be connected to the Internet.
 

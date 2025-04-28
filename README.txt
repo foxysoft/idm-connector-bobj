@@ -8,8 +8,10 @@ This is an add-on for SAP® Identity Management (IDM) which enables IDM to
 manage users and authorizations of the SAP® BusinessObjects™ BI Platform.
 
 It is free and open source software available under the Apache License, Version
-2.0. Commercial consulting, implementation services and support are available
-from Foxysoft GmbH in Germany. Visit http://foxysoft.de for more information.
+2.0. Its maintainers provide non-commerical community support for the software
+on a best-effort basis. If you encounter any problems, please create a GitHub
+issue in this repository. Commercial maintenance contracts or support options
+do not exist at this time.
 
 Build
 
